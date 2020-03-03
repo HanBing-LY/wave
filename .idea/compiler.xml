@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="wave-service-api" />
+        <module name="wave-service-search" />
+        <module name="wave-service-user" />
+        <module name="wave-common" />
+        <module name="wave-service-filesystem" />
+        <module name="wave-service-mq" />
+        <module name="wave-eureka-server" />
+        <module name="wave-po" />
+        <module name="wave-service-media" />
+        <module name="wave-service-role" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wave-service--role" target="1.8" />
+      <module name="wave-service-dept" target="1.8" />
+      <module name="wave-service-menu" target="1.8" />
+      <module name="wave-service-page" target="1.8" />
+      <module name="wave-service-post" target="1.8" />
+      <module name="wave-service-role" target="1.8" />
+      <module name="wave-service-role (1)" target="1.8" />
+      <module name="wave-service-role (2)" target="1.8" />
+      <module name="wave-service-weapon" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="wave-common" options="-parameters" />
+      <module name="wave-eureka-server" options="-parameters" />
+      <module name="wave-po" options="-parameters" />
+      <module name="wave-service--role" options="-parameters" />
+      <module name="wave-service-api" options="-parameters" />
+      <module name="wave-service-dept" options="-parameters" />
+      <module name="wave-service-filesystem" options="-parameters" />
+      <module name="wave-service-media" options="-parameters" />
+      <module name="wave-service-menu" options="-parameters" />
+      <module name="wave-service-mq" options="-parameters" />
+      <module name="wave-service-page" options="-parameters" />
+      <module name="wave-service-post" options="-parameters" />
+      <module name="wave-service-role" options="-parameters" />
+      <module name="wave-service-role (1)" options="-parameters" />
+      <module name="wave-service-role (2)" options="-parameters" />
+      <module name="wave-service-search" options="-parameters" />
+      <module name="wave-service-user" options="-parameters" />
+      <module name="wave-service-weapon" options="-parameters" />
+    </option>
+  </component>
+</project>

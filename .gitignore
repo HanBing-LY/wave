@@ -1,0 +1,10 @@
+# Project exclude paths
+/wave-common/target/
+/wave-eureka-server/target/
+/wave-po/target/
+/wave-service-api/target/
+/wave-service-filesystem/target/
+/wave-service-media/target/
+/wave-service-mq/target/
+/wave-service-search/target/
+/wave-service-user/target/
