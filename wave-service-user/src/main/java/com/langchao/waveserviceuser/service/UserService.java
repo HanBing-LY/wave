@@ -89,7 +89,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 	}
 
 	public String preview(String userId) {
-		//todo userId应该直接从数据库获取页面地址
+		//todo userId应该直接从数据库获取页面地址 如果为空执行数据组装
 		String html="";
 		return html;
 	}
@@ -127,7 +127,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 	 */
 	public void saveHtml(String pageId){
 		//获取页面静态化后的地址url
-		String htmlContext=getPageHtml(pageId);
+		String htmlContext= getHtml(pageId);
 		if(StringUtils.isEmpty(htmlContext)||StringUtils.isEmpty(pageId)){
 			ExceptionCast.cast(UserCode.USER_GENERATEHTML_SAVEHTMLERROR);
 		}
@@ -148,7 +148,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 	 * @param pageId
 	 * @return
 	 */
-	public String getPageHtml(String pageId) {
+	public String getHtml(String pageId) {
 		//todo 从fastdfs获取模版
 		String template=getTemplateById(pageId);
 		//todo 从数据库获取数据
@@ -167,6 +167,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 	}
 
 	private Map getModelByPageId(String pageId) {
+		//todo 存入当前数据
 		Map map=new ConcurrentHashMap();
 		return map;
 	}
