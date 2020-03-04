@@ -1,0 +1,22 @@
+server:
+  port: 10002
+spring:
+  application:
+    name: wave-service-mq
+  rabbitmq:
+    host: 11.11.11.103
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        message-center-input:
+          destination: message-center
+          group: ${spring.application.name}
+          consumer:
+            maxAttempts:rabbit: 1
+        bindings:
+          message-center-input:
+            consumer:
+              delayedExchange: true
