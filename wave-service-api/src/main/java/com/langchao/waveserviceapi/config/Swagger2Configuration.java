@@ -6,6 +6,7 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
@@ -16,7 +17,7 @@ public class Swagger2Configuration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.langchao"))
+                .apis(RequestHandlerSelectors.basePackage("com.langchao.waveserviceapi.config"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -24,8 +25,9 @@ public class Swagger2Configuration {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("在线api文档")
-                .description("在线api文档")
-                .version("1.0")
+                .contact(new Contact("liyuan","","724837404@qq.com"))
+                .description("这里写项目的描述")
+                .version("1.0.0")
                 .build();
     }
 
