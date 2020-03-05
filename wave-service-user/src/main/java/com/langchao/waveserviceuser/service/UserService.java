@@ -69,7 +69,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 		QueryWrapper<User> wrapper = new QueryWrapper<>();
 		wrapper.like("user_name",userVo.getUserName());
 		wrapper.eq("sex",userVo.getSex());
-		page=userMapper.selectPage(page, new QueryWrapper<>());
+		page=userMapper.selectPage(page, wrapper);
 		PageInfo pageInfo = new PageInfo();
 		pageInfo.setList(page.getRecords());
 		pageInfo.setTotal(page.getTotal());

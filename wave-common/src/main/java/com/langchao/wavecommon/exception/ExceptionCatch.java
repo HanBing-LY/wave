@@ -13,22 +13,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 public class ExceptionCatch {
 
-    //处理所有业务异常
-    @ExceptionHandler(CustomException.class)
+    @ExceptionHandler(ExceptionToExtends.class)
     @ResponseBody
-    public JsonResult exception(CustomException ex){
-        ExceptionResult result= ex.getExceptionResult();
-        //记录日志
-        log.error("catch exception:{}",ex.getMessage());
+    public JsonResult exception(ExceptionToExtends exceptionToExtends){
+        ExceptionResult result= exceptionToExtends.getExceptionResult();
+        log.error("exception:",exceptionToExtends.getMessage());
         return new JsonResult(result.success(), result.code(),result.message());
     }
 
-    //捕获Exception异常
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public JsonResult exception(Exception ex){
-        //记录日志
-        log.error("catch exception:{}",ex.getMessage());
+        log.error("exception:",ex.getMessage());
         return new JsonResult(false, ResultStatus.EXCEPTION_FAIL,ex.getMessage());
     }
 }

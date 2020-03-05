@@ -8,13 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="wave-service-search" />
         <module name="wave-service-user" />
-        <module name="wave-common" />
         <module name="wave-service-api" />
         <module name="wave-service-filesystem" />
+        <module name="wave-service-mq" />
         <module name="wave-eureka-server" />
         <module name="wave-service-media" />
         <module name="wave-po" />
-        <module name="wave-service-mq" />
+        <module name="wave-common" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,7 +1,8 @@
 package com.langchao.wavepo.user;
 
 
-
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@TableName("user")
 public class User implements Serializable {
+	@TableId
 	private Integer userId;
 	private String loginName;
 	private String userName;

@@ -3,7 +3,7 @@ package com.langchao.waveservicemq.bindings;
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;
 
-public interface ReceiveMessage {
+public interface MediaQueueReceive {
 
 	final String INPUT="队列名字";
 

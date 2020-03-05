@@ -6,7 +6,7 @@ spring:
       cluster-name: elk
       cluster-nodes: 11.11.11.105:9300
   application:
-    name: wlzx-service-search
+    name: wave-service-search
 eureka:
   client:
     service-url:

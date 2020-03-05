@@ -1,13 +1,13 @@
 package com.langchao.waveservicemq;
 
-import com.langchao.waveservicemq.listener.MqListener;
+import com.langchao.waveservicemq.listener.PageFreemarkerListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
 @SpringBootApplication
-@EnableBinding(value={MqListener.class})
+@EnableBinding(value={PageFreemarkerListener.class})
 @EnableEurekaClient
 public class WaveServiceMqApplication {
 

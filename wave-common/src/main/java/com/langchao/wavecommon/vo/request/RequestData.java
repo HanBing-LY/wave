@@ -8,6 +8,6 @@ public class RequestData {
 	private Integer pageSize;
 
 	private String orderColumn ="id";
-	//排序方式
+
 	private String orderStyle ="desc";
 }
