@@ -6,15 +6,26 @@ import com.langchao.wavecommon.util.StringUtils;
 import com.langchao.wavecommon.vo.response.PageInfo;
 import com.langchao.wavepo.user.User;
 import com.langchao.wavepo.user.UserVo;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.SearchResultMapper;
+import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
+import org.springframework.data.elasticsearch.core.aggregation.impl.AggregatedPageImpl;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -47,7 +58,7 @@ public class EsUserService {
 						new HighlightBuilder.Field("description").preTags(preTags).postTags(postTags));
 		SearchQuery searchQuery=nativeSearchQueryBuilder.build();
 		PageInfo<User> pageInfo=new PageInfo<>();
-/*		AggregatedPage<User> page =  elasticsearchTemplate.queryForPage(searchQuery, User.class,new SearchResultMapper(){
+		AggregatedPage<User> page =  elasticsearchTemplate.queryForPage(searchQuery, User.class,new SearchResultMapper(){
 			@Override
 			public <T> AggregatedPage<T> mapResults(SearchResponse response, Class<T> aClass, Pageable pageable) {
 				//定义查询出来内容存储的集合
@@ -82,8 +93,8 @@ public class EsUserService {
 				}
 				return new AggregatedPageImpl(list_user);
 			}
-		});*/
-//		pageInfo.setList(page.getContent());
+		});
+		pageInfo.setList(page.getContent());
 		return pageInfo;
 	}
 }
