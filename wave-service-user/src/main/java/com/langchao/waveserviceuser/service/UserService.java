@@ -22,6 +22,7 @@ import freemarker.template.Template;
 import org.apache.commons.io.IOUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
@@ -39,7 +40,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class UserService extends ServiceImpl<UserMapper, User> {
 
 	/**
-	 * 组建注入
+	 * 组件注入
 	 */
 	@Resource
 	private UserMapper userMapper;
@@ -47,10 +48,11 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 	private FastFileStorageClient fastFileStorageClient;
 	@Resource
 	private RabbitTemplate rabbitTemplate;
-
+	@Resource
+	private RedisTemplate redisTemplate;
 
 	/**
-	 * 从配置文件获取消息队列信息
+	 * 从配置文件读取信息: 获取消息队列信息
 	 */
 	@Value("${langchao.mq.exchange}")
 	private String exchange_name;
@@ -69,7 +71,12 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 		QueryWrapper<User> wrapper = new QueryWrapper<>();
 		wrapper.like("user_name",userVo.getUserName());
 		wrapper.eq("sex",userVo.getSex());
+		// todo 查布隆过滤器
+		// todo  查缓存
+//		redisTemplate.opsForValue().get(wrapper.getSqlSelect());
 		page=userMapper.selectPage(page, wrapper);
+		// todo 写入缓存,过期时间随机
+//		redisTemplate.opsForList().set(wrapper.getSqlSelect(),60*60 + (int)(Math.random() * 1000),page);
 		PageInfo pageInfo = new PageInfo();
 		pageInfo.setList(page.getRecords());
 		pageInfo.setTotal(page.getTotal());
