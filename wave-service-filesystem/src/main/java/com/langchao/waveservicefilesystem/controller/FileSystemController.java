@@ -20,7 +20,7 @@ public class FileSystemController extends BaseController implements FileSystemCo
 
     @Override
     @PostMapping("/upload")
-    public JsonResult upload(MultipartFile multipartFile, String fileTag, String businessKey, String metadata) {
-        return success("上传成功",fileSystemService.upload(multipartFile,fileTag,businessKey,metadata));
+    public JsonResult upload(MultipartFile multipartFile) {
+        return success("上传成功",fileSystemService.upload(multipartFile));
     }
 }

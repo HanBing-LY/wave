@@ -23,10 +23,4 @@ public class FileSystem {
     private int fileWidth;
     //图片高度
     private int fileHeight;
-    //用户id，用于授权
-    private String userId;
-    //业务key
-    private String businessKey;
-    //业务标签
-    private String fileTag;
 }

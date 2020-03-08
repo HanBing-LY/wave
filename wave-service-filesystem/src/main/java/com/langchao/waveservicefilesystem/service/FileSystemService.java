@@ -22,7 +22,7 @@ public class FileSystemService {
 
 	@Resource
 	private FileSystemMapper fileSystemMapper;
-	public StorePath upload(MultipartFile multipartFile, String fileTag, String businessKey, String metadata) {
+	public StorePath upload(MultipartFile multipartFile) {
 		//文件验证
 		if(StringUtils.isNull(multipartFile)){
 			ExceptionCast.cast(FileSystemCode.FS_UPLOADFILE_FILEISNULL);
@@ -40,8 +40,6 @@ public class FileSystemService {
 			fileSystem.setFileSize(is.available());
 			fileSystem.setFileName(name);
 			fileSystem.setFileType(multipartFile.getContentType());
-			fileSystem.setBusinessKey(businessKey);
-			fileSystem.setFileTag(fileTag);
 			fileSystemMapper.insert(fileSystem);
 			return storePath;
 		} catch (IOException e) {
