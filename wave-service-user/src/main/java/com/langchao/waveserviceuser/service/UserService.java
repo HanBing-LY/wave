@@ -73,7 +73,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 		wrapper.eq("sex",userVo.getSex());
 		// todo 查布隆过滤器
 		// todo  查缓存
-//		redisTemplate.opsForValue().get(wrapper.getSqlSelect());
+//		String s = (String) redisTemplate.opsForValue().get(wrapper.getSqlSelect());
 		page=userMapper.selectPage(page, wrapper);
 		// todo 写入缓存,过期时间随机
 //		redisTemplate.opsForList().set(wrapper.getSqlSelect(),60*60 + (int)(Math.random() * 1000),page);
