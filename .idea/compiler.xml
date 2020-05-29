@@ -7,25 +7,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="wave-service-media" />
         <module name="wave-service-search" />
         <module name="wave-service-user" />
+        <module name="wave-common" />
         <module name="wave-service-api" />
         <module name="wave-service-filesystem" />
-        <module name="wave-service-mq" />
         <module name="wave-eureka-server" />
-        <module name="wave-service-media" />
+        <module name="wave-service-mall" />
         <module name="wave-po" />
-        <module name="wave-common" />
+        <module name="demo-redis" />
+        <module name="wave-service-mq" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo-redis" options="-parameters" />
       <module name="wave-common" options="-parameters" />
       <module name="wave-eureka-server" options="-parameters" />
       <module name="wave-po" options="-parameters" />
       <module name="wave-service-api" options="-parameters" />
       <module name="wave-service-filesystem" options="-parameters" />
+      <module name="wave-service-mall" options="-parameters" />
       <module name="wave-service-media" options="-parameters" />
       <module name="wave-service-mq" options="-parameters" />
       <module name="wave-service-search" options="-parameters" />
