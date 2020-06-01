@@ -7,6 +7,7 @@ import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author liyuan
@@ -127,8 +128,8 @@ public class ListTest {
      * 当给定多个 key 参数时，按参数 key 的先后顺序依次检查各个列表，弹出第一个非空
      * 列表的头元素。
      */
-    public void blpop(){
-        List<String> blpop = jedis.blpop(key);
+    public void brPop(){
+        String brPop = stringRedisTemplate.opsForList().rightPop(key, 60 * 60, TimeUnit.SECONDS);
     }
 
     /**
