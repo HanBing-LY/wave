@@ -27,6 +27,7 @@
         <module>wave-service-search</module>
         <module>wave-service-media</module>
         <module>wave-service-user</module>
+        <module>demo-rabbitmq</module>
     </modules>
 
     <properties>
