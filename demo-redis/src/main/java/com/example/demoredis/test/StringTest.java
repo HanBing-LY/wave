@@ -1,14 +1,11 @@
 package com.example.demoredis.test;
 
-import org.redisson.Redisson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import redis.clients.jedis.Jedis;
 
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,46 +17,195 @@ public class StringTest {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Autowired
-    private Redisson redisson;
-
-    @Autowired
-    private Jedis jedis;
-
-    private String key = "存入的key键";
-    private String value = "需要存入的值value";
-    private long expireTime = 60 * 60 * 24 * 30;
-
-    public void stringToUser() {
-
-        // TimeUnit.SECONDS过期时间添加随机值 ,防止缓存集体过期,雪崩
-        // 或者key 指定范围之间的字符串
-        String s = stringRedisTemplate.opsForValue().get(key, 1, 4);
-        // 注意:!!! 下面一个方法(参数类型不一样)  覆盖指定位置的字符串,替换 10后面的长度
-        stringRedisTemplate.opsForValue().set(key,value,10);
-        // 注意:!!! 上面一个方法(参数类型不一样)  设置多久后过期
-        stringRedisTemplate.opsForValue().set(key,value, Duration.ZERO);
-        // set方法key 和value必须
-        stringRedisTemplate.opsForValue().set(key, value, expireTime, TimeUnit.SECONDS);
-        // setIfAbsent方法 如果缓存没有这个key,设值成功会返回true,否则返回false   通常分布式锁
-        Boolean setIfAbsent = stringRedisTemplate.opsForValue().setIfPresent(key, value, 60 * 60 * 24 * 30, TimeUnit.SECONDS);
-        // 同上相反,存在就设值
-        Boolean setIfPresent = stringRedisTemplate.opsForValue().setIfPresent(key, value, 60 * 60 * 24 * 30, TimeUnit.SECONDS);
-        // 把原本的值返回,将新值覆盖进去
-        String oldValue = stringRedisTemplate.opsForValue().getAndSet(key, value);
-        // 取出多个值
-        List<String> stringList = stringRedisTemplate.opsForValue().multiGet(new ArrayList<>());
-        // 设置多个值.底层用的set结构放的
-        stringRedisTemplate.opsForValue().multiSet(new HashMap<>(16));
-        // 往key上自增多少,默认1
-        Long increment = stringRedisTemplate.opsForValue().increment(key, 100);
-        // 往key下自减多少,默认1
-        Long decrement = stringRedisTemplate.opsForValue().decrement(key, 100);
-        // 字符串后面追加,拼接
-        Integer append = stringRedisTemplate.opsForValue().append(key, value);
-        // key件的长度
-        Long size = stringRedisTemplate.opsForValue().size(key);
-
+    /**
+     * 设置指定 key 的值
+     *
+     * @param key
+     * @param value
+     */
+    public void set(String key, String value) {
+        stringRedisTemplate.opsForValue().set(key, value);
     }
 
+    /**
+     * 获取指定 key 的值
+     *
+     * @param key
+     * @return
+     */
+    public String get(String key) {
+        return stringRedisTemplate.opsForValue().get(key);
+    }
+
+    /**
+     * 返回 key 中字符串值的子字符
+     *
+     * @param key
+     * @param start
+     * @param end
+     * @return
+     */
+    public String getRange(String key, long start, long end) {
+        return stringRedisTemplate.opsForValue().get(key, start, end);
+    }
+
+    /**
+     * 将给定 key 的值设为 value ，并返回 key 的旧值(old value)
+     *
+     * @param key
+     * @param value
+     * @return
+     */
+    public String getAndSet(String key, String value) {
+        return stringRedisTemplate.opsForValue().getAndSet(key, value);
+    }
+
+    /**
+     * 对 key 所储存的字符串值，获取指定偏移量上的位(bit)
+     *
+     * @param key
+     * @param offset
+     * @return
+     */
+    public Boolean getBit(String key, long offset) {
+        return stringRedisTemplate.opsForValue().getBit(key, offset);
+    }
+
+    /**
+     * 批量获取
+     *
+     * @param keys
+     * @return
+     */
+    public List<String> multiGet(Collection<String> keys) {
+        return stringRedisTemplate.opsForValue().multiGet(keys);
+    }
+
+    /**
+     * 设置ASCII码, 字符串'a'的ASCII码是97, 转为二进制是'01100001', 此方法是将二进制第offset位值变为value
+     *
+     * @param key
+     * @param offset 位置
+     * @param value  值,true为1, false为0
+     * @return
+     */
+    public boolean setBit(String key, long offset, boolean value) {
+        return stringRedisTemplate.opsForValue().setBit(key, offset, value);
+    }
+
+    /**
+     * 将值 value 关联到 key ，并将 key 的过期时间设为 timeout
+     *
+     * @param key
+     * @param value
+     * @param timeout 过期时间
+     * @param unit    时间单位, 天:TimeUnit.DAYS 小时:TimeUnit.HOURS 分钟:TimeUnit.MINUTES 秒:TimeUnit.SECONDS 毫秒:TimeUnit.MILLISECONDS
+     */
+    public void setEx(String key, String value, long timeout, TimeUnit unit) {
+        stringRedisTemplate.opsForValue().set(key, value, timeout, unit);
+    }
+
+    /**
+     * 只有在 key 不存在时设置 key 的值
+     *
+     * @param key
+     * @param value
+     * @return 之前已经存在返回false, 不存在返回true
+     */
+    public boolean setIfAbsent(String key, String value) {
+        return stringRedisTemplate.opsForValue().setIfAbsent(key, value);
+    }
+
+    /**
+     * 只有在 key 存在时设置 key 的值
+     *
+     * @param key
+     * @param value
+     * @return 之前不存在返回false, 存在返回true
+     */
+    public boolean setIfPresent(String key, String value) {
+        return stringRedisTemplate.opsForValue().setIfPresent(key, value);
+    }
+
+    /**
+     * 用 value 参数覆写给定 key 所储存的字符串值，从偏移量 offset 开始
+     *
+     * @param key
+     * @param value
+     * @param offset 从指定位置开始覆写
+     */
+    public void setRange(String key, String value, long offset) {
+        stringRedisTemplate.opsForValue().set(key, value, offset);
+    }
+
+    /**
+     * 获取字符串的长度
+     *
+     * @param key
+     * @return
+     */
+    public Long size(String key) {
+        return stringRedisTemplate.opsForValue().size(key);
+    }
+
+    /**
+     * 批量添加
+     *
+     * @param maps
+     */
+    public void multiSet(Map<String, String> maps) {
+        stringRedisTemplate.opsForValue().multiSet(maps);
+    }
+
+    /**
+     * 同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在
+     *
+     * @param maps
+     * @return 之前已经存在返回false, 不存在返回true
+     */
+    public boolean multiSetIfAbsent(Map<String, String> maps) {
+        return stringRedisTemplate.opsForValue().multiSetIfAbsent(maps);
+    }
+
+    /**
+     * 增加(自增长), 负数则为自减
+     *
+     * @param key
+     * @param increment
+     * @return
+     */
+    public Long increment(String key, long increment) {
+        return stringRedisTemplate.opsForValue().increment(key, increment);
+    }
+
+    /**
+     * @param key
+     * @param increment
+     * @return
+     */
+    public Double incrementByFloat(String key, double increment) {
+        return stringRedisTemplate.opsForValue().increment(key, increment);
+    }
+
+    /**
+     * 减少(自减少),负数则为自增
+     *
+     * @param key
+     * @param decrement
+     * @return
+     */
+    public Long decrement(String key, long decrement) {
+        return stringRedisTemplate.opsForValue().decrement(key, decrement);
+    }
+
+    /**
+     * 追加到末尾
+     *
+     * @param key
+     * @param value
+     * @return
+     */
+    public Integer append(String key, String value) {
+        return stringRedisTemplate.opsForValue().append(key, value);
+    }
 }
