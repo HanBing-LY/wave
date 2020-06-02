@@ -13,7 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * 默认方法 − 默认方法就是一个在接口里面有了一个实现的方法。
  *
- *
  * Stream API −新添加的Stream API（java.util.stream） 把真正的函数式编程风格引入到Java中。
  *
  * Date Time API − 加强对日期与时间的处理。
