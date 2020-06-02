@@ -5,6 +5,11 @@ import org.redisson.api.RBloomFilter;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.StringRedisConnection;
+import org.springframework.data.redis.core.RedisCallback;
+import org.springframework.data.redis.core.RedisOperations;
+import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -181,7 +186,7 @@ public class RedisTest {
     }
 
     /**
-     * pipeline(管道)
+     * pipeline(管道),大批量操作redis,前后必须无因果关系
      *
      * @return
      */
@@ -202,6 +207,35 @@ public class RedisTest {
         //关闭
         pipeline.close();
         jedis.close();
+
+
+        // 使用 RedisCallback 把命令放在 pipeline 中
+        RedisCallback<Object> redisCallback = connection -> {
+
+            StringRedisConnection stringRedisConn = (StringRedisConnection) connection;
+            for (int i = 0; i != 10; ++i) {
+                stringRedisConn.set(String.valueOf(i), String.valueOf(i));
+            }
+
+            return null;    // 这里必须要返回 null
+        };
+        stringRedisTemplate.executePipelined(redisCallback);
+
+
+        // 使用 SessionCallback 把命令放在 pipeline
+        SessionCallback<Object> sessionCallback = new SessionCallback<Object>() {
+            @Override
+            public Object execute(RedisOperations operations) throws DataAccessException {
+
+                operations.opsForValue().set("name", "qinyi");
+                operations.opsForValue().set("gender", "male");
+                operations.opsForValue().set("age", "19");
+
+                return null;
+            }
+        };
+        stringRedisTemplate.executePipelined(sessionCallback);
+
         return "success";
     }
 
