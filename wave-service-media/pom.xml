@@ -5,11 +5,12 @@
     <parent>
         <groupId>com.langchao</groupId>
         <artifactId>wave</artifactId>
-        <version>1.0</version>
+        <version>1.0.0</version>
     </parent>
-    <groupId>com.langchao</groupId>
+
+
     <artifactId>wave-service-media</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <name>wave-service-media</name>
     <description>Demo project for Spring Boot</description>
 
@@ -21,17 +22,17 @@
         <dependency>
             <groupId>com.langchao</groupId>
             <artifactId>wave-po</artifactId>
-            <version>1.0</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.langchao</groupId>
             <artifactId>wave-common</artifactId>
-            <version>1.0</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.langchao</groupId>
             <artifactId>wave-service-api</artifactId>
-            <version>1.0</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

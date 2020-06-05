@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.langchao.waveservicemall.mapper.ProductEvaluateMapper">
+    <resultMap id="BaseResultMap" type="com.langchao.waveservicemall.pojo.ProductEvaluate">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="product_id" jdbcType="INTEGER" property="productId"/>
+        <result column="evaluate_desc" jdbcType="LONGVARCHAR" property="evaluateDesc"/>
+        <result column="evaluate_img" jdbcType="LONGVARCHAR" property="evaluateImg"/>
+        <result column="star" jdbcType="INTEGER" property="star"/>
+        <result column="addtime" jdbcType="TIMESTAMP" property="addtime"/>
+    </resultMap>
+
+    <resultMap id="BaseResultDtoMap" type="com.langchao.waveservicemall.pojo.dto.ProductEvaluateDTO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="product_id" jdbcType="INTEGER" property="productId"/>
+        <result column="evaluate_desc" jdbcType="LONGVARCHAR" property="evaluateDesc"/>
+        <result column="evaluate_img" jdbcType="LONGVARCHAR" property="evaluateImg"/>
+        <result column="star" jdbcType="INTEGER" property="star"/>
+        <result column="addtime" jdbcType="TIMESTAMP" property="addtime"/>
+    </resultMap>
+
+    <select id="commonSelectByIds" resultType="com.langchao.waveservicemall.pojo.dto.ProductEvaluateDTO">
+        SELECT
+        user_info.user_name userName,
+        user_info.user_img userImg,
+        product_evaluate.product_id productId,
+        product_evaluate.user_id userId,
+        product_evaluate.evaluate_desc evaluateDesc,
+        product_evaluate.evaluate_img evaluateImg
+        FROM
+        product_evaluate,
+        user_info
+        WHERE
+        product_evaluate.user_id = user_info.id
+        AND product_evaluate.id IN
+        <foreach collection="productEvaluateIds" index="i" item="id" open="(" separator="," close=")">
+            <if test="id != null">
+                #{id}
+            </if>
+        </foreach>
+    </select>
+
+    <select id="findManagerList" resultMap="BaseResultDtoMap">
+        SELECT * FROM product_evaluate
+        <where>
+            <if test="id != null">
+                AND product_id = #{id}
+            </if>
+        </where>
+    </select>
+    <!--<cache type="com.chemguan.business.core.util.RedisCache"/>-->
+</mapper>

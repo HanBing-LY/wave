@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.langchao</groupId>
         <artifactId>wave</artifactId>
-        <version>1.0</version>
+        <version>1.0.0</version>
     </parent>
-    <groupId>com.langchao</groupId>
+
     <artifactId>wave-service-mq</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <name>wave-service-mq</name>
     <description>Demo project for Spring Boot</description>
 
@@ -22,17 +22,29 @@
         <dependency>
             <groupId>com.langchao</groupId>
             <artifactId>wave-service-user</artifactId>
-            <version>1.0</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.langchao</groupId>
             <artifactId>wave-service-media</artifactId>
-            <version>1.0</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!--stream rabbit -->
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream</artifactId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
         </dependency>
 
         <dependency>
@@ -45,11 +57,6 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-test-support</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>

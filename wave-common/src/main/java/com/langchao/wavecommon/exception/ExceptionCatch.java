@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 public class ExceptionCatch {
 
-    @ExceptionHandler(ExceptionToExtends.class)
+    @ExceptionHandler(CommonException.class)
     @ResponseBody
-    public JsonResult exception(ExceptionToExtends exceptionToExtends){
-        ExceptionResult result= exceptionToExtends.getExceptionResult();
-        log.error("exception:",exceptionToExtends.getMessage());
+    public JsonResult exception(CommonException commonException){
+        ExceptionResult result= commonException.getExceptionResult();
+        log.error("exception:", commonException.getMessage());
         return new JsonResult(result.success(), result.code(),result.message());
     }
 

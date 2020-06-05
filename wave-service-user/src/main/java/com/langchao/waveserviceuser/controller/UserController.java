@@ -8,9 +8,13 @@ import com.langchao.waveserviceapi.user.UserControllerApi;
 import com.langchao.waveserviceuser.clients.SearchClient;
 import com.langchao.waveserviceuser.service.UserService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Created by Administrator on 2020/2/2.
@@ -26,61 +30,50 @@ public class UserController extends BaseController implements UserControllerApi 
 	@Override
 	@GetMapping("/list")
 	public JsonResult findUserList(@RequestBody UserVo userVo) {
-//		return success(userService.findUserList(userVo));
-		//调用搜索引擎
 		return searchClient.list(userVo);
 	}
 
-	@Override
-	@PostMapping("/")
-	@HystrixCommand(fallbackMethod = "dead")//对当前方法加熔断
-	public JsonResult addUser(@RequestBody User user) {
-		userService.addUser(user);
-		return success();
-	}
-
-	@Override
-	@GetMapping("/{userId}")
-	public JsonResult getUserById(@PathVariable String userId) {
-		return success(userService.getById(userId));
-	}
-
-	@Override
-	@PutMapping("/")
-	public JsonResult updateUser(@RequestBody User user) {
-		return success(userService.updateUser(user));
-	}
-
-	@Override
-	@PostMapping("/pictures/")
-	public JsonResult addUserPic(@RequestParam("userId") String userId, @RequestParam("pic") String pic) {//pic是文件服务器调用storage后返回的地址
-		userService.addUserPic(userId,pic);
-		return success();
-	}
-
-	@Override
-	@GetMapping("/pictures/list/{userId}")
-	public JsonResult findUserPic(@PathVariable String userId) {
-		return success(userService.getById(userId));
-	}
-
-	@Override
-	@DeleteMapping("/pictures/{userId}")
-	public JsonResult deleteUserPic(@PathVariable String userId) {
-		userService.deleteUserPic(userId);
-		return success();
-	}
-
+	/**
+	 * 静态化预览界面(超时访问,开启降级5s)
+	 * @param userId
+	 * @param response
+	 * @return
+	 */
 	@Override
 	@PostMapping("/pages/{userId}")
-	public JsonResult preview(@PathVariable String userId) {
-		return success(userService.preview(userId));
+	@HystrixCommand(fallbackMethod = "dead",commandProperties = @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "5000"))
+	public JsonResult preview(@PathVariable String userId, HttpServletResponse response) {
+		String html = userService.getHtml(userId);
+		response.addHeader("content-type","text/html;charset=utf-8");
+		response.setHeader("content-type","text/html;charset=utf-8");
+		ServletOutputStream outputStream = null;
+		try {
+			outputStream = response.getOutputStream();
+			outputStream.write(html.getBytes("utf-8"));
+		} catch (IOException e) {
+
+		}
+		return success();
+	}
+
+	private String dead(){
+		return "请求超时;当前线程池名字" + Thread.currentThread().getName();
 	}
 
 	@Override
 	@PostMapping("/publish/{userId}")
+	@HystrixCommand(fallbackMethod = "paymentCircuitBreakerFallback",commandProperties = {
+			@HystrixProperty(name = "circuitBreaker.enabled", value = "true"),              //是否开启断路器
+			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),    //请求数达到后才计算
+			@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"), //休眠时间窗
+			@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),  //错误率达到多少跳闸
+	})
 	public JsonResult publish(@PathVariable String userId) {
 		return success("success",userService.publish(userId));
+	}
+
+	private String paymentCircuitBreakerFallback(){
+		return "系统正忙,请稍候再试";
 	}
 
 }

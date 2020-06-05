@@ -5,12 +5,11 @@
     <parent>
         <groupId>com.langchao</groupId>
         <artifactId>wave</artifactId>
-        <version>1.0</version>
+        <version>1.0.0</version>
     </parent>
 
-    <groupId>com.langchao</groupId>
     <artifactId>wave-service-mall</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <name>wave-service-mall</name>
     <description>Demo project for Spring Boot</description>
 
@@ -19,9 +18,55 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.langchao</groupId>
+            <artifactId>wave-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+        </dependency>
+
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.3.2</version>
         </dependency>
 
         <dependency>

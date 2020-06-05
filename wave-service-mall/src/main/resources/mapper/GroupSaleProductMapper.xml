@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.langchao.waveservicemall.mapper.GroupSaleProductMapper">
+    <resultMap id="BaseResultMap" type="com.langchao.waveservicemall.pojo.GroupSaleProduct">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="product_id" jdbcType="INTEGER" property="productId"/>
+        <result column="group_sale_id" jdbcType="INTEGER" property="groupSaleId"/>
+        <result column="price" jdbcType="DOUBLE" property="price"/>
+        <result column="group_people" jdbcType="INTEGER" property="groupPeople"/>
+        <result column="total_people" jdbcType="INTEGER" property="totalPeople"/>
+        <result column="super_type" jdbcType="INTEGER" property="superType"/>
+    </resultMap>
+    <select id="getProductGroupSalePriceAndPeopleNumber" resultMap="BaseResultMap">
+        SELECT
+            group_sale_product.*
+        FROM
+            group_sale_product,
+            group_sale
+        WHERE
+            group_sale_product.group_sale_id = group_sale.id
+            AND group_sale.flag = 1
+            AND  group_sale.end_time  > NOW()
+            AND group_sale_product.product_id = #{productId}
+    </select>
+    <select id="list" resultType="com.langchao.waveservicemall.pojo.vo.GroupSaleVo">
+        SELECT
+        group_sale.flag flag,
+        group_sale.start_time startTime,
+        group_sale.end_time endTime,
+        group_sale_product.price groupSalePrice,
+        group_sale_product.group_people groupPeople,
+        group_sale_product.super_type superType,
+        group_sale_product.product_id productId,
+        group_sale_product.id groupSaleProductId,
+        product_info.product_name productName,
+        product_info.product_icon productIcon
+        FROM
+        group_sale,
+        group_sale_product,
+        product_info
+        WHERE
+        group_sale_product.group_sale_id = group_sale.id
+        AND group_sale_product.product_id = product_info.id
+        <if test="groupSaleId != null">
+            and group_sale.id = #{groupSaleId}
+        </if>
+        <if test="flag != null">
+            and group_sale.flag = #{flag}
+        </if>
+        <if test="startTime != null">
+            and group_sale.start_time > #{startTime}
+        </if>
+        <if test="endTime != null">
+            and #{endTime} > group_sale.end_time
+        </if>
+        <if test="productName != null and productName != ''">
+            and product_info.product_name like concat('%',#{productName},'%')
+        </if>
+    </select>
+    <delete id="deleteByProductSkuIds">
+        delete from group_sale_product where id in
+        <foreach collection="groupSaleProductIds" open="(" separator="," close=")" item="groupSaleProductId" index="i">
+            #{groupSaleProductId}
+        </foreach>
+    </delete>
+    <delete id="deleteByGroupSaleIds">
+        delete from group_sale_product where group_sale_id  IN
+        <foreach collection="groupSaleIds" open="(" separator="," close=")" item="groupSaleId" index="i">
+             #{groupSaleId}
+        </foreach>
+    </delete>
+
+    <!--<cache type="com.chemguan.business.core.util.RedisCache"/>-->
+</mapper>

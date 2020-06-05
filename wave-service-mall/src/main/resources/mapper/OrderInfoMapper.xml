@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.langchao.waveservicemall.mapper.OrderInfoMapper">
+    <resultMap id="BaseResultMap" type="com.langchao.waveservicemall.pojo.OrderInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="order_number" jdbcType="VARCHAR" property="orderNumber"/>
+        <result column="pay_number" jdbcType="VARCHAR" property="payNumber"/>
+        <result column="order_money" jdbcType="DOUBLE" property="orderMoney"/>
+        <result column="fare_money" jdbcType="DOUBLE" property="fareMoney"/>
+        <result column="pay_money" jdbcType="DOUBLE" property="payMoney"/>
+        <result column="pay_score" jdbcType="INTEGER" property="payScore"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="receive_name" jdbcType="VARCHAR" property="receiveName"/>
+        <result column="receive_phone" jdbcType="VARCHAR" property="receivePhone"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="district" jdbcType="VARCHAR" property="district"/>
+        <result column="area" jdbcType="VARCHAR" property="area"/>
+        <result column="addtime" jdbcType="TIMESTAMP" property="addtime"/>
+        <result column="order_type" jdbcType="VARCHAR" property="orderType"/>
+        <result column="pay_method" jdbcType="VARCHAR" property="payMethod"/>
+        <result column="logistics_num" jdbcType="VARCHAR" property="logisticsNum"/>
+    </resultMap>
+
+    <resultMap id="BaseResultDtoMap" type="com.langchao.waveservicemall.pojo.dto.OrderInfoDto">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="order_number" jdbcType="VARCHAR" property="orderNumber"/>
+        <result column="pay_number" jdbcType="VARCHAR" property="payNumber"/>
+        <result column="order_money" jdbcType="DOUBLE" property="orderMoney"/>
+        <result column="fare_money" jdbcType="DOUBLE" property="fareMoney"/>
+        <result column="pay_money" jdbcType="DOUBLE" property="payMoney"/>
+        <result column="pay_score" jdbcType="INTEGER" property="payScore"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="receive_name" jdbcType="VARCHAR" property="receiveName"/>
+        <result column="receive_phone" jdbcType="VARCHAR" property="receivePhone"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="district" jdbcType="VARCHAR" property="district"/>
+        <result column="area" jdbcType="VARCHAR" property="area"/>
+        <result column="addtime" jdbcType="TIMESTAMP" property="addtime"/>
+        <result column="order_type" jdbcType="VARCHAR" property="orderType"/>
+        <result column="pay_method" jdbcType="VARCHAR" property="payMethod"/>
+        <result column="logistics_num" jdbcType="VARCHAR" property="logisticsNum"/>
+    </resultMap>
+
+    <update id="reduceUserScore">
+                update user_info set user_score = user_score - #{reduceScore} where id = #{userId}
+        </update>
+
+    <select id="findManagerList" resultMap="BaseResultDtoMap">
+        SELECT * FROM order_info oi
+        LEFT JOIN user_info ui ON ui.id = oi.user_id
+        <where>
+            <if test="orderNumber != null and orderNumber != ''">
+                AND oi.order_number LIKE CONCAT('%',#{orderNumber},'%')
+            </if>
+            <if test="payNumber != null">
+                AND oi.pay_number LIKE CONCAT('%',#{payNumber},'%')
+            </if>
+            <if test="orderType != null and orderType != ''">
+                AND oi.order_type = #{orderType}
+            </if>
+            <if test="payMethod != null and payMethod != ''">
+                AND oi.pay_method = #{payMethod}
+            </if>
+            <if test="receivePhone != null and receivePhone != ''">
+                AND oi.receive_phone LIKE CONCAT('%',#{receivePhone},'%')
+            </if>
+            <if test="userName != null and userName != ''">
+                AND ui.nick_name LIKE CONCAT('%',#{userName},'%')
+            </if>
+        </where>
+        ORDER BY oi.addtime DESC
+    </select>
+    <!--<cache type="com.chemguan.business.core.util.RedisCache"/>-->
+</mapper>

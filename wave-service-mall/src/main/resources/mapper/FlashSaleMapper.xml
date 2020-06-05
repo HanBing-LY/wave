@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.langchao.waveservicemall.mapper.FlashSaleMapper">
+    <resultMap id="BaseResultMap" type="com.langchao.waveservicemall.pojo.FlashSale">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="flag" jdbcType="INTEGER" property="flag"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+    </resultMap>
+
+    <sql id="baseSql">flash_sale.id id,flash_sale.flag flag,flash_sale.start_time startTime,flash_sale.end_time endTime</sql>
+
+    <select id="list" resultType="com.langchao.waveservicemall.pojo.FlashSale">
+        SELECT <include refid="baseSql"></include> FROM flash_sale
+            <where>
+                <if test="flag != null">
+                    flash_sale.flag = #{flag}
+                </if>
+                <if test="startTime != null">
+                    and flash_sale.start_time > #{startTime}
+                </if>
+                <if test="endTime != null">
+                    and #{endTime} > flash_sale.end_time
+                </if>
+            </where>
+    </select>
+    <select id="getCurrentFlashSale" resultMap="BaseResultMap">
+        select * from flash_sale where flag  = 1 AND start_time  &lt; NOW() AND end_time &gt; NOW() LIMIT 1
+    </select>
+    <select id="getNextFlashSale" resultMap="BaseResultMap">
+        SELECT
+            *
+        FROM
+            flash_sale
+        WHERE
+            flag = 1
+            AND start_time > NOW()
+        ORDER BY
+            start_time ASC
+            LIMIT 1
+    </select>
+    <delete id="deleteByFlashSaleIds">
+        delete  from flash_sale where id IN
+        <foreach collection="flashSaleIds" open="(" separator="," close=")" item="flashSaleId" index="i">
+            #{flashSaleId}
+        </foreach>
+    </delete>
+    <!--    AND flash_sale_product.product_id = #{productId}-->
+    <!--<cache type="com.chemguan.business.core.util.RedisCache"/>-->
+</mapper>

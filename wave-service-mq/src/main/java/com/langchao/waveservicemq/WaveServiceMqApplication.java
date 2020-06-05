@@ -1,6 +1,5 @@
 package com.langchao.waveservicemq;
 
-import com.langchao.waveservicemq.listener.PageFreemarkerListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;

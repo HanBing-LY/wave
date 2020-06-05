@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.langchao.waveservicemall.mapper.OrderProductMapper">
+    <resultMap id="BaseResultMap" type="com.langchao.waveservicemall.pojo.OrderProduct">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="order_id" jdbcType="INTEGER" property="orderId"/>
+        <result column="product_sku_id" jdbcType="INTEGER" property="productSkuId"/>
+        <result column="product_num" jdbcType="INTEGER" property="productNum"/>
+        <result column="product_price" jdbcType="DOUBLE" property="productPrice"/>
+        <result column="product_id" jdbcType="INTEGER" property="productId"/>
+    </resultMap>
+    <select id="getOrderDetailByOrderNumber" resultMap="getOrderDetailByOrderNumberResultMap">
+        SELECT
+            order_product.id orderProductId,
+            order_info.id orderNumber,
+            order_info.order_money orderMoney,
+            order_info.fare_money fareMoney,
+            order_info.receive_name receiveName,
+            order_info.receive_phone receivePhone,
+            order_info.province province,
+            order_info.district district,
+            order_info.area area,
+            order_info.address address,
+            product_sku.product_id productId,
+            product_info.product_name productName,
+            product_info.product_img productPictureUrl,
+            order_product.product_num productNum,
+            order_product.product_price productPrice,
+            column_nature.id natureId,
+            column_nature.nature_name natureName,
+            nature_value.id nature_value_id,
+            nature_value.value_desc valueDesc
+        FROM
+            order_product,
+            order_info,
+            product_sku,
+            product_sku_nature,
+            column_nature,
+            nature_value,
+            product_info
+        WHERE
+            order_product.order_id = #{orderNumber}
+            AND order_product.order_id = order_info.id
+            AND order_product.product_sku_id = product_sku.id
+            AND product_sku.id = product_sku_nature.product_sku_id
+            AND column_nature.id = product_sku_nature.column_nature_id
+            AND nature_value.id = product_sku_nature.nature_value_id
+            AND product_sku.product_id = product_info.id
+    </select>
+    <resultMap id="getOrderDetailByOrderNumberResultMap" type="com.langchao.waveservicemall.pojo.vo.OrderDetailVo">
+        <id column="orderProductId" property="id"/>
+        <result column="orderNumber" property="orderNumber"/>
+        <result column="orderMoney" property="orderMoney"/>
+        <result column="fareMoney" property="fareMoney"/>
+        <result column="receiveName" property="receiveName"/>
+        <result column="receivePhone" property="receivePhone"/>
+        <result column="province" property="province"/>
+        <result column="district" property="district"/>
+        <result column="area" property="area"/>
+        <result column="address" property="address"/>
+        <result column="productId" property="productId"/>
+        <result column="productName" property="productName"/>
+        <result column="productPictureUrl" property="productPictureUrl"/>
+        <result column="productNum" property="productNum"/>
+        <result column="productPrice" property="productPrice"/>
+        <collection property="columnNatureDTOList" ofType="com.langchao.waveservicemall.pojo.dto.ColumnNatureDTO">
+            <id column="natureId" property="id"/>
+            <result column="natureName" property="natureName"/>
+            <collection property="natureValueList" ofType="com.langchao.waveservicemall.pojo.NatureValue">
+                <id column="nature_value_id" property="id"/>
+                <result column="natureId" property="natureId"/>
+                <result column="valueDesc" property="valueDesc"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <update id="chooseReceiveAddress">
+        UPDATE  order_info SET
+        receive_name = #{userAddress.userName},
+        receive_phone = #{userAddress.userPhone},
+        province = #{userAddress.province},
+        district = #{userAddress.district},
+        area = #{userAddress.area},
+        address = #{userAddress.address}
+         WHERE id = #{orderNumber}
+    </update>
+
+
+    <resultMap id="BaseResultDtoMap" type="com.langchao.waveservicemall.pojo.dto.OrderProductDto">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="order_id" jdbcType="INTEGER" property="orderId"/>
+        <result column="product_sku_id" jdbcType="INTEGER" property="productSkuId"/>
+        <result column="product_num" jdbcType="INTEGER" property="productNum"/>
+        <result column="product_price" jdbcType="DOUBLE" property="productPrice"/>
+        <result column="product_id" jdbcType="INTEGER" property="productId"/>
+    </resultMap>
+
+    <select id="findManagerList" resultMap="BaseResultDtoMap">
+        SELECT * FROM order_product
+        WHERE order_id = ${id}
+    </select>
+    <!--<cache type="com.chemguan.business.core.util.RedisCache"/>-->
+</mapper>

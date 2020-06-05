@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.langchao.waveservicemall.mapper.ColumnNatureMapper">
+    <resultMap id="BaseResultMap" type="com.langchao.waveservicemall.pojo.ColumnNature">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="nature_name" jdbcType="VARCHAR" property="natureName"/>
+        <result column="product_colum_id" jdbcType="INTEGER" property="productColumId"/>
+    </resultMap>
+    <resultMap id="BaseResultDtoMap" type="com.langchao.waveservicemall.pojo.dto.ColumnNatureDTO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="nature_name" jdbcType="VARCHAR" property="natureName"/>
+        <result column="product_colum_id" jdbcType="INTEGER" property="productColumId"/>
+    </resultMap>
+
+    <select id="findManagerList" resultMap="BaseResultDtoMap">
+        SELECT * FROM column_nature
+        <where>
+            <if test="id != null">
+                AND product_colum_id = #{id}
+            </if>
+        </where>
+    </select>
+
+
+
+    <!--根据分类id查询属性数量-->
+    <select id="findCountByColumnId" resultType="java.lang.Integer">
+        select count(*) from column_nature where product_colum_id = #{columnId}
+    </select>
+    <!--<cache type="com.chemguan.business.core.util.RedisCache"/>-->
+</mapper>

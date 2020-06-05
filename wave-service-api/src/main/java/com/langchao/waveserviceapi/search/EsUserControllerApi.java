@@ -10,6 +10,6 @@ import io.swagger.annotations.ApiOperation;
 public interface EsUserControllerApi {
 
     @ApiOperation("用户综合搜索")
-    public JsonResult list(UserVo userVo);
+    JsonResult list(UserVo userVo);
 
 }

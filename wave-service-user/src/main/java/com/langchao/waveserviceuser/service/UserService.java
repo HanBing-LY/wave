@@ -22,16 +22,17 @@ import freemarker.template.Template;
 import org.apache.commons.io.IOUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -49,15 +50,17 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 	@Resource
 	private RabbitTemplate rabbitTemplate;
 	@Resource
-	private RedisTemplate redisTemplate;
+	private StringRedisTemplate stringRedisTemplate;
+	@Resource
+	private RestTemplate restTemplate;
 
 	/**
 	 * 从配置文件读取信息: 获取消息队列信息
 	 */
 	@Value("${langchao.mq.exchange}")
-	private String exchange_name;
+	private String exchangeName;
 	@Value("${langchao.mq.routingKey}")
-	private String routing_key;
+	private String routingKey;
 
 	public PageInfo findUserList(UserVo userVo) {
 		userVo= Optional.ofNullable(userVo).orElse(new UserVo());
@@ -73,7 +76,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 		wrapper.eq("sex",userVo.getSex());
 		// todo 查布隆过滤器
 		// todo  查缓存
-//		String s = (String) redisTemplate.opsForValue().get(wrapper.getSqlSelect());
+//		String s = (String) stringRedisTemplate.opsForValue().get(wrapper.getSqlSelect());
 		page=userMapper.selectPage(page, wrapper);
 		// todo 写入缓存,过期时间随机
 //		redisTemplate.opsForList().set(wrapper.getSqlSelect(),60*60 + (int)(Math.random() * 1000),page);
@@ -82,25 +85,6 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 		pageInfo.setTotal(page.getTotal());
 		return pageInfo;
 	}
-
-	public void addUser(User user) {
-		user.setUserId(0);
-		user.setCreateTime(new Date());
-		user.setUpdateTime(new Date());
-		userMapper.insert(user);
-	}
-
-	public String updateUser(User user) {
-		user.setUpdateTime(new Date());
-		return userMapper.updateUser(user);
-	}
-
-	public String preview(String userId) {
-		//todo userId应该直接从数据库获取页面地址 如果为空执行数据组装
-		String html="";
-		return html;
-	}
-
 
 	public String publish(String userId) {
 		//todo pageId根据userId获得
@@ -114,25 +98,11 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 		return "返回一个页面的url";
 	}
 
-
-	public void addUserPic(String userId, String pic) {
-		//todo 判断用户和图片的存储
-		User byId = getById(userId);
-		if(StringUtils.isNull(byId)){
-			ExceptionCast.cast(UserCode.USER_GET_NOTEXISTS);
-		}
-		//todo 将用户和图片地址关联进数据库
-	}
-
-	public void deleteUserPic(String userId) {
-		userMapper.deleteById(userId);
-	}
-
 	/**
 	 * 页面静态化后保存到fastdfs
 	 * @param pageId
 	 */
-	public void saveHtml(String pageId){
+	private void saveHtml(String pageId){
 		//获取页面静态化后的地址url
 		String htmlContext= getHtml(pageId);
 		if(StringUtils.isEmpty(htmlContext)||StringUtils.isEmpty(pageId)){
@@ -148,6 +118,14 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 		}
 		String fullPath = storePath.getFullPath();//这是在fastdfs中文件地址坐标
 		//todo 将对应的数据库更新
+	}
+
+	/**
+	 * 向stream服务通知消息队列执行
+	 * @param pageId
+	 */
+	private void sendPostPage(String pageId) {
+		rabbitTemplate.convertAndSend(exchangeName, routingKey,pageId);
 	}
 
 	/**
@@ -174,8 +152,11 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 	}
 
 	private Map getModelByPageId(String pageId) {
+		List<User> users = userMapper.selectList(new QueryWrapper<>());
 		//todo 存入当前数据
-		Map map=new ConcurrentHashMap();
+//		String url = users.get(0).getUrl();
+//		Map map=restTemplate.getForObject(url,Map.class);
+		Map map = new ConcurrentHashMap();
 		return map;
 	}
 
@@ -194,14 +175,6 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 			ExceptionCast.cast(UserCode.USER_GENERATEHTML_SAVEHTMLERROR);
 			return "";
 		}
-	}
-
-	/**
-	 * 向stream服务通知消息队列执行
-	 * @param pageId
-	 */
-	private void sendPostPage(String pageId) {
-		rabbitTemplate.convertAndSend(exchange_name,routing_key,pageId);
 	}
 
 	/**

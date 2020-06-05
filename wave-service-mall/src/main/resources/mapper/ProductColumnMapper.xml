@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.langchao.waveservicemall.mapper.ProductColumnMapper">
+    <resultMap id="BaseResultMap" type="com.langchao.waveservicemall.pojo.ProductColumn">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="column_name" jdbcType="VARCHAR" property="columnName"/>
+        <result column="column_image" jdbcType="VARCHAR" property="columnImage"/>
+        <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+        <result column="column_level" jdbcType="INTEGER" property="columnLevel"/>
+    </resultMap>
+    <resultMap id="BaseResultDtoMap" type="com.langchao.waveservicemall.pojo.dto.ProductColumnDto">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="column_name" jdbcType="VARCHAR" property="columnName"/>
+        <result column="column_image" jdbcType="VARCHAR" property="columnImage"/>
+        <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+        <result column="column_level" jdbcType="INTEGER" property="columnLevel"/>
+    </resultMap>
+
+
+    <select id="findManagerList" resultMap="BaseResultDtoMap">
+        SELECT * FROM product_column
+        WHERE parent_id IS NULL
+    </select>
+
+    <select id="findManagerListById" resultMap="BaseResultDtoMap">
+        SELECT * FROM product_column
+        <where>
+            <if test="id != null">
+                AND parent_id = #{id}
+            </if>
+        </where>
+    </select>
+
+
+
+
+    <select id="findbyparent" resultMap="BaseResultMap">
+        select * from product_column where parent_id=#{columnId}
+    </select>
+    <!--<cache type="com.chemguan.business.core.util.RedisCache"/>-->
+</mapper>
