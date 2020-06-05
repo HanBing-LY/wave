@@ -2,6 +2,7 @@ package com.langchao.waveservicemall.service;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.langchao.waveservicemall.pojo.FlashSaleProduct;
 import com.langchao.waveservicemall.pojo.ProductColumn;
 import com.langchao.waveservicemall.pojo.ProductInfo;
@@ -16,7 +17,7 @@ import java.util.List;
  * @author 
  * @date Mon Feb 17 16:34:43 CST 2020
  */
-public interface FlashSaleProductService   {
+public interface FlashSaleProductService  extends IService<FlashSaleProduct> {
 
     /**
      * @author liyuan

@@ -1,9 +1,10 @@
 package com.langchao.waveservicemall.controller;
 
-import com.chemguan.business.results.JsonResult;
-import com.chemguan.entity.FlashSaleProduct;
-import com.chemguan.service.FlashSaleProductService;
+
+import com.langchao.wavecommon.vo.response.JsonResult;
 import com.langchao.wavecommon.web.BaseController;
+import com.langchao.waveservicemall.pojo.FlashSaleProduct;
+import com.langchao.waveservicemall.service.FlashSaleProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +28,8 @@ public class FlashSaleProductController  extends BaseController {
      * @Description 分页查询秒杀控制
      */
     @GetMapping("/list")
-    public JsonResult list(@RequestParam(name = "flashSaleId",required = false)Integer flashSaleId,@RequestParam(name = "productName",required = false)String productName, @RequestParam(name = "flag",required = false)Integer flag, @RequestParam(name = "startTime",required = false) Date startTime, @RequestParam(name = "endTime",required = false) Date endTime,
-                       @RequestParam(name = "page",required = false)Integer page, @RequestParam(name = "size",required = false)Integer size){
+    public JsonResult list(@RequestParam(name = "flashSaleId",required = false)Integer flashSaleId, @RequestParam(name = "productName",required = false)String productName, @RequestParam(name = "flag",required = false)Integer flag, @RequestParam(name = "startTime",required = false) Date startTime, @RequestParam(name = "endTime",required = false) Date endTime,
+                           @RequestParam(name = "page",required = false)Integer page, @RequestParam(name = "size",required = false)Integer size){
         return success(flashSaleProductService.list(flashSaleId,productName,flag,startTime,endTime,page,size));
     }
 
@@ -91,6 +92,6 @@ public class FlashSaleProductController  extends BaseController {
      */
     @GetMapping("/selectOne")
     public JsonResult selectOne(@RequestParam(name = "id",required = true ) Integer id){
-        return success(flashSaleProductService.findById(id));
+        return success(flashSaleProductService.getById(id));
     }
 }

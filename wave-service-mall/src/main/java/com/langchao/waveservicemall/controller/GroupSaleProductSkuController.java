@@ -1,9 +1,9 @@
 package com.langchao.waveservicemall.controller;
 
-import com.chemguan.business.results.JsonResult;
-import com.chemguan.service.GroupSaleProductSkuService;
-import com.chemguan.vo.GroupSaleProductSkuVo;
+import com.langchao.wavecommon.vo.response.JsonResult;
 import com.langchao.wavecommon.web.BaseController;
+import com.langchao.waveservicemall.pojo.vo.GroupSaleProductSkuVo;
+import com.langchao.waveservicemall.service.GroupSaleProductSkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,7 @@ public class GroupSaleProductSkuController  extends BaseController {
      * @Description 分页查询控制
      */
     @GetMapping("/list")
-    public JsonResult list(@RequestParam(name = "groupSaleProductId",required = false) Integer groupSaleProductId,@RequestParam(name = "page",required = false) Integer page,@RequestParam(name = "size",required = false) Integer size){
+    public JsonResult list(@RequestParam(name = "groupSaleProductId",required = false) Integer groupSaleProductId, @RequestParam(name = "page",required = false) Integer page, @RequestParam(name = "size",required = false) Integer size){
         return success(groupSaleProductSkuService.list(groupSaleProductId,page,size));
     }
 

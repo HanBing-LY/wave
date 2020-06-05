@@ -7,18 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wave-service-media" />
         <module name="wave-service-search" />
         <module name="demo-rabbitmq" />
         <module name="wave-common" />
         <module name="wave-service-api" />
+        <module name="demo-feature-eight" />
         <module name="wave-service-filesystem" />
         <module name="wave-service-mq" />
         <module name="wave-eureka-server" />
         <module name="wave-service-mall" />
         <module name="wave-po" />
         <module name="demo-redis" />
-        <module name="demo-feature-eight" />
+        <module name="wave-service-media" />
         <module name="wave-service-user" />
       </profile>
     </annotationProcessing>

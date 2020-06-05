@@ -1,33 +1,25 @@
 package com.langchao.waveservicemall.service.impl;
 
-import com.chemguan.business.exception.ServiceException;
-import com.chemguan.business.results.Result;
-import com.chemguan.business.service.ServiceImpl;
-import com.chemguan.common.JsonDealUtils;
-import com.chemguan.consumerservice.UserAddressComsumerService;
-import com.chemguan.dao.*;
-import com.chemguan.entity.*;
-import com.chemguan.service.OrderProductService;
-import StringUtils;
-import Tools;
-import com.chemguan.vo.OrderDetailVo;
-import com.chemguan.vo.ProductVo;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.langchao.wavecommon.exception.CommonException;
+import com.langchao.waveservicemall.mapper.*;
+import com.langchao.waveservicemall.pojo.*;
+import com.langchao.waveservicemall.pojo.dto.OrderProductDto;
+import com.langchao.waveservicemall.pojo.vo.OrderDetailVo;
+import com.langchao.waveservicemall.pojo.vo.ProductVo;
+import com.langchao.waveservicemall.service.OrderProductService;
+import org.apache.lucene.spatial3d.geom.Tools;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tk.mybatis.mapper.entity.Condition;
-import tk.mybatis.mapper.entity.Example;
 
-import javax.sql.rowset.serial.SerialException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 /**
  * @Title: OrderProductServiceImpl
@@ -37,14 +29,11 @@ import java.util.stream.Collectors;
  * @date Mon Feb 17 16:34:44 CST 2020
  */
 @Service
-@Transactional
-public class OrderProductServiceImpl extends ServiceImpl<OrderProduct> implements OrderProductService {
+public class OrderProductServiceImpl extends ServiceImpl<OrderProductMapper, OrderProduct> implements OrderProductService {
     @Autowired
     private OrderInfoMapper orderInfoMapper;
     @Autowired
     private OrderProductMapper orderProductMapper;
-    @Autowired
-    private UserAddressComsumerService userAddressComsumerService;
     @Autowired
     private ProductInfoMapper productInfoMapper;
     @Autowired
@@ -65,24 +54,6 @@ public class OrderProductServiceImpl extends ServiceImpl<OrderProduct> implement
     @Override
     public List<OrderDetailVo> getOrderDetailByOrderNumber(String orderNumber) {
         return orderProductMapper.getOrderDetailByOrderNumber(orderNumber);
-    }
-
-    /**
-     * @Author liyuan
-     * @Description 选择收货地址
-     * @param orderNumber
-     * @param userAddressId
-     */
-    @Override
-    @Transactional(rollbackFor = CommonException.class)
-    public void chooseReceiveAddress(String orderNumber,Integer userAddressId) {
-        Result detail = userAddressComsumerService.detail(userAddressId);
-        UserAddress userAddress = JsonDealUtils.resultDataJsonToObj(detail, UserAddress.class);
-        if(userAddress == null){
-            // throw new CommonException("用户地址丢失");
-        }
-        orderProductMapper.chooseReceiveAddress(orderNumber,userAddress);
-
     }
 
     @Override
@@ -178,31 +149,4 @@ public class OrderProductServiceImpl extends ServiceImpl<OrderProduct> implement
         }
     }
 
-    @Override
-    public IPage findManagerList(Integer page, Integer size, Integer id) {
-        PageHelper.startPage(page,size);
-        List<OrderProductDto> managerList = orderProductMapper.findManagerList(id);
-        for (OrderProductDto orderProductDto : managerList) {
-            if(orderProductDto.getProductId() != null){
-                //根据产品id查询产品名称
-                orderProductDto.setProductName(productInfoMapper.selectByPrimaryKey(orderProductDto.getProductId()).getProductName());
-            }
-            if(orderProductDto.getProductSkuId() != null){
-                Condition condition = new Condition(ProductSkuNature.class);
-                Example.Criteria criteria = condition.createCriteria();
-                criteria.andEqualTo("productSkuId",orderProductDto.getProductSkuId());
-                List<ProductSkuNature> productSkuNatureList = productSkuNatureMapper.selectByCondition(condition);
-                List<String> stringList = new ArrayList<>();
-                List<String> natureValueList = new ArrayList<>();
-                for (ProductSkuNature productSkuNature : productSkuNatureList) {
-                    stringList.add(columnNatureMapper.selectByPrimaryKey(productSkuNature.getColumnNatureId()).getNatureName());
-                    natureValueList.add(natureValueMapper.selectByPrimaryKey(productSkuNature.getNatureValueId()).getValueDesc());
-                }
-                orderProductDto.setColumnName(String.join(",", stringList));
-                orderProductDto.setValueName(String.join(",", natureValueList));
-            }
-        }
-       IPage<OrderProductDto> pageInfo = newIPage<>(managerList);
-        return pageInfo;
-    }
 }

@@ -1,9 +1,10 @@
 package com.langchao.waveservicemall.controller;
 
-import com.chemguan.business.results.JsonResult;
-import com.chemguan.entity.GroupSaleProduct;
-import com.chemguan.service.GroupSaleProductService;
+
+import com.langchao.wavecommon.vo.response.JsonResult;
 import com.langchao.wavecommon.web.BaseController;
+import com.langchao.waveservicemall.pojo.GroupSaleProduct;
+import com.langchao.waveservicemall.service.GroupSaleProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +30,8 @@ public class GroupSaleProductController  extends BaseController {
      * @Description 分页查询秒杀控制
      */
     @GetMapping("/list")
-    public JsonResult list(@RequestParam(name = "groupSaleId",required = false)Integer groupSaleId,@RequestParam(name = "productName",required = false)String productName, @RequestParam(name = "flag",required = false)Integer flag, @RequestParam(name = "startTime",required = false) Date startTime, @RequestParam(name = "endTime",required = false) Date endTime,
-                       @RequestParam(name = "page",required = false)Integer page, @RequestParam(name = "size",required = false)Integer size){
+    public JsonResult list(@RequestParam(name = "groupSaleId",required = false)Integer groupSaleId, @RequestParam(name = "productName",required = false)String productName, @RequestParam(name = "flag",required = false)Integer flag, @RequestParam(name = "startTime",required = false) Date startTime, @RequestParam(name = "endTime",required = false) Date endTime,
+                           @RequestParam(name = "page",required = false)Integer page, @RequestParam(name = "size",required = false)Integer size){
         return success(groupSaleProductService.list(groupSaleId,productName,flag,startTime,endTime,page,size));
     }
 
@@ -81,7 +82,7 @@ public class GroupSaleProductController  extends BaseController {
      */
     @GetMapping("/selectOne")
     public JsonResult selectOne(@PathVariable(name = "id",required = true) Integer id){
-        return success(groupSaleProductService.findById(id));
+        return success(groupSaleProductService.getById(id));
     }
 
     /**
