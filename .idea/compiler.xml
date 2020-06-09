@@ -8,8 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="wave-service-media" />
-        <module name="wave-service-search" />
         <module name="demo-rabbitmq" />
+        <module name="wave-service-search" />
         <module name="wave-common" />
         <module name="wave-service-api" />
         <module name="wave-service-filesystem" />

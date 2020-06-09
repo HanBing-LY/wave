@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/wave-service-mq/pom.xml" />
         <option value="$PROJECT_DIR$/wave-service-mall/pom.xml" />
         <option value="$PROJECT_DIR$/demo-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-feature-eight/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
