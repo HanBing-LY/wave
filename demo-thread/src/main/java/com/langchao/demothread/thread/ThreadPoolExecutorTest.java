@@ -1,4 +1,4 @@
-package com.langchao.demojuc.thread;
+package com.langchao.demothread.thread;
 
 import java.util.concurrent.*;
 

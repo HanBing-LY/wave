@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.langchao</groupId>
-    <artifactId>demo-juc</artifactId>
-    <version>1.0.0</version>
-    <name>demo-juc</name>
+    <artifactId>demo-thread</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo-thread</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

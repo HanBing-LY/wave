@@ -1,10 +1,10 @@
-package com.langchao.demojuc;
+package com.langchao.demothread;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoJucApplicationTests {
+class DemoThreadApplicationTests {
 
     @Test
     void contextLoads() {
