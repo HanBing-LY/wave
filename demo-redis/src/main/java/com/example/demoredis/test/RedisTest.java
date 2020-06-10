@@ -1,9 +1,7 @@
 package com.example.demoredis.test;
 
 import org.redisson.RedissonRedLock;
-import org.redisson.api.RBloomFilter;
-import org.redisson.api.RLock;
-import org.redisson.api.RedissonClient;
+import org.redisson.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.StringRedisConnection;
@@ -31,7 +29,6 @@ public class RedisTest {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private RedissonClient redissonClient;
-
 
 
     @RequestMapping("/test")
@@ -191,17 +188,17 @@ public class RedisTest {
      * @return
      */
 
-    public String pipelineTest(){
+    public String pipelineTest() {
 
         // 一大堆商品补充库存了
-        List<Integer> ids = Arrays.asList(1,2,3);
+        List<Integer> ids = Arrays.asList(1, 2, 3);
         //连接redis
         Jedis jedis = new Jedis("127.0.0.1", 6379);
         //获取pipeline
         Pipeline pipeline = jedis.pipelined();
-        ids.forEach(i->{
-            pipeline.lpush(i.toString(),i.toString());
-            pipeline.incrBy(i.toString(),1000);
+        ids.forEach(i -> {
+            pipeline.lpush(i.toString(), i.toString());
+            pipeline.incrBy(i.toString(), 1000);
         });
         pipeline.sync();
         //关闭
@@ -243,7 +240,54 @@ public class RedisTest {
     /**
      * 布隆过滤器
      */
-    public RBloomFilter<Object> bloomFilter(String s){
+    public RBloomFilter<Object> bloomFilter(String s) {
         return redissonClient.getBloomFilter(s);
     }
+
+    /**
+     * redis限流
+     * @return
+     */
+    public String traffic() {
+        RSemaphore traffic = redissonClient.getSemaphore("traffic");
+        boolean b = traffic.tryAcquire();
+        if (b) {
+            // 获取到服务执行业务
+            System.out.println("");
+        }
+        return "服务正忙";
+
+    }
+
+    /**
+     * 流量释放
+     * @return
+     */
+    public String release(){
+        RSemaphore traffic = redissonClient.getSemaphore("traffic");
+        traffic.release();
+        return "end";
+    }
+
+
+    /**
+     * 闭锁
+     *
+     * @return
+     * @throws InterruptedException
+     */
+    public String lockDoor() throws InterruptedException {
+        RCountDownLatch countDownLatch = redissonClient.getCountDownLatch("");
+        countDownLatch.trySetCount(5);
+        countDownLatch.await();
+        return "执行操作";
+    }
+
+    public String gogogo() {
+        RCountDownLatch countDownLatch = redissonClient.getCountDownLatch("");
+        // 自减
+        countDownLatch.countDown();
+        return "";
+    }
+
 }
