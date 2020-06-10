@@ -3,21 +3,18 @@ package com.langchao.waveservicemall.controller;
 import com.langchao.wavecommon.vo.response.JsonResult;
 import com.langchao.wavecommon.web.BaseController;
 import com.langchao.waveservicemall.pojo.vo.ProductVo;
-import com.langchao.waveservicemall.service.OrderInfoService;
 import com.langchao.waveservicemall.service.OrderProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * @author liyuan
- * @create 2020-03-20-19:57-周五
+ * @date  2020-02-02-19:57-周五
  */
 @RestController
 @RequestMapping("/orders")
 public class OrderInfoController  extends BaseController {
 
-    @Autowired
-    private OrderInfoService orderInfoService;
     @Autowired
     private OrderProductService orderProductService;
 

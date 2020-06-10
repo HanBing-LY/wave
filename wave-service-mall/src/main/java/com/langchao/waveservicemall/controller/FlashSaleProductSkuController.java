@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * @author liyuan
- * @create 2020-03-27-10:16-周五
+ * @date  2020-03-27-10:16-周五
  */
 @RestController
 @RequestMapping("/flash/sale/product/sku")
@@ -29,36 +29,6 @@ public class FlashSaleProductSkuController extends BaseController {
     }
 
     /**
-     * @Author liyuan
-     * @Description 分页查询秒杀控制
-     */
-    @GetMapping("/listGetNatureToChoose")
-    public JsonResult listGetNatureToChoose(@RequestParam(name = "flashSaleProductId", required = true) Integer flashSaleProductId) {
-        return success(flashSaleProductSkuService.listGetNatureToChoose(flashSaleProductId));
-    }
-
-    /**
-     * @Author liyuan
-     * @Description 停止商品秒杀
-     */
-    @GetMapping("/delpl")
-    public JsonResult delpl(@RequestParam(name = "checkIds", required = true) String checkIds) {
-        flashSaleProductSkuService.delpl(checkIds);
-        return success();
-    }
-
-    /**
-     * @return
-     * @Author liyuan
-     * @Description 修改秒杀价
-     */
-    @PutMapping("/updatePrice")
-    public JsonResult updatePrice(@RequestParam(name = "flashSaleProductSkuId", required = true) Integer flashSaleProductSkuId, @RequestParam(name = "price", required = true) Double price) {
-        flashSaleProductSkuService.updatePrice(flashSaleProductSkuId, price);
-        return success();
-    }
-
-    /**
      * @return
      * @Author liyuan
      * @Description 选择秒杀商品
@@ -68,4 +38,6 @@ public class FlashSaleProductSkuController extends BaseController {
         flashSaleProductSkuService.chooseProduct(flashSaleProductSkuVo);
         return success();
     }
+
+
 }

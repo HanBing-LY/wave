@@ -4,10 +4,7 @@ package com.langchao.waveservicemall.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.langchao.waveservicemall.pojo.FlashSaleProductSku;
-import com.langchao.waveservicemall.pojo.dto.ColumnNatureDTO;
 import com.langchao.waveservicemall.pojo.vo.FlashSaleProductSkuVo;
-
-import java.util.List;
 
 /**
  * @Title: FlashSaleProductSkuService
@@ -19,28 +16,6 @@ import java.util.List;
 public interface FlashSaleProductSkuService extends IService<FlashSaleProductSku> {
 
    IPage list(Integer flashSaleProductId, Integer page, Integer size);
-
-    /**
-     * @Author liyuan
-     * @Description 分页查询秒杀控制
-     * @param flashSaleProductId
-     * @return
-     */
-    List<ColumnNatureDTO> listGetNatureToChoose(Integer flashSaleProductId);
-
-    /**
-     * @author liyuan
-     * @Description  停止商品秒杀
-     * @return
-     */
-    void delpl(String checkIds);
-
-    /**
-     * @Author liyuan
-     * @Description 修改秒杀价
-     * @return
-     */
-    void updatePrice(Integer flashSaleProductSkuId, Double price);
 
     /**
      * @Author liyuan
