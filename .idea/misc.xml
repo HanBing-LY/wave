@@ -10,7 +10,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/wave-po/pom.xml" />
         <option value="$PROJECT_DIR$/wave-common/pom.xml" />
-        <option value="$PROJECT_DIR$/wave-eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/wave-service-filesystem/pom.xml" />
         <option value="$PROJECT_DIR$/wave-service-api/pom.xml" />
         <option value="$PROJECT_DIR$/wave-service-media/pom.xml" />
@@ -21,6 +20,14 @@
         <option value="$PROJECT_DIR$/wave-service-mall/pom.xml" />
         <option value="$PROJECT_DIR$/demo-redis/pom.xml" />
         <option value="$PROJECT_DIR$/demo-feature-eight/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-thread/pom.xml" />
+        <option value="$PROJECT_DIR$/wave-service-oms/pom.xml" />
+        <option value="$PROJECT_DIR$/wave-service-pms/pom.xml" />
+        <option value="$PROJECT_DIR$/wave-service-sms/pom.xml" />
+        <option value="$PROJECT_DIR$/wave-service-ums/pom.xml" />
+        <option value="$PROJECT_DIR$/wave-service-wms/pom.xml" />
+        <option value="$PROJECT_DIR$/renren-generator/pom.xml" />
+        <option value="$PROJECT_DIR$/wave-service-cms/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

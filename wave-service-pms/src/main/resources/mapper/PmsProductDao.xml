@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liyuan.wave.pms.mapper.PmsProductDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.liyuan.wave.po.entity.pms.PmsProductEntity" id="pmsProductMap">
+        <result property="id" column="id"/>
+        <result property="brandId" column="brand_id"/>
+        <result property="productCategoryId" column="product_category_id"/>
+        <result property="feightTemplateId" column="feight_template_id"/>
+        <result property="productAttributeCategoryId" column="product_attribute_category_id"/>
+        <result property="name" column="name"/>
+        <result property="pic" column="pic"/>
+        <result property="productSn" column="product_sn"/>
+        <result property="deleteStatus" column="delete_status"/>
+        <result property="publishStatus" column="publish_status"/>
+        <result property="newStatus" column="new_status"/>
+        <result property="recommandStatus" column="recommand_status"/>
+        <result property="verifyStatus" column="verify_status"/>
+        <result property="sort" column="sort"/>
+        <result property="sale" column="sale"/>
+        <result property="price" column="price"/>
+        <result property="promotionPrice" column="promotion_price"/>
+        <result property="giftGrowth" column="gift_growth"/>
+        <result property="giftPoint" column="gift_point"/>
+        <result property="usePointLimit" column="use_point_limit"/>
+        <result property="subTitle" column="sub_title"/>
+        <result property="description" column="description"/>
+        <result property="originalPrice" column="original_price"/>
+        <result property="stock" column="stock"/>
+        <result property="lowStock" column="low_stock"/>
+        <result property="unit" column="unit"/>
+        <result property="weight" column="weight"/>
+        <result property="previewStatus" column="preview_status"/>
+        <result property="serviceIds" column="service_ids"/>
+        <result property="keywords" column="keywords"/>
+        <result property="note" column="note"/>
+        <result property="albumPics" column="album_pics"/>
+        <result property="detailTitle" column="detail_title"/>
+        <result property="detailDesc" column="detail_desc"/>
+        <result property="detailHtml" column="detail_html"/>
+        <result property="detailMobileHtml" column="detail_mobile_html"/>
+        <result property="promotionStartTime" column="promotion_start_time"/>
+        <result property="promotionEndTime" column="promotion_end_time"/>
+        <result property="promotionPerLimit" column="promotion_per_limit"/>
+        <result property="promotionType" column="promotion_type"/>
+        <result property="brandName" column="brand_name"/>
+        <result property="productCategoryName" column="product_category_name"/>
+    </resultMap>
+
+
+</mapper>

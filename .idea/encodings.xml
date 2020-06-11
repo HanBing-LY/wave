@@ -5,15 +5,20 @@
     <file url="file://$PROJECT_DIR$/demo-rabbitmq/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-redis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wave-common/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/wave-eureka-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wave-po/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wave-service-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wave-service-cms/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wave-service-filesystem/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wave-service-mall/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wave-service-media/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wave-service-mq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wave-service-oms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wave-service-pms/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wave-service-search/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wave-service-sms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wave-service-ums/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wave-service-user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wave-service-wms/src/main/java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

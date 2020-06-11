@@ -11,7 +11,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.langchao</groupId>
+    <groupId>com.liyuan</groupId>
     <artifactId>wave</artifactId>
     <version>1.0.0</version>
 

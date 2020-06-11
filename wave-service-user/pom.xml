@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.langchao</groupId>
+        <groupId>com.liyuan</groupId>
         <artifactId>wave</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -17,19 +17,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.langchao</groupId>
+            <groupId>com.liyuan</groupId>
             <artifactId>wave-po</artifactId>
             <version>1.0.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.langchao</groupId>
+            <groupId>com.liyuan</groupId>
             <artifactId>wave-common</artifactId>
             <version>1.0.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.langchao</groupId>
+            <groupId>com.liyuan</groupId>
             <artifactId>wave-service-api</artifactId>
             <version>1.0.0</version>
         </dependency>
