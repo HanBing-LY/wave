@@ -1,4 +1,4 @@
-package com.langchao.demothread.thread;
+package com.liyuan.demothread;
 
 import java.util.concurrent.*;
 
@@ -106,9 +106,9 @@ public class ThreadPoolExecutorTest {
             return 1;
         }, threadPoolExecutor).thenApplyAsync(res -> {
             System.out.println("串行处理没有返回值,接受第一次的返回值,有两个的返回值");
-            return "第二次的返回值"+res;
+            return "第二次的返回值";
         }, threadPoolExecutor);
-        System.out.println(stringCompletableFuture.get());
+        System.out.println(completableFuture2.get());
 
 
 
