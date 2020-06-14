@@ -2,7 +2,7 @@ package com.liyuan.wave.wms.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.liyuan.wave.wms.entity.PurchaseDetailEntity;
+import com.liyuan.wave.po.entity.wms.PurchaseDetailEntity;
 import com.liyuan.wave.wms.mapper.PurchaseDetailDao;
 import com.liyuan.wave.wms.service.PurchaseDetailService;
 import org.springframework.stereotype.Service;

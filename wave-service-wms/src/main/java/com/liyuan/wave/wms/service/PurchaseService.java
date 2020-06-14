@@ -2,7 +2,7 @@ package com.liyuan.wave.wms.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.liyuan.wave.wms.entity.PurchaseEntity;
+import com.liyuan.wave.po.entity.wms.PurchaseEntity;
 
 /**
  * 采购信息

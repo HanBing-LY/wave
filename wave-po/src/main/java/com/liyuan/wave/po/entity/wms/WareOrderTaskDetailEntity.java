@@ -1,4 +1,4 @@
-package com.liyuan.wave.wms.entity;
+package com.liyuan.wave.po.entity.wms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -7,11 +7,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 库存工作单
- * 
- * @author leifengyang
- * @email leifengyang@gmail.com
- * @date 2019-10-08 09:59:40
+ * @description 库存工作单
+ *
+ * @author liyuan
+ * @email 724837404@qq.com
+ * @date 2020-06-11 23:17:44
  */
 @Data
 @TableName("wms_ware_order_task_detail")

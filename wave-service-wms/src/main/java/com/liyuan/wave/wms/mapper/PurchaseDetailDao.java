@@ -1,7 +1,7 @@
 package com.liyuan.wave.wms.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.liyuan.wave.wms.entity.PurchaseDetailEntity;
+import com.liyuan.wave.po.entity.wms.PurchaseDetailEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
