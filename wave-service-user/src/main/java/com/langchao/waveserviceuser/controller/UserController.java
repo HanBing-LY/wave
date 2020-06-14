@@ -41,7 +41,7 @@ public class UserController extends BaseController implements UserControllerApi 
 	 */
 	@Override
 	@PostMapping("/pages/{userId}")
-	@HystrixCommand(fallbackMethod = "dead",commandProperties = @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "5000"))
+	@HystrixCommand(fallbackMethod = "dead",commandProperties = @HystrixProperty(name = "execution.isolation.com.liyuan.wave.thread.timeoutInMilliseconds",value = "5000"))
 	public JsonResult preview(@PathVariable String userId, HttpServletResponse response) {
 		String html = userService.getHtml(userId);
 		response.addHeader("content-type","text/html;charset=utf-8");

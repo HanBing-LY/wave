@@ -2,15 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.liyuan</groupId>
         <artifactId>wave</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>wave-service-wms</artifactId>
+    <artifactId>wave-gateway</artifactId>
     <version>1.0.0</version>
-    <name>wave-service-wms</name>
+    <name>wave-gateway</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -18,31 +19,9 @@
     </properties>
 
     <dependencies>
-
-        <!-- 项目基础包-->
-        <dependency>
-            <groupId>com.liyuan</groupId>
-            <artifactId>wave-po</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.liyuan</groupId>
-            <artifactId>wave-common</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.liyuan</groupId>
-            <artifactId>wave-service-api</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <!-- 项目基础包-->
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>

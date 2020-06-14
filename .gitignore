@@ -1,10 +1,16 @@
 # Project exclude paths
 /wave-common/target/
-/wave-eureka-server/target/
 /wave-po/target/
 /wave-service-api/target/
 /wave-service-filesystem/target/
 /wave-service-media/target/
-/wave-service-mq/target/
 /wave-service-search/target/
 /wave-service-user/target/
+/wave-gateway/target/
+/wave-service-mall/target/
+/wave-service-cms/target/
+/wave-service-oms/target/
+/wave-service-pms/target/
+/wave-service-sms/target/
+/wave-service-ums/target/
+/wave-service-wms/target/
