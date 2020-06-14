@@ -7,7 +7,8 @@ import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 /**
  * @description 商品信息
  * 
@@ -16,8 +17,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:46
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("pms_product")
 public class PmsProductEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

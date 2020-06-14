@@ -2,11 +2,9 @@ package com.liyuan.wave.po.entity.cms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
+import java.io.Serializable;
 /**
  * @description 专题分类表
  * 
@@ -15,8 +13,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:46
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("cms_subject_category")
 public class CmsSubjectCategoryEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

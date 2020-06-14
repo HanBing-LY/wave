@@ -2,11 +2,12 @@ package com.liyuan.wave.po.entity.pms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
-
 /**
  * @description 产品评价回复表
  * 
@@ -15,8 +16,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:47
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("pms_comment_replay")
 public class PmsCommentReplayEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

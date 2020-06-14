@@ -15,8 +15,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:46
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("ums_resource")
 public class UmsResourceEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

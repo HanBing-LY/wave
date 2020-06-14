@@ -6,7 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 /**
  * @description 商品审核记录
  * 
@@ -15,8 +16,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:47
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("pms_product_vertify_record")
 public class PmsProductVertifyRecordEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

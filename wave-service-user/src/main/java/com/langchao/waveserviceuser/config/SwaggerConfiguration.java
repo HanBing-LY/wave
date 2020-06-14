@@ -6,7 +6,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@ComponentScan("com.langchao.waveserviceapi.config")
+@ComponentScan("com.liyuan.waveserviceapi.config")
 public class SwaggerConfiguration{
 
 }

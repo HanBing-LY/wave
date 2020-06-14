@@ -17,8 +17,6 @@ import java.util.Date;
  * @date 2020-06-11 23:17:46
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("ums_member_login_log")
 public class UmsMemberLoginLogEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -15,8 +15,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:44
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("ums_growth_change_history")
 public class UmsGrowthChangeHistoryEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

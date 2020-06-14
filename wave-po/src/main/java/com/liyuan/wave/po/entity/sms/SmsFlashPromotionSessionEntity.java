@@ -17,8 +17,6 @@ import java.util.Date;
  * @date 2020-06-11 23:17:44
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("sms_flash_promotion_session")
 public class SmsFlashPromotionSessionEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -35,11 +33,11 @@ public class SmsFlashPromotionSessionEntity implements Serializable {
 	/**
 	 * 每日开始时间
 	 */
-	private Time startTime;
+	private Date startTime;
 	/**
 	 * 每日结束时间
 	 */
-	private Time endTime;
+	private Date endTime;
 	/**
 	 * 启用状态：0->不启用；1->启用
 	 */

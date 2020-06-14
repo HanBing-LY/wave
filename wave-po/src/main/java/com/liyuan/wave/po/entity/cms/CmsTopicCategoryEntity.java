@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-
 /**
  * @description 话题分类表
  * 
@@ -16,8 +15,6 @@ import java.io.Serializable;
  * @date 2020-06-11 23:17:45
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("cms_topic_category")
 public class CmsTopicCategoryEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

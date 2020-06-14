@@ -2,10 +2,11 @@ package com.liyuan.wave.po.entity.sms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
-import lombok.Data;
 
 /**
  * @description 优惠券和产品的关系表
@@ -15,8 +16,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:45
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("sms_coupon_product_relation")
 public class SmsCouponProductRelationEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

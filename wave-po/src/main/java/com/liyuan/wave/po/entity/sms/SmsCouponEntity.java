@@ -2,11 +2,13 @@ package com.liyuan.wave.po.entity.sms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.math.BigDecimal;
-import java.io.Serializable;
-import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @description 优惠卷表
@@ -16,8 +18,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:46
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("sms_coupon")
 public class SmsCouponEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

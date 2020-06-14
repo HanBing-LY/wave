@@ -2,9 +2,7 @@ package com.liyuan.wave.po.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -16,8 +14,6 @@ import java.io.Serializable;
  * @date 2020-06-11 23:49:58
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("pms_category")
 public class PmsCategoryEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

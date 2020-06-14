@@ -2,11 +2,11 @@ package com.liyuan.wave.po.entity.pms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
-import lombok.Data;
-
 /**
  * @description 相册表
  * 
@@ -15,8 +15,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:45
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("pms_album")
 public class PmsAlbumEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -2,10 +2,9 @@ package com.liyuan.wave.po.entity.sms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
-import lombok.Data;
 
 /**
  * @description 新鲜好物表
@@ -15,8 +14,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:47
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("sms_home_new_product")
 public class SmsHomeNewProductEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

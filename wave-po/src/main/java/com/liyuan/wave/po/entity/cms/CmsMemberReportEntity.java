@@ -2,11 +2,12 @@ package com.liyuan.wave.po.entity.cms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
-
 /**
  * @description 用户举报表
  * 
@@ -15,8 +16,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:47
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("cms_member_report")
 public class CmsMemberReportEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

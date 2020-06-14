@@ -2,12 +2,13 @@ package com.liyuan.wave.po.entity.oms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.math.BigDecimal;
-import java.io.Serializable;
-import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 /**
  * @description 购物车表
  * 
@@ -16,8 +17,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:44
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("oms_cart_item")
 public class OmsCartItemEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

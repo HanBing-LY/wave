@@ -17,8 +17,6 @@ import java.util.Date;
  * @date 2020-06-11 23:17:45
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("sms_flash_promotion_log")
 public class SmsFlashPromotionLogEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

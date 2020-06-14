@@ -15,8 +15,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:45
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("ums_admin_permission_relation")
 public class UmsAdminPermissionRelationEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

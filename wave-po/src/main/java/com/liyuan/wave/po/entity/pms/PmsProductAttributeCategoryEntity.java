@@ -6,7 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 /**
  * @description 产品属性分类表
  * 
@@ -15,8 +16,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:46
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("pms_product_attribute_category")
 public class PmsProductAttributeCategoryEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

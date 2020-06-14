@@ -16,8 +16,6 @@ import java.io.Serializable;
  * @date 2020-06-11 23:49:58
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("sys_menu")
 public class SysMenuEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

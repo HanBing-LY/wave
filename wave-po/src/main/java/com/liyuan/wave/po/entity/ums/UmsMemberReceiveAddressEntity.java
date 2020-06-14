@@ -15,8 +15,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:45
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("ums_member_receive_address")
 public class UmsMemberReceiveAddressEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

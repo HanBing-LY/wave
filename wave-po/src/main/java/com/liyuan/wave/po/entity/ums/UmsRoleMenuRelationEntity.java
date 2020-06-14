@@ -15,8 +15,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:45
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("ums_role_menu_relation")
 public class UmsRoleMenuRelationEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

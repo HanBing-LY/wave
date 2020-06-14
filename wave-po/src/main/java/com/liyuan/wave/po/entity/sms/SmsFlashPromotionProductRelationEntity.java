@@ -17,8 +17,6 @@ import java.math.BigDecimal;
  * @date 2020-06-11 23:17:44
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("sms_flash_promotion_product_relation")
 public class SmsFlashPromotionProductRelationEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -7,7 +7,8 @@ import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 /**
  * @description 订单表
  * 
@@ -16,8 +17,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:47
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("oms_order")
 public class OmsOrderEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

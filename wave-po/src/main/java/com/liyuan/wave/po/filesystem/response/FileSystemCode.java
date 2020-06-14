@@ -2,7 +2,7 @@ package com.liyuan.wave.po.filesystem.response;
 
 
 import com.google.common.collect.ImmutableMap;
-import com.langchao.wavecommon.exception.ExceptionResult;
+import com.liyuan.wavecommon.exception.ExceptionResult;
 import lombok.ToString;
 
 @ToString

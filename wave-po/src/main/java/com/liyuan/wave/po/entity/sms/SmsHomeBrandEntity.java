@@ -16,8 +16,6 @@ import java.io.Serializable;
  * @date 2020-06-11 23:17:47
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("sms_home_brand")
 public class SmsHomeBrandEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

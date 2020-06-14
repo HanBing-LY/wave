@@ -7,7 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 /**
  * @description 存储产品参数信息的表
  * 
@@ -16,8 +17,6 @@ import java.io.Serializable;
  * @date 2020-06-11 23:17:45
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("pms_product_attribute_value")
 public class PmsProductAttributeValueEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

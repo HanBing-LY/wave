@@ -1,11 +1,11 @@
 package com.langchao.waveservicesearch.controller;
 
 
-import com.langchao.wavecommon.vo.response.JsonResult;
-import com.langchao.wavecommon.web.BaseController;
-import com.langchao.wavepo.user.UserVo;
-import com.langchao.waveserviceapi.search.EsUserControllerApi;
 import com.langchao.waveservicesearch.service.EsUserService;
+import com.liyuan.wave.po.user.UserVo;
+import com.liyuan.wavecommon.vo.response.JsonResult;
+import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.waveserviceapi.search.EsUserControllerApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

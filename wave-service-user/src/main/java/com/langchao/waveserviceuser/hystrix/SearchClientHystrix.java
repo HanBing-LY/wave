@@ -1,9 +1,8 @@
 package com.langchao.waveserviceuser.hystrix;
 
-import com.langchao.wavecommon.vo.response.JsonResult;
-import com.langchao.wavepo.user.UserVo;
 import com.langchao.waveserviceuser.clients.SearchClient;
-import feign.hystrix.FallbackFactory;
+import com.liyuan.wave.po.user.UserVo;
+import com.liyuan.wavecommon.vo.response.JsonResult;
 import org.springframework.stereotype.Component;
 
 @Component

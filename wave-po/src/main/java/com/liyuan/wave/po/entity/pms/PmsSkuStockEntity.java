@@ -2,12 +2,12 @@ package com.liyuan.wave.po.entity.pms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.math.BigDecimal;
-import java.io.Serializable;
-import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 /**
  * @description sku的库存
  * 
@@ -16,8 +16,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:46
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("pms_sku_stock")
 public class PmsSkuStockEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

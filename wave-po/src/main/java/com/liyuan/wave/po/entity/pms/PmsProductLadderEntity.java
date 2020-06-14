@@ -7,7 +7,8 @@ import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 /**
  * @description 产品阶梯价格表(只针对同商品)
  * 
@@ -16,8 +17,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:44
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("pms_product_ladder")
 public class PmsProductLadderEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

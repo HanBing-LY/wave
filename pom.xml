@@ -18,19 +18,24 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>wave-po</module>
-        <module>wave-common</module>
-        <module>wave-service-api</module>
-        <module>wave-eureka-server</module>
-        <module>wave-service-filesystem</module>
-        <module>wave-service-mq</module>
-        <module>wave-service-search</module>
-        <module>wave-service-media</module>
-        <module>wave-service-user</module>
         <module>demo-redis</module>
         <module>demo-rabbitmq</module>
         <module>demo-feature-eight</module>
+        <module>demo-thread</module>
+        <module>wave-po</module>
+        <module>wave-common</module>
+        <module>wave-service-api</module>
+        <module>wave-service-filesystem</module>
+        <module>wave-service-search</module>
+        <module>wave-service-media</module>
+        <module>wave-service-user</module>
         <module>wave-service-mall</module>
+        <module>wave-service-cms</module>
+        <module>wave-service-oms</module>
+        <module>wave-service-pms</module>
+        <module>wave-service-sms</module>
+        <module>wave-service-ums</module>
+        <module>wave-service-wms</module>
     </modules>
 
     <properties>
@@ -52,6 +57,8 @@
         <security.jwt.version>1.0.10.RELEASE</security.jwt.version>
         <zip4j.version>2.1.2</zip4j.version>
         <fastjson.version>1.2.60</fastjson.version>
+        <poi-ooxml.version>3.14-beta1</poi-ooxml.version>
+        <swagger.version>1.5.22</swagger.version>
     </properties>
 
     <dependencyManagement>
@@ -109,7 +116,7 @@
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-ooxml</artifactId>
-                <version>3.14-beta1</version>
+                <version>${poi-ooxml.version}</version>
             </dependency>
 
             <dependency>
@@ -145,12 +152,12 @@
             <dependency>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-annotations</artifactId>
-                <version>1.5.22</version>
+                <version>${swagger.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-models</artifactId>
-                <version>1.5.22</version>
+                <version>${swagger.version}</version>
             </dependency>
 
             <dependency>

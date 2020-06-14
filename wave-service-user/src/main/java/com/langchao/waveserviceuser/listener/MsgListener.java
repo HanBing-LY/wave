@@ -1,7 +1,7 @@
 package com.langchao.waveserviceuser.listener;
 
 
-import com.langchao.wavecommon.util.StringUtils;
+import com.liyuan.wavecommon.util.StringUtils;
 import com.langchao.waveserviceuser.service.UserService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;

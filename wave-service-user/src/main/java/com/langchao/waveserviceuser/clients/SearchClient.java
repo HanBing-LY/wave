@@ -1,9 +1,9 @@
 package com.langchao.waveserviceuser.clients;
 
-import com.langchao.wavecommon.client.WaveServiceList;
-import com.langchao.wavecommon.vo.response.JsonResult;
-import com.langchao.wavepo.user.UserVo;
 import com.langchao.waveserviceuser.hystrix.SearchClientHystrix;
+import com.liyuan.wave.po.user.UserVo;
+import com.liyuan.wavecommon.client.WaveServiceList;
+import com.liyuan.wavecommon.vo.response.JsonResult;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

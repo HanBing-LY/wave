@@ -2,10 +2,9 @@ package com.liyuan.wave.po.entity.ums;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
-import lombok.Data;
 
 /**
  * @description 会员任务表
@@ -15,8 +14,6 @@ import lombok.Data;
  * @date 2020-06-11 23:17:47
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("ums_member_task")
 public class UmsMemberTaskEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -1,12 +1,12 @@
 package com.langchao.waveserviceuser.controller;
 
-import com.langchao.wavecommon.vo.response.JsonResult;
-import com.langchao.wavecommon.web.BaseController;
-import com.langchao.wavepo.user.User;
-import com.langchao.wavepo.user.UserVo;
-import com.langchao.waveserviceapi.user.UserControllerApi;
+
 import com.langchao.waveserviceuser.clients.SearchClient;
 import com.langchao.waveserviceuser.service.UserService;
+import com.liyuan.wave.po.user.UserVo;
+import com.liyuan.wavecommon.vo.response.JsonResult;
+import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.waveserviceapi.user.UserControllerApi;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.web.bind.annotation.*;

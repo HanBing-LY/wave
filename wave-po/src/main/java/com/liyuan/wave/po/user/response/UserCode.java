@@ -1,7 +1,7 @@
 package com.liyuan.wave.po.user.response;
 
 import com.google.common.collect.ImmutableMap;
-import com.langchao.wavecommon.exception.ExceptionResult;
+import com.liyuan.wavecommon.exception.ExceptionResult;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.ToString;
 

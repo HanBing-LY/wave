@@ -17,8 +17,6 @@ import java.util.Date;
  * @date 2020-06-11 23:17:47
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @TableName("sms_home_advertise")
 public class SmsHomeAdvertiseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
