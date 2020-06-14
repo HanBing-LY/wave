@@ -21,7 +21,8 @@
         <module>demo-redis</module>
         <module>demo-rabbitmq</module>
         <module>demo-feature-eight</module>
-        <module>demo-com.liyuan.wave.thread-com.liyuan.wave.juc</module>
+        <module>demo-juc</module>
+        <module>demo-sms</module>
         <module>wave-po</module>
         <module>wave-common</module>
         <module>wave-service-api</module>
@@ -37,7 +38,6 @@
         <module>wave-service-sms</module>
         <module>wave-service-ums</module>
         <module>wave-service-wms</module>
-        <module>demo-com.liyuan.wave.thread-com.liyuan.wave.juc</module>
     </modules>
 
     <properties>
