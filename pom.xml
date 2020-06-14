@@ -23,20 +23,24 @@
         <module>demo-feature-eight</module>
         <module>demo-juc</module>
         <module>demo-sms</module>
+
         <module>wave-po</module>
         <module>wave-common</module>
         <module>wave-service-api</module>
         <module>wave-gateway</module>
-        <module>wave-service-filesystem</module>
-        <module>wave-service-search</module>
-        <module>wave-service-media</module>
-        <module>wave-service-user</module>
-        <module>wave-service-mall</module>
+
+        <module>wave-service-auth</module>
         <module>wave-service-cms</module>
+        <module>wave-service-filesystem</module>
+        <module>wave-service-mall</module>
+        <module>wave-service-media</module>
         <module>wave-service-oms</module>
         <module>wave-service-pms</module>
+        <module>wave-service-search</module>
         <module>wave-service-sms</module>
         <module>wave-service-ums</module>
+        <module>wave-service-usercenter</module>
+        <module>wave-service-webpage</module>
         <module>wave-service-wms</module>
     </modules>
 

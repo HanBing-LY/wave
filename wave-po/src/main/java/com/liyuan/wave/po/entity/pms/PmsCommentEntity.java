@@ -2,12 +2,10 @@ package com.liyuan.wave.po.entity.pms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 /**
  * @description 商品评价表
  * 
@@ -26,13 +24,13 @@ public class PmsCommentEntity implements Serializable {
 	@TableId
 	private Long id;
 	/**
-	 * 
+	 *  产品id
 	 */
 	private Long productId;
 	/**
 	 * 
 	 */
-	private String memberNickName;
+	private String membrNickName;
 	/**
 	 * 
 	 */
