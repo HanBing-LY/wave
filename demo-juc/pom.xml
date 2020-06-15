@@ -9,9 +9,9 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>demo-com.liyuan.wave.juc</artifactId>
+    <artifactId>demo-juc</artifactId>
     <version>1.0.0</version>
-    <name>demo-com.liyuan.wave.juc</name>
+    <name>demo-juc</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
