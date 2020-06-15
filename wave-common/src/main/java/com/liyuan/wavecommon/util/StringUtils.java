@@ -1,11 +1,5 @@
 package com.liyuan.wavecommon.util;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import org.apache.poi.ss.formula.functions.T;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.text.SimpleDateFormat;
@@ -17,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * @author liyuan
  * @description 字符串工具类
- * @create 2020-03-24-10:27-周二
+ * @create 2020-01-24-10:27
  * @version jdk1.8
  */
 public class StringUtils {
@@ -147,13 +141,25 @@ public class StringUtils {
         return Arrays.stream(strings).filter(i -> isNotEmpty(i) && i.matches("^[0-9]*$")).mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
     }
 
+    /**
+     * @description 逗号字符串转Long集合
+     * @param str   "1,2,3"
+     * @return
+     */
+    public static List<Long> stringToLongList(String str) {
+        if (isEmpty(str)) {
+            return new ArrayList<>();
+        }
+        String[] strings = str.trim().split(COMMA_STR);
+        return Arrays.stream(strings).filter(i -> isNotEmpty(i) && i.matches("^[0-9]*$")).mapToLong(Long::valueOf).boxed().collect(Collectors.toList());
+    }
 
     /**
      * @param length
      * @return
      * @description 生成指定长度的随机数字
      */
-    public static String randomcode(int length) {
+    public static String randomCode(int length) {
         String[] num = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         //创建Random类的对象rand
         Random rand = new Random();
@@ -169,19 +175,19 @@ public class StringUtils {
     /**
      * @description 返回日期字符串  yyyy-MM-dd
      * @param date
-     * @return "20200527"
+     * @param pattern 需要转换成的格式 yyyy/MM/dd hh:MM:ss    yyyy-MM-dd hh:MM:ss   yyyy-MM-dd
+     * @return 返回的字符串
      */
-    public static String yearDateMonth(Date date) {
+    public static String dateToString(Date date , String pattern) {
         date = Optional.ofNullable(date).orElse(new Date());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String format = simpleDateFormat.format(date);
-        return format.replace("-",EMPTY_STR);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(date);
     }
 
     /**
      * @param object
      * @return
-     * @Description 检查某个对象的各个属性是否为空
+     * @description  检查某个对象的各个属性是否为空
      */
     public static boolean checkFieldAllNull(Object object) {
         if (object == null) {
@@ -237,23 +243,6 @@ public class StringUtils {
             return true;
         }
         return false;
-    }
-
-    /**
-     * @description 字符串转对象集合
-     * @param strJson
-     * @return
-     */
-    public static List stringToObjectList(String strJson, Class<T> objectClazz) {
-        JsonParser parser = new JsonParser();
-        JsonArray jsonArray = parser.parse(strJson).getAsJsonArray();
-        Gson gson = new Gson();
-        ArrayList objectList = new ArrayList<>();
-        for (JsonElement objectVo : jsonArray) {
-            T vo = gson.fromJson(objectVo, objectClazz);
-            objectList.add(vo);
-        }
-        return objectList;
     }
 
     /**
