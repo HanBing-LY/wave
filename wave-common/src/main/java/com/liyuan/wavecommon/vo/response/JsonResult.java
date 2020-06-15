@@ -2,6 +2,11 @@ package com.liyuan.wavecommon.vo.response;
 
 import lombok.*;
 
+/**
+ * @author liyuan
+ * @description json相应
+ * @date 2020-06-15 15:47
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

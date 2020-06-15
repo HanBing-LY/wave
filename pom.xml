@@ -18,11 +18,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>demo-redis</module>
-        <module>demo-rabbitmq</module>
         <module>demo-feature-eight</module>
-        <module>demo-thread-juc</module>
+        <module>demo-poi</module>
+        <module>demo-rabbitmq</module>
+        <module>demo-redis</module>
         <module>demo-sms</module>
+        <module>demo-thread-juc</module>
 
         <module>wave-po</module>
         <module>wave-common</module>

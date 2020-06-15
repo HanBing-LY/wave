@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 
 /**
  * @author liyuan
+ * @version jdk1.8
  * @description 字符串工具类
  * @create 2020-01-24-10:27
- * @version jdk1.8
  */
 public class StringUtils {
 
@@ -27,46 +27,46 @@ public class StringUtils {
     public static final String COMMA_STR = ",";
 
     /**
-     * @description 对象非空判断,取默认值
-     * @param value 要判断的value
+     * @param value        要判断的value
      * @param defaultValue 默认值
      * @return T 返回值
+     * @description 对象非空判断, 取默认值
      */
     public static <T> T comma(T value, T defaultValue) {
         return Optional.ofNullable(value).orElse(defaultValue);
     }
 
     /**
-     * @description 判断一个Collection是否为空
      * @param coll 要判断的Collection
      * @return true：为空 false：非空
+     * @description 判断一个Collection是否为空
      */
     public static boolean isEmpty(Collection<?> coll) {
         return isNull(coll) || coll.isEmpty();
     }
 
     /**
-     * @description 判断一个Collection容器是否非空
      * @param coll 要判断的Collection
      * @return true：非空 false：空
+     * @description 判断一个Collection容器是否非空
      */
     public static boolean isNotEmpty(Collection<?> coll) {
         return !isEmpty(coll);
     }
 
     /**
-     * @description 判断一个对象数组是否为空
      * @param objects 要判断的对象数组
      * @return true：为空 false：非空
+     * @description 判断一个对象数组是否为空
      */
     public static boolean isEmpty(Object[] objects) {
         return isNull(objects) || (objects.length == 0);
     }
 
     /**
-     * @description 判断一个对象数组是否非空
      * @param objects 要判断的对象数组
      * @return true：非空 false：空
+     * @description 判断一个对象数组是否非空
      */
     public static boolean isNotEmpty(Object[] objects) {
         return !isEmpty(objects);
@@ -74,9 +74,9 @@ public class StringUtils {
 
 
     /**
-     * @description 判断一个字符串是否为空串(方法内部前后尾去空)
      * @param str 判断对象
      * @return true：为空 false：非空
+     * @description 判断一个字符串是否为空串(方法内部前后尾去空)
      */
     public static boolean isEmpty(String str) {
         return isNull(str) || EMPTY_STR.equals(str.trim());
@@ -84,54 +84,54 @@ public class StringUtils {
 
 
     /**
-     * @description 判断一个字符串是否为非空串
      * @param str String
      * @return true：非空串 false：空串
+     * @description 判断一个字符串是否为非空串
      */
     public static boolean isNotEmpty(String str) {
         return !isEmpty(str);
     }
 
     /**
-     * @description 判断一个对象是否为空
      * @param object Object
      * @return true：为空 false：非空
+     * @description 判断一个对象是否为空
      */
     public static boolean isNull(Object object) {
         return object == null;
     }
 
     /**
-     * @description 判断一个对象是否非空
      * @param object Object
      * @return true：非空 false：空
+     * @description 判断一个对象是否非空
      */
     public static boolean isNotNull(Object object) {
         return !isNull(object);
     }
 
     /**
-     * @description 判断一个对象是否是数组类型（Java基本型别的数组）
      * @param object 对象
      * @return true：是数组 false：不是数组
+     * @description 判断一个对象是否是数组类型（Java基本型别的数组）
      */
     public static boolean isArray(Object object) {
         return isNotNull(object) && object.getClass().isArray();
     }
 
     /**
-     * @description 去除字符串前后端空格
      * @param str 需要去除的对象
      * @return
+     * @description 去除字符串前后端空格
      */
     public static String trim(String str) {
         return str == null ? "" : str.trim();
     }
 
     /**
-     * @description 逗号字符串转Integer集合
-     * @param str   "1,2,3"
+     * @param str "1,2,3"
      * @return
+     * @description 逗号字符串转Integer集合
      */
     public static List<Integer> stringToIntegerList(String str) {
         if (isEmpty(str)) {
@@ -142,9 +142,9 @@ public class StringUtils {
     }
 
     /**
-     * @description 逗号字符串转Long集合
-     * @param str   "1,2,3"
+     * @param str "1,2,3"
      * @return
+     * @description 逗号字符串转Long集合
      */
     public static List<Long> stringToLongList(String str) {
         if (isEmpty(str)) {
@@ -173,12 +173,12 @@ public class StringUtils {
     }
 
     /**
-     * @description 返回日期字符串  yyyy-MM-dd
      * @param date
      * @param pattern 需要转换成的格式 yyyy/MM/dd hh:MM:ss    yyyy-MM-dd hh:MM:ss   yyyy-MM-dd
      * @return 返回的字符串
+     * @description 返回日期字符串  yyyy-MM-dd
      */
-    public static String dateToString(Date date , String pattern) {
+    public static String dateToString(Date date, String pattern) {
         date = Optional.ofNullable(date).orElse(new Date());
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         return simpleDateFormat.format(date);
@@ -187,7 +187,7 @@ public class StringUtils {
     /**
      * @param object
      * @return
-     * @description  检查某个对象的各个属性是否为空
+     * @description 检查某个对象的各个属性是否为空
      */
     public static boolean checkFieldAllNull(Object object) {
         if (object == null) {
@@ -222,9 +222,9 @@ public class StringUtils {
     }
 
     /**
-     * @description 检查某个对象的是否为空(对象的属性无法判断)
      * @param object
      * @return
+     * @description 检查某个对象的是否为空(对象的属性无法判断)
      */
     private static boolean isEmpty(Object object) {
         if (object == null) {
@@ -246,32 +246,49 @@ public class StringUtils {
     }
 
     /**
-     * @description 字符串正则清空特殊字符串
      * @param string
      * @return
+     * @description 字符串正则清空特殊字符串
      */
     public static String clearSpecialChar(String string) {
-        if(isEmpty(string)){
+        if (isEmpty(string)) {
             return EMPTY_STR;
         }
-        String regEx="[\n`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。， 、？]";
+        String regEx = "[\n`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。， 、？]";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(string);
         return m.replaceAll(EMPTY_STR).trim();
     }
 
     /**
-     * @description 字符串正则手机号
      * @param string
      * @return
+     * @description 字符串正则手机号
      */
     public static boolean regexMobilePhone(String string) {
-        if(isEmpty(string)){
+        if (isEmpty(string)) {
             return false;
         }
         String regex = "^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[\\d]{8}$";
         return Pattern.compile(regex).matcher(string).matches();
     }
 
+    /**
+     * @description 是否包含字符串
+     *
+     * @param str  验证字符串
+     * @param strings 字符串组
+     * @return 包含返回true
+     */
+    public static boolean inStringIgnoreCase(String str, String... strings) {
+        if (str != null && strings != null) {
+            for (String s : strings) {
+                if (str.equalsIgnoreCase(trim(s))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 }
