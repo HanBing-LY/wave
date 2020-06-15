@@ -2,25 +2,26 @@ package com.liyuan.wave.po.entity.oms;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.liyuan.wave.po.entity.base.BasicPo;
 
 import java.io.Serializable;
+import java.util.Date;
+import lombok.Data;
+
 /**
- * @description 订单设置表
+ * @description oms_order_setting
  * 
  * @author liyuan
  * @email 724837404@qq.com
- * @date 2020-06-11 23:17:45
+ * @date 2020-06-15 16:11:12
  */
 @Data
 @TableName("oms_order_setting")
-public class OmsOrderSettingEntity implements Serializable {
+public class OmsOrderSettingEntity extends BasicPo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * id
 	 */
 	@TableId
 	private Long id;
@@ -44,5 +45,6 @@ public class OmsOrderSettingEntity implements Serializable {
 	 * 订单完成后自动好评时间（天）
 	 */
 	private Integer commentOvertime;
+
 
 }

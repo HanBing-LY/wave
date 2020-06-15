@@ -1,0 +1,50 @@
+package com.liyuan.wave.po.entity.sms;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.liyuan.wave.po.entity.base.BasicPo;
+
+import java.io.Serializable;
+import java.util.Date;
+import lombok.Data;
+
+/**
+ * @description sms_flash_sale
+ * 
+ * @author liyuan
+ * @email 724837404@qq.com
+ * @date 2020-06-15 16:09:35
+ */
+@Data
+@TableName("sms_flash_sale")
+public class SmsFlashSaleEntity extends BasicPo implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * id
+	 */
+	@TableId
+	private Long id;
+	/**
+	 * 控制开关 1:开启 0:关闭
+	 */
+	private Byte flag;
+	/**
+	 * 主题
+	 */
+	private String note;
+	/**
+	 * 描述
+	 */
+	private String message;
+	/**
+	 * 开始时间
+	 */
+	private Date startTime;
+	/**
+	 * 结束时间
+	 */
+	private Date endTime;
+
+
+}

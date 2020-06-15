@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liyuan.wave.oms.dao.OmsOrderInfoDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.liyuan.wave.po.entity.oms.OmsOrderInfoEntity" id="omsOrderInfoMap">
+        <result property="id" column="id"/>
+        <result property="orderNumber" column="order_number"/>
+        <result property="orderMoney" column="order_money"/>
+        <result property="fareMoney" column="fare_money"/>
+        <result property="payMoney" column="pay_money"/>
+        <result property="note" column="note"/>
+        <result property="userId" column="user_id"/>
+        <result property="receiveName" column="receive_name"/>
+        <result property="receivePhone" column="receive_phone"/>
+        <result property="province" column="province"/>
+        <result property="district" column="district"/>
+        <result property="area" column="area"/>
+        <result property="address" column="address"/>
+        <result property="orderType" column="order_type"/>
+        <result property="payMethod" column="pay_method"/>
+        <result property="logisticsNumber" column="logistics_number"/>
+        <result property="del" column="del"/>
+        <result property="createName" column="create_name"/>
+        <result property="modifyName" column="modify_name"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>

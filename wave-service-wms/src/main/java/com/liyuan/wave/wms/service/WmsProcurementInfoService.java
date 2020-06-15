@@ -1,0 +1,13 @@
+package com.liyuan.wave.wms.service;
+
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.liyuan.wave.po.entity.wms.WmsProcurementInfo;
+
+/**
+ * @author liyuan
+ * @description
+ * @date 2020-06-15 15:46
+ */
+public interface WmsProcurementInfoService extends IService<WmsProcurementInfo> {
+}

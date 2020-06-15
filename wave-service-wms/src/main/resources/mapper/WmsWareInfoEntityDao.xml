@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liyuan.wave.wave-service-wms.dao.WmsWareInfoEntityDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.liyuan.wave.wave-service-wms.entity.WmsWareInfoEntityEntity" id="wmsWareInfoEntityMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="areaCode" column="area_code"/>
+        <result property="del" column="del"/>
+        <result property="createName" column="create_name"/>
+        <result property="modifyName" column="modify_name"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>

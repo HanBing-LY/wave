@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liyuan.wave.ums.dao.UmsUserInfoDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.liyuan.wave.ums.entity.UmsUserInfoEntity" id="umsUserInfoMap">
+        <result property="id" column="id"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="userName" column="user_name"/>
+        <result property="userImg" column="user_img"/>
+        <result property="userSex" column="user_sex"/>
+        <result property="certNumber" column="cert_number"/>
+        <result property="age" column="age"/>
+        <result property="birthday" column="birthday"/>
+        <result property="country" column="country"/>
+        <result property="province" column="province"/>
+        <result property="district" column="district"/>
+        <result property="area" column="area"/>
+        <result property="nation" column="nation"/>
+        <result property="bloodType" column="blood_type"/>
+        <result property="mobilePhone" column="mobile_phone"/>
+        <result property="userScore" column="user_score"/>
+        <result property="contributeMoney" column="contribute_money"/>
+        <result property="email" column="email"/>
+        <result property="del" column="del"/>
+        <result property="createName" column="create_name"/>
+        <result property="modifyName" column="modify_name"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>
