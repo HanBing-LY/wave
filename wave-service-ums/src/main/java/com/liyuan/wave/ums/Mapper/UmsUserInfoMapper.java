@@ -1,8 +1,8 @@
-package com.liyuan.wave.ums.Mapper;
+package com.liyuan.wave.ums.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.liyuan.wave.po.entity.ums.UmsUserInfo;
+import com.liyuan.wave.po.ums.UmsUserInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

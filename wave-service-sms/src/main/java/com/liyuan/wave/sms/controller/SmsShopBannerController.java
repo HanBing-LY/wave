@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020-06-15 16:09:35
  */
 @RestController
-@RequestMapping("sms/smsshopbanner")
+@RequestMapping
 public class SmsShopBannerController {
 
 }

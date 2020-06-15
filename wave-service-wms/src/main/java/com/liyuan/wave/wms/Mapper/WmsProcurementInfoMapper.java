@@ -1,8 +1,8 @@
-package com.liyuan.wave.wms.Mapper;
+package com.liyuan.wave.wms.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.liyuan.wave.po.entity.wms.WmsProcurementInfo;
+import com.liyuan.wave.po.wms.WmsProcurementInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

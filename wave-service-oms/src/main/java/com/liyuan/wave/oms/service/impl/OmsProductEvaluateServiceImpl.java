@@ -3,8 +3,8 @@ package com.liyuan.wave.oms.service.impl;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import com.liyuan.wave.oms.dao.OmsProductEvaluateDao;
-import com.liyuan.wave.po.entity.oms.OmsProductEvaluateEntity;
+import com.liyuan.wave.oms.mapper.OmsProductEvaluateMapper;
+import com.liyuan.wave.po.oms.OmsProductEvaluate;
 import com.liyuan.wave.oms.service.OmsProductEvaluateService;
 
 /**
@@ -15,6 +15,6 @@ import com.liyuan.wave.oms.service.OmsProductEvaluateService;
  * @date 2020-06-15 16:11:12
  */
 @Service("omsProductEvaluateService")
-public class OmsProductEvaluateServiceImpl extends ServiceImpl<OmsProductEvaluateDao, OmsProductEvaluateEntity> implements OmsProductEvaluateService {
+public class OmsProductEvaluateServiceImpl extends ServiceImpl<OmsProductEvaluateMapper, OmsProductEvaluate> implements OmsProductEvaluateService {
 
 }

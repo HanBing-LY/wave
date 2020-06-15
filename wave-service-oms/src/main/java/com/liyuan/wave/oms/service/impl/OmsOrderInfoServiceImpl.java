@@ -3,8 +3,8 @@ package com.liyuan.wave.oms.service.impl;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import com.liyuan.wave.oms.dao.OmsOrderInfoDao;
-import com.liyuan.wave.po.entity.oms.OmsOrderInfoEntity;
+import com.liyuan.wave.oms.mapper.OmsOrderInfoMapper;
+import com.liyuan.wave.po.oms.OmsOrderInfo;
 import com.liyuan.wave.oms.service.OmsOrderInfoService;
 
 /**
@@ -15,6 +15,6 @@ import com.liyuan.wave.oms.service.OmsOrderInfoService;
  * @date 2020-06-15 16:11:12
  */
 @Service("omsOrderInfoService")
-public class OmsOrderInfoServiceImpl extends ServiceImpl<OmsOrderInfoDao, OmsOrderInfoEntity> implements OmsOrderInfoService {
+public class OmsOrderInfoServiceImpl extends ServiceImpl<OmsOrderInfoMapper, OmsOrderInfo> implements OmsOrderInfoService {
 
 }

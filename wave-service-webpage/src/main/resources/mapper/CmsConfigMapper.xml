@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.wanho.manage_cms.mapper.CmsConfigMapper">
+
+    <resultMap id="CmsConfigMap" type="net.wanho.po.cms.CmsConfig">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="model" ofType="net.wanho.po.cms.CmsConfigModel">
+            <id property="key" column="key"/>
+            <result property="name" column="mname"/>
+            <result property="url" column="url"/>
+            <result property="value" column="value"/>
+            <result property="config_id" column="config_id"/>
+        </collection>
+    </resultMap>
+
+    <select id="getCmsConfigAndModel" parameterType="string" resultMap="CmsConfigMap">
+        SELECT
+            c.id,c.name,
+            m.key,m.name mname,m.url,m.value,m.config_id
+         FROM cms_config c
+        INNER JOIN cms_config_model m
+        ON c.id = m.config_id
+        WHERE c.id=#{id}
+    </select>
+</mapper>

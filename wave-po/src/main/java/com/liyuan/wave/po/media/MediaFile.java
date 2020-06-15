@@ -1,5 +1,6 @@
 package com.liyuan.wave.po.media;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -24,11 +25,21 @@ public class MediaFile {
 	private String fileUrl;
 	//文件类型
 	private String fileType;
+	//mimetype
+	private String mimeType;
 	//文件大小
 	private Long fileSize;
 	//文件状态
 	private String fileStatus;
 	//上传时间
 	private Date uploadTime;
+	//处理状态
+	private String processStatus;
+	//hls处理
+	@TableField(exist = false)
+	private MediaFileProcess mediaFileProcess;
+
+	//tag标签用于查询
+	private String tag;
 
 }

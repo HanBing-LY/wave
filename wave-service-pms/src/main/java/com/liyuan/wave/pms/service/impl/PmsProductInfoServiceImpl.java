@@ -3,8 +3,8 @@ package com.liyuan.wave.pms.service.impl;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import com.liyuan.wave.pms.dao.PmsProductInfoDao;
-import com.liyuan.wave.po.entity.pms.PmsProductInfoEntity;
+import com.liyuan.wave.pms.mapper.PmsProductInfoMapper;
+import com.liyuan.wave.po.pms.PmsProductInfo;
 import com.liyuan.wave.pms.service.PmsProductInfoService;
 
 /**
@@ -15,6 +15,6 @@ import com.liyuan.wave.pms.service.PmsProductInfoService;
  * @date 2020-06-15 16:10:20
  */
 @Service("pmsProductInfoService")
-public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoDao, PmsProductInfoEntity> implements PmsProductInfoService {
+public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper, PmsProductInfo> implements PmsProductInfoService {
 
 }

@@ -8,7 +8,6 @@
         <version>1.0.0</version>
     </parent>
 
-
     <artifactId>wave-service-oms</artifactId>
     <version>1.0.0</version>
     <name>wave-service-oms</name>

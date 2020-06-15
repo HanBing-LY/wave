@@ -3,8 +3,8 @@ package com.liyuan.wave.pms.service.impl;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import com.liyuan.wave.pms.dao.PmsColumnNatureDao;
-import com.liyuan.wave.po.entity.pms.PmsColumnNatureEntity;
+import com.liyuan.wave.pms.mapper.PmsColumnNatureMapper;
+import com.liyuan.wave.po.pms.PmsColumnNature;
 import com.liyuan.wave.pms.service.PmsColumnNatureService;
 
 /**
@@ -15,6 +15,6 @@ import com.liyuan.wave.pms.service.PmsColumnNatureService;
  * @date 2020-06-15 16:10:20
  */
 @Service("pmsColumnNatureService")
-public class PmsColumnNatureServiceImpl extends ServiceImpl<PmsColumnNatureDao, PmsColumnNatureEntity> implements PmsColumnNatureService {
+public class PmsColumnNatureServiceImpl extends ServiceImpl<PmsColumnNatureMapper, PmsColumnNature> implements PmsColumnNatureService {
 
 }

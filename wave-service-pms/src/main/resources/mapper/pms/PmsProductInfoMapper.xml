@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liyuan.wave.pms.mapper.PmsProductInfoMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.liyuan.wave.po.pms.PmsProductInfo" id="pmsProductInfoMap">
+        <result property="id" column="id"/>
+        <result property="productName" column="product_name"/>
+        <result property="productIcon" column="product_icon"/>
+        <result property="productImg" column="product_img"/>
+        <result property="productVideo" column="product_video"/>
+        <result property="productOldPrice" column="product_old_price"/>
+        <result property="productSalePrice" column="product_sale_price"/>
+        <result property="productDesc" column="product_desc"/>
+        <result property="commentsCount" column="comments_count"/>
+        <result property="viewed" column="viewed"/>
+        <result property="purchaseCount" column="purchase_count"/>
+        <result property="type" column="type"/>
+        <result property="productColumnId" column="product_column_id"/>
+        <result property="saleNum" column="sale_num"/>
+        <result property="orderVal" column="order_val"/>
+        <result property="pushTime" column="push_time"/>
+        <result property="productTag" column="product_tag"/>
+        <result property="del" column="del"/>
+        <result property="createName" column="create_name"/>
+        <result property="modifyName" column="modify_name"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>

@@ -14,7 +14,7 @@ public class MsgListener {
     @Resource
     private UserService userService;
 
-    @RabbitListener(queues = "${wlzx.mq.queue}")
+    @RabbitListener(queues = "${langchao.mq.queue}")
     public void receive(String id) {
 //       从消息队列中获取Id
         if(StringUtils.isNotEmpty(id)){

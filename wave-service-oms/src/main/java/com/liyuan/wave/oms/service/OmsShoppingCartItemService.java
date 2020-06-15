@@ -1,7 +1,7 @@
 package com.liyuan.wave.oms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.liyuan.wave.po.entity.oms.OmsShoppingCartItemEntity;
+import com.liyuan.wave.po.oms.OmsShoppingCartItem;
 
 /**
  * @description oms_shopping_cart_item
@@ -10,7 +10,7 @@ import com.liyuan.wave.po.entity.oms.OmsShoppingCartItemEntity;
  * @email 724837404@qq.com
  * @date 2020-06-15 16:11:12
  */
-public interface OmsShoppingCartItemService extends IService<OmsShoppingCartItemEntity> {
+public interface OmsShoppingCartItemService extends IService<OmsShoppingCartItem> {
 
 }
 

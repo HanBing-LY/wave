@@ -2,7 +2,7 @@ package com.liyuan.wave.ums.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.liyuan.wave.po.entity.ums.UmsUserAddress;
+import com.liyuan.wave.po.ums.UmsUserAddress;
 
 /**
  * @author liyuan

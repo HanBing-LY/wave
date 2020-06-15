@@ -1,7 +1,7 @@
 package com.liyuan.wave.usercenter.clients;
 
 import com.liyuan.wave.usercenter.hystrix.SearchClientHystrix;
-import com.liyuan.wave.po.user.UserVo;
+import com.liyuan.wave.po.ucenter.UserVo;
 import com.liyuan.wavecommon.client.WaveServiceList;
 import com.liyuan.wavecommon.vo.response.JsonResult;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;

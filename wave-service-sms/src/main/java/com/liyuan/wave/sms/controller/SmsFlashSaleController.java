@@ -1,8 +1,5 @@
 package com.liyuan.wave.sms.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020-06-15 16:09:35
  */
 @RestController
-@RequestMapping("sms/smsflashsale")
+@RequestMapping
 public class SmsFlashSaleController {
 
 }

@@ -1,8 +1,8 @@
 package com.langchao.waveservicesearch.service;
 
 
-import com.liyuan.wave.po.user.User;
-import com.liyuan.wave.po.user.UserVo;
+import com.liyuan.wave.po.ucenter.User;
+import com.liyuan.wave.po.ucenter.UserVo;
 import com.liyuan.wavecommon.constant.Informations;
 import com.liyuan.wavecommon.util.StringUtils;
 import com.liyuan.wavecommon.vo.response.PageInfo;
@@ -23,10 +23,7 @@ import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class EsUserService {

@@ -2,8 +2,8 @@ package com.liyuan.wave.ums.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.liyuan.wave.po.entity.ums.UmsUserInfo;
-import com.liyuan.wave.ums.Mapper.UmsUserInfoMapper;
+import com.liyuan.wave.po.ums.UmsUserInfo;
+import com.liyuan.wave.ums.mapper.UmsUserInfoMapper;
 import com.liyuan.wave.ums.service.UmsUserInfoService;
 import org.springframework.stereotype.Service;
 

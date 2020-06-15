@@ -3,7 +3,7 @@ package com.liyuan.wave.usercenter.controller;
 
 import com.liyuan.wave.usercenter.clients.SearchClient;
 import com.liyuan.wave.usercenter.service.UserService;
-import com.liyuan.wave.po.user.UserVo;
+import com.liyuan.wave.po.ucenter.UserVo;
 import com.liyuan.wavecommon.vo.response.JsonResult;
 import com.liyuan.wavecommon.web.BaseController;
 import com.liyuan.waveserviceapi.user.UserControllerApi;

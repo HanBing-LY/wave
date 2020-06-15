@@ -1,7 +1,7 @@
 package com.liyuan.waveserviceapi.search;
 
 
-import com.liyuan.wave.po.user.UserVo;
+import com.liyuan.wave.po.ucenter.UserVo;
 import com.liyuan.wavecommon.vo.response.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

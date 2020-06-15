@@ -8,10 +8,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.tobato.fastdfs.domain.fdfs.StorePath;
 import com.github.tobato.fastdfs.domain.proto.storage.DownloadByteArray;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
+import com.liyuan.wave.po.ucenter.*;
+import com.liyuan.wave.po.ucenter.ext.UserExt;
+import com.liyuan.wave.usercenter.mapper.CompnayUserMapper;
+import com.liyuan.wave.usercenter.mapper.MenuMapper;
 import com.liyuan.wave.usercenter.mapper.UserMapper;
-import com.liyuan.wave.po.user.User;
-import com.liyuan.wave.po.user.UserVo;
-import com.liyuan.wave.po.user.response.UserCode;
 import com.liyuan.wavecommon.constant.Informations;
 import com.liyuan.wavecommon.exception.ExceptionCast;
 import com.liyuan.wavecommon.util.StringUtils;
@@ -21,6 +22,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.apache.commons.io.IOUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -46,6 +48,10 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 	@Resource
 	private UserMapper userMapper;
 	@Resource
+	private MenuMapper menuMapper;
+	@Resource
+	private CompnayUserMapper compnayUserMapper;
+	@Resource
 	private FastFileStorageClient fastFileStorageClient;
 	@Resource
 	private RabbitTemplate rabbitTemplate;
@@ -53,6 +59,38 @@ public class UserService extends ServiceImpl<UserMapper, User> {
 	private StringRedisTemplate stringRedisTemplate;
 	@Resource
 	private RestTemplate restTemplate;
+
+
+
+	public UserExt getUserext(String username) {
+		//根据账号查询User信息
+		QueryWrapper<User> wrapper = new QueryWrapper<>();
+		wrapper.eq("username",username);
+		User user = userMapper.selectOne(wrapper);
+		if(StringUtils.isNull(user)){
+			return null;
+		}
+
+		//用户id
+		Integer userId = user.getUserId();
+		//根据id查询出所有权限
+		List<Menu> menus = menuMapper.selectPermissionByUserId(userId);
+
+		//根据id查询出所属公司ID
+		QueryWrapper<CompanyUser> w = new QueryWrapper<>();
+		w.eq("user_id",userId);
+		CompanyUser companyUser = compnayUserMapper.selectOne(w);
+
+		UserExt userExt = new UserExt();
+		BeanUtils.copyProperties(user,userExt);
+		userExt.setCompanyId(companyUser.getCompanyId());
+		userExt.setPermissions(menus);
+		return userExt;
+
+	}
+
+
+
 
 	/**
 	 * 从配置文件读取信息: 获取消息队列信息

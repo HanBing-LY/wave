@@ -2,7 +2,7 @@ package com.langchao.waveservicesearch.controller;
 
 
 import com.langchao.waveservicesearch.service.EsUserService;
-import com.liyuan.wave.po.user.UserVo;
+import com.liyuan.wave.po.ucenter.UserVo;
 import com.liyuan.wavecommon.vo.response.JsonResult;
 import com.liyuan.wavecommon.web.BaseController;
 import com.liyuan.waveserviceapi.search.EsUserControllerApi;

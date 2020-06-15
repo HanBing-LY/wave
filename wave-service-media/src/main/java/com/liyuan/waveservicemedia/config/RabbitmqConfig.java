@@ -16,11 +16,11 @@ public class RabbitmqConfig {
 	//消费者并发数量
 	public static final int DEFAULT_CONCURRENT = 10;
 
-	@Value("${wlzx.mq.exchange}")
+	@Value("${langchao.mq.exchange}")
 	private String exchange_name;
-	@Value("${wlzx.mq.queue}")
+	@Value("${langchao.mq.queue}")
 	private String queue_name;
-	@Value("${wlzx.mq.routingKey}")
+	@Value("${langchao.mq.routingKey}")
 	private String routing_key;
 
 	@Bean

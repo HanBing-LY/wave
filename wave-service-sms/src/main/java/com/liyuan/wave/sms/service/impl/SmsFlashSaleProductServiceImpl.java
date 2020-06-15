@@ -3,8 +3,8 @@ package com.liyuan.wave.sms.service.impl;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import com.liyuan.wave.sms.dao.SmsFlashSaleProductDao;
-import com.liyuan.wave.po.entity.sms.SmsFlashSaleProductEntity;
+import com.liyuan.wave.sms.mapper.SmsFlashSaleProductMapper;
+import com.liyuan.wave.po.sms.SmsFlashSaleProduct;
 import com.liyuan.wave.sms.service.SmsFlashSaleProductService;
 
 /**
@@ -15,6 +15,6 @@ import com.liyuan.wave.sms.service.SmsFlashSaleProductService;
  * @date 2020-06-15 16:09:35
  */
 @Service("smsFlashSaleProductService")
-public class SmsFlashSaleProductServiceImpl extends ServiceImpl<SmsFlashSaleProductDao, SmsFlashSaleProductEntity> implements SmsFlashSaleProductService {
+public class SmsFlashSaleProductServiceImpl extends ServiceImpl<SmsFlashSaleProductMapper, SmsFlashSaleProduct> implements SmsFlashSaleProductService {
 
 }
