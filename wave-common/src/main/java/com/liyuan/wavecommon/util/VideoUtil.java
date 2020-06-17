@@ -1,7 +1,9 @@
 package com.liyuan.wavecommon.util;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,4 +131,29 @@ public class VideoUtil {
         String video_time = videoUtil.get_video_time("E:\\ffmpeg_test\\1.avi");
         System.out.println(video_time);
     }*/
+
+
+    private void transfer(String infile,String outfile) {
+
+        String videoCommend = "ffmpeg -i " + infile + " -vcodec libx264 -r 29.97 -b 768k -ar 24000 -ab 64k -s 1280x720 "
+                + outfile;
+
+        try {
+            Runtime rt = Runtime.getRuntime();
+            Process proc = rt.exec(videoCommend);
+            InputStream stderr = proc.getErrorStream();
+            InputStreamReader isr = new InputStreamReader(stderr);
+            BufferedReader br = new BufferedReader(isr);
+            String line = null;
+
+            while ( (line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            int exitVal = proc.waitFor();
+            System.out.println("Process exitValue: " + exitVal);
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
 }

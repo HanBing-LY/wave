@@ -12,5 +12,6 @@ import com.liyuan.wave.po.pms.PmsProductColumn;
  */
 public interface PmsProductColumnService extends IService<PmsProductColumn> {
 
+    void add(PmsProductColumn pmsProductColumn);
 }
 

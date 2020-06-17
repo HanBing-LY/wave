@@ -304,7 +304,7 @@ public class CmsPageService extends ServiceImpl<CmsPageMapper, CmsPage> {
         String siteId = cmsPage.getSiteId();
         CmsSite cmsSite = cmsSiteMapper.selectById(siteId);
 
-        //http://www.wlzx.com/course/detail/bb83399a867dae1c1b389f99c7db83cf.html
+
         //cmsSite.siteDomain+cmsSite.siteWebPath+ cmsPage.pageWebPath + cmsPage.pageName
         String pageUrl = cmsSite.getSiteDomain() + cmsSite.getSiteWebPath() + cmsPage.getPageWebPath() + cmsPage.getPageName();
         return pageUrl;

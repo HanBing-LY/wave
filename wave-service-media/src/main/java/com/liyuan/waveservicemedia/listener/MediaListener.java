@@ -26,13 +26,13 @@ public class MediaListener {
     @Resource
     private MediaFileProcessM3u8Mapper mediaFileProcessM3u8Mapper;
 
-    @Value("${wlzx.ffmpeg-path}")
+    @Value("${langchao.ffmpeg-path}")
     private String ffmpeg_path;
-    @Value("${wlzx.upload-location}")
+    @Value("${langchao.upload-location}")
     private String upload_location;
 
-    @RabbitListener(queues = "${wlzx.mq.queue}",containerFactory = "customContainerFactory")
-    @Transactional
+    @RabbitListener(queues = "${langchao.mq.queue}",containerFactory = "customContainerFactory")
+    @Transactional(rollbackFor = Exception.class)
     public void receiveMediaTask(String fileId){
         MediaFile mediaFile = mediaFileMapper.selectById(fileId);
         if(StringUtils.isNull(mediaFile)){

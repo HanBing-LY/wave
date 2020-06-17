@@ -21,5 +21,9 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
+    <select id="getNextChildrenByParentId" resultType="com.liyuan.wave.pms.po.dto.ProductColumnDto">
+
+    </select>
+
 
 </mapper>

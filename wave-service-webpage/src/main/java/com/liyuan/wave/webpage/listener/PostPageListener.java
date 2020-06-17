@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class PostPageListener {
     @Autowired
     private CmsPageService cmsPageService;
-    @RabbitListener(queues = "${wlzx.mq.queue}")
+    @RabbitListener(queues = "${langchao.mq.queue}")
     public void receive(String pageId){
         //从消息队列中获取pageId
         //根据pageId获取到CmsPage对象
