@@ -21,9 +21,26 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
-    <select id="getNextChildrenByParentId" resultType="com.liyuan.wave.pms.po.dto.ProductColumnDto">
+    <resultMap type="com.liyuan.wave.pms.po.dto.PmsProductColumnDto" id="commonDetail">
+        <result property="id" column="id"/>
+        <result property="columnName" column="column_name"/>
+        <result property="columnImage" column="column_image"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="parentIds" column="parent_ids"/>
+        <result property="columnLevel" column="column_level"/>
+        <result property="showStatus" column="show_status"/>
+        <result property="productCount" column="product_count"/>
+        <result property="sort" column="sort"/>
+    </resultMap>
 
+    <sql id="baseSql">id,column_name,column_image,parent_id,parent_ids,column_level,show_status,product_count </sql>
+
+    <select id="getCommonDetailById" resultType="com.liyuan.wave.pms.po.dto.PmsProductColumnDto">
+        select <include refid="baseSql"></include> from pms_product_column where id = #{id}
     </select>
 
+    <select id="getNextChildrenByParentId" resultType="com.liyuan.wave.pms.po.dto.PmsProductColumnDto">
+        select <include refid="baseSql"></include> from pms_product_column where parent_id = #{parentId}
+    </select>
 
 </mapper>

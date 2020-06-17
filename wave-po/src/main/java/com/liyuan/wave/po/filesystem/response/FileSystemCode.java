@@ -24,7 +24,7 @@ public enum FileSystemCode implements ExceptionResult {
     int code;
     //提示信息
     String message;
-    private FileSystemCode(boolean success, int code, String message){
+    FileSystemCode(boolean success, int code, String message){
         this.success = success;
         this.code = code;
         this.message = message;

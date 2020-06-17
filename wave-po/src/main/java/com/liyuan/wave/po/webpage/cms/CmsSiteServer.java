@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- * @Author: mrt.
- * @Description:
+ * @author: mrt.
+ * @description:
  * @Date:Created in 2018/1/24 10:00.
  * @Modified By:
  */

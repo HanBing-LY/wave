@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2020-06-17 14:36
  */
 @Data
-public class ProductColumnVo {
+public class PmsProductColumnVo {
 
     private Long id;
 

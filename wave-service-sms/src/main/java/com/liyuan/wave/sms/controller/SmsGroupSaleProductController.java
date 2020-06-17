@@ -1,10 +1,11 @@
 package com.liyuan.wave.sms.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.liyuan.wave.sms.po.vo.GroupSaleProductVo;
+import com.liyuan.wave.sms.service.SmsGroupSaleProductService;
+import com.liyuan.wavecommon.vo.response.JsonResult;
+import com.liyuan.wavecommon.web.BaseController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -16,6 +17,30 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping
-public class SmsGroupSaleProductController {
+public class SmsGroupSaleProductController extends BaseController {
 
+    @Autowired
+    private SmsGroupSaleProductService smsGroupSaleProductService;
+
+    /**
+     * @author liyuan
+     * @description 选择拼团商品
+     * @param groupSaleProductVo
+     * @return
+     */
+    @PostMapping
+    public JsonResult chooseProduct(@RequestBody GroupSaleProductVo groupSaleProductVo){
+        smsGroupSaleProductService.chooseProduct(groupSaleProductVo);
+        return success();
+    }
+
+
+    /**
+     * @author liyuan
+     * @description 分页查询控制
+     */
+    @GetMapping("/list")
+    public JsonResult list(@RequestParam(name = "groupSaleId",required = true) Integer groupSaleId){
+        return success(smsGroupSaleProductService.listGetByGroupSaleId(groupSaleId));
+    }
 }

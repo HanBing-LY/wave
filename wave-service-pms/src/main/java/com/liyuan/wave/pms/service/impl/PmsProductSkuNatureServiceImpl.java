@@ -1,5 +1,6 @@
 package com.liyuan.wave.pms.service.impl;
 
+import com.liyuan.wave.pms.po.vo.PmsProductSkuNatureVo;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
@@ -17,4 +18,8 @@ import com.liyuan.wave.pms.service.PmsProductSkuNatureService;
 @Service("pmsProductSkuNatureService")
 public class PmsProductSkuNatureServiceImpl extends ServiceImpl<PmsProductSkuNatureMapper, PmsProductSkuNature> implements PmsProductSkuNatureService {
 
+    @Override
+    public void saveProductSkuNatureValue(PmsProductSkuNatureVo pmsProductSkuNatureVo) {
+
+    }
 }

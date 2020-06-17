@@ -1,5 +1,7 @@
 package com.liyuan.wave.sms.service.impl;
 
+import com.liyuan.wave.sms.po.vo.GroupSaleProductVo;
+import com.liyuan.wavecommon.vo.response.PageInfo;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
@@ -17,4 +19,13 @@ import com.liyuan.wave.sms.service.SmsGroupSaleProductService;
 @Service("smsGroupSaleProductService")
 public class SmsGroupSaleProductServiceImpl extends ServiceImpl<SmsGroupSaleProductMapper, SmsGroupSaleProduct> implements SmsGroupSaleProductService {
 
+    @Override
+    public void chooseProduct(GroupSaleProductVo groupSaleProductVo) {
+
+    }
+
+    @Override
+    public PageInfo<GroupSaleProductVo> listGetByGroupSaleId(Integer groupSaleId) {
+        return null;
+    }
 }

@@ -1,5 +1,8 @@
 package com.liyuan.wave.pms.service.impl;
 
+import com.liyuan.wave.pms.po.dto.PmsColumnNatureDto;
+import com.liyuan.wave.pms.po.vo.PmsColumnNatureVo;
+import com.liyuan.wavecommon.vo.response.PageInfo;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
@@ -16,5 +19,25 @@ import com.liyuan.wave.pms.service.PmsColumnNatureService;
  */
 @Service("pmsColumnNatureService")
 public class PmsColumnNatureServiceImpl extends ServiceImpl<PmsColumnNatureMapper, PmsColumnNature> implements PmsColumnNatureService {
+
+    @Override
+    public void add(PmsColumnNatureDto pmsColumnNatureDto) {
+
+    }
+
+    @Override
+    public void modify(PmsColumnNature pmsColumnNature) {
+
+    }
+
+    @Override
+    public void disable(String ids) {
+
+    }
+
+    @Override
+    public PageInfo<PmsColumnNatureVo> queryByColumnId(String id) {
+        return null;
+    }
 
 }

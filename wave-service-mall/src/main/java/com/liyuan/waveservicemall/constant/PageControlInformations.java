@@ -1,8 +1,8 @@
 package com.liyuan.waveservicemall.constant;
 
 /**
- * @Author liyuan
- * @Description 不要使用魔法值
+ * @author liyuan
+ * @description 不要使用魔法值
  * @create 2020-03-24-10:54-周二
  */
 public interface PageControlInformations {

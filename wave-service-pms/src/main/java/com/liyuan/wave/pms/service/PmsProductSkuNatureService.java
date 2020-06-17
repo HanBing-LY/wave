@@ -1,6 +1,7 @@
 package com.liyuan.wave.pms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.liyuan.wave.pms.po.vo.PmsProductSkuNatureVo;
 import com.liyuan.wave.po.pms.PmsProductSkuNature;
 
 /**
@@ -12,5 +13,11 @@ import com.liyuan.wave.po.pms.PmsProductSkuNature;
  */
 public interface PmsProductSkuNatureService extends IService<PmsProductSkuNature> {
 
+    /**
+     * @description 商品选择具有的sku属性值
+     * @param pmsProductSkuNatureVo
+     * @return
+     */
+    void saveProductSkuNatureValue(PmsProductSkuNatureVo pmsProductSkuNatureVo);
 }
 

@@ -1,5 +1,7 @@
 package com.liyuan.wave.pms.service.impl;
 
+import com.liyuan.wave.pms.po.vo.PmsProductInfoVo;
+import com.liyuan.wavecommon.vo.response.PageInfo;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
@@ -17,4 +19,18 @@ import com.liyuan.wave.pms.service.PmsProductInfoService;
 @Service("pmsProductInfoService")
 public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper, PmsProductInfo> implements PmsProductInfoService {
 
+    @Override
+    public PageInfo<PmsProductInfoVo> listGetAllProductsByMinColumn(Long id) {
+        return null;
+    }
+
+    @Override
+    public PageInfo<PmsProductInfoVo> listHotSaleList(Integer pageNum, Integer pageSize) {
+        return null;
+    }
+
+    @Override
+    public PageInfo<PmsProductInfoVo> listNewPushList(Integer pageNum, Integer pageSize) {
+        return null;
+    }
 }

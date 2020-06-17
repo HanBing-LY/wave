@@ -1,5 +1,6 @@
 package com.liyuan.wave.pms.service.impl;
 
+import com.liyuan.wave.pms.po.vo.PmsProductSkuNatureVo;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 

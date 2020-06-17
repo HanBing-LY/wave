@@ -11,6 +11,5 @@ import com.liyuan.wave.po.pms.PmsNatureValue;
  * @date 2020-06-15 16:10:20
  */
 public interface PmsNatureValueService extends IService<PmsNatureValue> {
-
 }
 

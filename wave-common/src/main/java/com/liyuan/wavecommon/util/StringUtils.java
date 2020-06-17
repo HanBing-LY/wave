@@ -274,11 +274,10 @@ public class StringUtils {
     }
 
     /**
-     * @description 是否包含字符串
-     *
-     * @param str  验证字符串
+     * @param str     验证字符串
      * @param strings 字符串组
      * @return 包含返回true
+     * @description 是否包含字符串
      */
     public static boolean inStringIgnoreCase(String str, String... strings) {
         if (str != null && strings != null) {
@@ -291,4 +290,23 @@ public class StringUtils {
         return false;
     }
 
+
+    /**
+     * @param text 判断的对象
+     * @return 包含返回true
+     * @description 对象有效
+     */
+    public static boolean effective(Long text) {
+        return text != null && text > -1L;
+    }
+
+
+    /**
+     * @param text 判断的对象
+     * @return 包含返回true
+     * @description 对象无效
+     */
+    public static boolean invalid(Long text) {
+        return !effective(text);
+    }
 }

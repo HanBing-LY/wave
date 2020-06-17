@@ -1,8 +1,12 @@
 package com.liyuan.wave.pms.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
+import com.liyuan.wave.pms.po.vo.PmsProductSkuNatureVo;
+import com.liyuan.wave.pms.service.PmsProductSkuNatureService;
+import com.liyuan.wavecommon.vo.response.JsonResult;
+import com.liyuan.wavecommon.web.BaseController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("pms/pmsproductskunature")
-public class PmsProductSkuNatureController {
+public class PmsProductSkuNatureController extends BaseController {
+
+    @Autowired
+    private PmsProductSkuNatureService pmsProductSkuNatureService;
+
+    /**
+     * @description 商品选择具有的sku属性值
+     * @param pmsProductSkuNatureVo
+     * @return
+     */
+    @PostMapping("/save")
+    public JsonResult saveProductSkuNatureValue(@RequestBody PmsProductSkuNatureVo pmsProductSkuNatureVo){
+        pmsProductSkuNatureService.saveProductSkuNatureValue(pmsProductSkuNatureVo);
+        return success();
+    }
 
 }

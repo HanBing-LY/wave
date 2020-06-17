@@ -1,8 +1,8 @@
 package com.liyuan.wave.pms.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
+import com.liyuan.wave.pms.service.PmsNatureValueService;
+import com.liyuan.wavecommon.web.BaseController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020-06-15 16:10:20
  */
 @RestController
-@RequestMapping("pms/pmsnaturevalue")
-public class PmsNatureValueController {
+@RequestMapping("pms/nature/value")
+public class PmsNatureValueController extends BaseController {
 
+    @Autowired
+    private PmsNatureValueService pmsNatureValueService;
 }
