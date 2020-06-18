@@ -1,11 +1,11 @@
 package com.liyuan.wave.webpage.controller;
 
 
-import com.liyuan.wave.po.webpage.cms.CmsPage;
-import com.liyuan.wave.po.webpage.cms.request.QueryPageRequest;
+import com.liyuan.wave.po.cms.CmsPage;
+import com.liyuan.wave.po.cms.request.QueryPageRequest;
 import com.liyuan.wave.webpage.service.CmsPageService;
-import com.liyuan.wavecommon.vo.response.JsonResult;
-import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.wave.common.vo.response.JsonResult;
+import com.liyuan.wave.common.web.BaseController;
 import com.liyuan.waveserviceapi.webpage.CmsPageControllerApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

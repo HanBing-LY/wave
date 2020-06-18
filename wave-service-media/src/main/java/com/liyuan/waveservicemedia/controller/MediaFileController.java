@@ -2,8 +2,8 @@ package com.liyuan.waveservicemedia.controller;
 
 
 import com.liyuan.wave.po.media.request.QueryMediaFileRequest;
-import com.liyuan.wavecommon.vo.response.JsonResult;
-import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.wave.common.vo.response.JsonResult;
+import com.liyuan.wave.common.web.BaseController;
 import com.liyuan.waveserviceapi.media.MediaFileControllerApi;
 import com.liyuan.waveservicemedia.service.MediaFileService;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,9 +1,9 @@
 package com.liyuan.wave.webpage.controller;
 
 
-import com.liyuan.wave.po.webpage.cms.CmsConfig;
+import com.liyuan.wave.po.cms.CmsConfig;
 import com.liyuan.wave.webpage.service.CmsConfigService;
-import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.wave.common.web.BaseController;
 import com.liyuan.waveserviceapi.webpage.CmsConfigControllerApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

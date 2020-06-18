@@ -1,7 +1,7 @@
 package com.liyuan.wave.po.ucenter.response;
 
 
-import com.liyuan.wavecommon.exception.ExceptionResult;
+import com.liyuan.wave.common.exception.ExceptionResult;
 import lombok.ToString;
 
 @ToString

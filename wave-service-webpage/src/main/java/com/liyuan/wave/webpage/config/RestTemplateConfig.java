@@ -1,7 +1,7 @@
 package com.liyuan.wave.webpage.config;
 
 
-import com.liyuan.wavecommon.interceptor.FeignClientInterceptor;
+import com.liyuan.wave.common.interceptor.FeignClientInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;

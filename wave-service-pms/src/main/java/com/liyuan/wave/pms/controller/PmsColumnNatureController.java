@@ -2,8 +2,8 @@ package com.liyuan.wave.pms.controller;
 
 import com.liyuan.wave.pms.po.vo.PmsColumnNatureSaveVo;
 import com.liyuan.wave.pms.service.PmsColumnNatureService;
-import com.liyuan.wavecommon.vo.response.JsonResult;
-import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.wave.common.vo.response.JsonResult;
+import com.liyuan.wave.common.web.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

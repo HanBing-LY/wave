@@ -1,7 +1,7 @@
 package com.liyuan.waveservicemedia.service;
 
 import com.liyuan.wave.po.media.MediaFile;
-import com.liyuan.wavecommon.util.StringUtils;
+import com.liyuan.wave.common.util.StringUtils;
 import com.liyuan.waveservicemedia.mapper.MediaFileMapper;
 import org.apache.commons.io.IOUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

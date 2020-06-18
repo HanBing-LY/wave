@@ -1,8 +1,8 @@
 package com.liyuan.waveservicefilesystem.controller;
 
 
-import com.liyuan.wavecommon.vo.response.JsonResult;
-import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.wave.common.vo.response.JsonResult;
+import com.liyuan.wave.common.web.BaseController;
 import com.liyuan.waveserviceapi.filesystem.FileSystemControllerApi;
 import com.liyuan.waveservicefilesystem.service.FileSystemService;
 import org.springframework.web.bind.annotation.PostMapping;

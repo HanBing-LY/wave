@@ -1,7 +1,7 @@
 package com.liyuan.wave.usercenter.listener;
 
 
-import com.liyuan.wavecommon.util.StringUtils;
+import com.liyuan.wave.common.util.StringUtils;
 import com.liyuan.wave.usercenter.service.UserService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;

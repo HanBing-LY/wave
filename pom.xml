@@ -66,6 +66,7 @@
         <fastjson.version>1.2.60</fastjson.version>
         <poi-ooxml.version>3.14-beta1</poi-ooxml.version>
         <swagger.version>1.5.22</swagger.version>
+        <hutool.verson>5.1.0</hutool.verson>
     </properties>
 
     <dependencyManagement>
@@ -214,6 +215,13 @@
                 <artifactId>fastdfs-client</artifactId>
                 <version>1.26.7</version>
             </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.verson}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

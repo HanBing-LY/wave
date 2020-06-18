@@ -3,7 +3,7 @@ package com.liyuan.wave.sms.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.po.sms.SmsFlashSale;
 import com.liyuan.wave.sms.po.vo.SmsFlashSaleVo;
-import com.liyuan.wavecommon.vo.response.PageInfo;
+import com.liyuan.wave.common.vo.response.PageInfo;
 
 import java.util.Date;
 

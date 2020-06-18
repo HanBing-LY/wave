@@ -1,7 +1,7 @@
 package com.liyuan.wave.sms.service.impl;
 
 import com.liyuan.wave.sms.po.vo.SmsGroupSaleVo;
-import com.liyuan.wavecommon.vo.response.PageInfo;
+import com.liyuan.wave.common.vo.response.PageInfo;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 

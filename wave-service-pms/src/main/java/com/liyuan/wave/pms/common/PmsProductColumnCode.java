@@ -1,6 +1,6 @@
 package com.liyuan.wave.pms.common;
 
-import com.liyuan.wavecommon.exception.ExceptionResult;
+import com.liyuan.wave.common.exception.ExceptionResult;
 import lombok.ToString;
 
 /**

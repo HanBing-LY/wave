@@ -1,7 +1,7 @@
 package com.liyuan.wave.po.ucenter.request;
 
 
-import com.liyuan.wavecommon.vo.request.RequestData;
+import com.liyuan.wave.common.vo.request.RequestData;
 import lombok.Data;
 import lombok.ToString;
 

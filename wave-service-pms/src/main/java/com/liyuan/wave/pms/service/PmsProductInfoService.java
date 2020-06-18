@@ -3,7 +3,9 @@ package com.liyuan.wave.pms.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.pms.po.vo.PmsProductInfoVo;
 import com.liyuan.wave.po.pms.PmsProductInfo;
-import com.liyuan.wavecommon.vo.response.PageInfo;
+import com.liyuan.wave.common.vo.response.PageInfo;
+
+import java.util.List;
 
 /**
  * @author liyuan
@@ -17,7 +19,7 @@ public interface PmsProductInfoService extends IService<PmsProductInfo> {
      * @return
      * @description 查询所有的五级分类下的所有商品
      */
-    PageInfo<PmsProductInfoVo> listGetAllProductsByMinColumn(Long id);
+    List<PmsProductInfoVo> listGetAllProductsByMinColumn(Long id, Integer pageNum, Integer pageSize);
 
     /**
      * @param pageNum

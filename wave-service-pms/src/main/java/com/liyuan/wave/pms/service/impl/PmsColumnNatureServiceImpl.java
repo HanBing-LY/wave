@@ -4,16 +4,16 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.liyuan.wave.pms.common.PmsProductColumnCode;
 import com.liyuan.wave.pms.po.dto.PmsColumnNatureDto;
 import com.liyuan.wave.pms.po.vo.PmsColumnNatureSaveVo;
-import com.liyuan.wavecommon.constant.CommonParam;
-import com.liyuan.wavecommon.exception.ExceptionCast;
-import com.liyuan.wavecommon.util.StringUtils;
-import com.liyuan.wavecommon.vo.response.PageInfo;
+import com.liyuan.wave.common.constant.CommonParam;
+import com.liyuan.wave.common.exception.ExceptionCast;
+import com.liyuan.wave.common.util.StringUtils;
+import com.liyuan.wave.common.vo.response.PageInfo;
+import com.liyuan.wave.po.pms.PmsColumnNature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import com.liyuan.wave.pms.mapper.PmsColumnNatureMapper;
-import com.liyuan.wave.po.pms.PmsColumnNature;
 import com.liyuan.wave.pms.service.PmsColumnNatureService;
 
 import java.util.ArrayList;

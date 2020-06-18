@@ -2,7 +2,7 @@ package com.liyuan.wave.auth.client;
 
 
 import com.liyuan.wave.po.ucenter.ext.UserExt;
-import com.liyuan.wavecommon.client.WaveServiceList;
+import com.liyuan.wave.common.client.WaveServiceList;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -3,7 +3,7 @@ package com.liyuan.wave.sms.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.po.sms.SmsGroupSaleProduct;
 import com.liyuan.wave.sms.po.vo.GroupSaleProductVo;
-import com.liyuan.wavecommon.vo.response.PageInfo;
+import com.liyuan.wave.common.vo.response.PageInfo;
 
 /**
  * @description sms_group_sale_product

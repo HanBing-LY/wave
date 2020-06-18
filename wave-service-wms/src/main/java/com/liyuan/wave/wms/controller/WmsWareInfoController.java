@@ -1,6 +1,6 @@
 package com.liyuan.wave.wms.controller;
 
-import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.wave.common.web.BaseController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

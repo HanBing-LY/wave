@@ -7,9 +7,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.liyuan.wave.po.media.MediaFile;
 import com.liyuan.wave.po.media.request.QueryMediaFileRequest;
-import com.liyuan.wavecommon.constant.Informations;
-import com.liyuan.wavecommon.util.StringUtils;
-import com.liyuan.wavecommon.vo.response.PageInfo;
+import com.liyuan.wave.common.constant.Informations;
+import com.liyuan.wave.common.util.StringUtils;
+import com.liyuan.wave.common.vo.response.PageInfo;
 import com.liyuan.waveservicemedia.mapper.MediaFileMapper;
 import org.springframework.stereotype.Service;
 

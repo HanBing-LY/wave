@@ -1,9 +1,9 @@
 package com.liyuan.waveserviceapi.webpage;
 
 
-import com.liyuan.wave.po.webpage.cms.CmsPage;
-import com.liyuan.wave.po.webpage.cms.request.QueryPageRequest;
-import com.liyuan.wavecommon.vo.response.JsonResult;
+import com.liyuan.wave.po.cms.CmsPage;
+import com.liyuan.wave.po.cms.request.QueryPageRequest;
+import com.liyuan.wave.common.vo.response.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

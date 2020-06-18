@@ -1,7 +1,7 @@
 package com.liyuan.waveserviceapi.webpage;
 
 
-import com.liyuan.wave.po.webpage.cms.CmsConfig;
+import com.liyuan.wave.po.cms.CmsConfig;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 

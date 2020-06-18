@@ -1,7 +1,7 @@
 package com.liyuan.wave.po.ucenter;
 
 import com.google.common.collect.ImmutableMap;
-import com.liyuan.wavecommon.exception.ExceptionResult;
+import com.liyuan.wave.common.exception.ExceptionResult;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.ToString;
 

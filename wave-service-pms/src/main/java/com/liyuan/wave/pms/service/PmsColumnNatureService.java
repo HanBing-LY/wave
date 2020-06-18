@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.pms.po.dto.PmsColumnNatureDto;
 import com.liyuan.wave.pms.po.vo.PmsColumnNatureSaveVo;
 import com.liyuan.wave.po.pms.PmsColumnNature;
-import com.liyuan.wavecommon.vo.response.PageInfo;
+import com.liyuan.wave.common.vo.response.PageInfo;
 
 /**
  * @description pms_column_nature

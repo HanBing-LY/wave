@@ -2,7 +2,7 @@ package com.liyuan.waveserviceapi.auth;
 
 
 import com.liyuan.wave.po.ucenter.request.LoginRequest;
-import com.liyuan.wavecommon.vo.response.JsonResult;
+import com.liyuan.wave.common.vo.response.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 

@@ -1,7 +1,7 @@
 package com.liyuan.waveserviceapi.media;
 
 
-import com.liyuan.wavecommon.vo.response.JsonResult;
+import com.liyuan.wave.common.vo.response.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.multipart.MultipartFile;

@@ -3,9 +3,9 @@ package com.langchao.waveservicesearch.service;
 
 import com.liyuan.wave.po.ucenter.User;
 import com.liyuan.wave.po.ucenter.UserVo;
-import com.liyuan.wavecommon.constant.Informations;
-import com.liyuan.wavecommon.util.StringUtils;
-import com.liyuan.wavecommon.vo.response.PageInfo;
+import com.liyuan.wave.common.constant.Informations;
+import com.liyuan.wave.common.util.StringUtils;
+import com.liyuan.wave.common.vo.response.PageInfo;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;

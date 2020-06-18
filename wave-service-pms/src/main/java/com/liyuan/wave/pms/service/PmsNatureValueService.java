@@ -3,9 +3,8 @@ package com.liyuan.wave.pms.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.pms.po.dto.PmsNatureValueDto;
 import com.liyuan.wave.pms.po.vo.PmsNatureValueSaveVo;
-import com.liyuan.wave.pms.po.vo.PmsNatureValueVo;
 import com.liyuan.wave.po.pms.PmsNatureValue;
-import com.liyuan.wavecommon.vo.response.PageInfo;
+import com.liyuan.wave.common.vo.response.PageInfo;
 
 /**
  * @description pms_nature_value

@@ -4,7 +4,7 @@ import com.liyuan.wave.auth.client.UserClient;
 import com.liyuan.wave.auth.po.UserJwt;
 import com.liyuan.wave.po.ucenter.Menu;
 import com.liyuan.wave.po.ucenter.ext.UserExt;
-import com.liyuan.wavecommon.util.StringUtils;
+import com.liyuan.wave.common.util.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;

@@ -2,8 +2,8 @@ package com.liyuan.wave.sms.controller;
 
 import com.liyuan.wave.sms.po.vo.FlashSaleProductVo;
 import com.liyuan.wave.sms.service.SmsFlashSaleProductService;
-import com.liyuan.wavecommon.vo.response.JsonResult;
-import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.wave.common.vo.response.JsonResult;
+import com.liyuan.wave.common.web.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

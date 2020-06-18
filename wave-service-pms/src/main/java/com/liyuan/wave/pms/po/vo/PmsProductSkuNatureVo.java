@@ -2,6 +2,8 @@ package com.liyuan.wave.pms.po.vo;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -13,7 +15,11 @@ import java.util.List;
 @Data
 public class PmsProductSkuNatureVo {
 
+    @NotNull(message = "请选择商品")
     private Long productInfoId;
+
+    @NotNull(message = "请输入价格")
+    private BigDecimal price;
 
     private List<PmsNatureValueVo> natureValueVos;
 }

@@ -3,7 +3,7 @@ package com.liyuan.wave.usercenter.controller;
 
 import com.liyuan.wave.po.ucenter.ext.UserExt;
 import com.liyuan.wave.usercenter.service.UserService;
-import com.liyuan.wavecommon.web.BaseController;
+import com.liyuan.wave.common.web.BaseController;
 import com.liyuan.waveserviceapi.ucenter.UcenterControllerApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

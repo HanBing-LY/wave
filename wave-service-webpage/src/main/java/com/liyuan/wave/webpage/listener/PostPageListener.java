@@ -1,9 +1,9 @@
 package com.liyuan.wave.webpage.listener;
 
 
-import com.liyuan.wave.po.webpage.cms.CmsPage;
+import com.liyuan.wave.po.cms.CmsPage;
 import com.liyuan.wave.webpage.service.CmsPageService;
-import com.liyuan.wavecommon.util.StringUtils;
+import com.liyuan.wave.common.util.StringUtils;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

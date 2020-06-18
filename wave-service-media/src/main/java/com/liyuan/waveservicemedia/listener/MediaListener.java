@@ -3,9 +3,9 @@ package com.liyuan.waveservicemedia.listener;
 
 import com.liyuan.wave.po.media.MediaFile;
 import com.liyuan.wave.po.media.MediaFileProcessM3u8;
-import com.liyuan.wavecommon.util.HlsVideoUtil;
-import com.liyuan.wavecommon.util.Mp4VideoUtil;
-import com.liyuan.wavecommon.util.StringUtils;
+import com.liyuan.wave.common.util.HlsVideoUtil;
+import com.liyuan.wave.common.util.Mp4VideoUtil;
+import com.liyuan.wave.common.util.StringUtils;
 import com.liyuan.waveservicemedia.mapper.MediaFileMapper;
 import com.liyuan.waveservicemedia.mapper.MediaFileProcessM3u8Mapper;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
