@@ -33,7 +33,7 @@
         <result property="sort" column="sort"/>
     </resultMap>
 
-    <sql id="baseSql">id,column_name,column_image,parent_id,parent_ids,column_level,show_status,product_count </sql>
+    <sql id="baseSql">id,column_name,column_image,parent_id,parent_ids,column_level,show_status,product_count,sort </sql>
 
     <select id="getCommonDetailById" resultType="com.liyuan.wave.pms.po.dto.PmsProductColumnDto">
         select <include refid="baseSql"></include> from pms_product_column where id = #{id}

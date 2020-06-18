@@ -8,13 +8,16 @@
         <result property="id" column="id"/>
         <result property="columnNatureId" column="column_nature_id"/>
         <result property="valueDesc" column="value_desc"/>
-        <result property="selectType" column="select_type"/>
         <result property="del" column="del"/>
         <result property="createName" column="create_name"/>
         <result property="modifyName" column="modify_name"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
+
+    <select id="queryByColumnNatureId" resultType="com.liyuan.wave.pms.po.dto.PmsNatureValueDto">
+
+    </select>
 
 
 </mapper>

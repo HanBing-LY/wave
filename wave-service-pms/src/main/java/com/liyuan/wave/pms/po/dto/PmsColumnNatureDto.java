@@ -14,16 +14,10 @@ import java.util.List;
 @Data
 public class PmsColumnNatureDto {
 
-    /**
-     * 产品分类id
-     */
-    @NotNull
-    private Long productColumnId;
+    private Long id ;
 
-    /**
-     * 通用属性名称
-     */
-    @NotNull
-    private List<String> natureName;
+    private String name;
+
+    private Long columnId;
 
 }

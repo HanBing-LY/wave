@@ -2,7 +2,7 @@ package com.liyuan.wave.pms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.pms.po.dto.PmsColumnNatureDto;
-import com.liyuan.wave.pms.po.vo.PmsColumnNatureVo;
+import com.liyuan.wave.pms.po.vo.PmsColumnNatureSaveVo;
 import com.liyuan.wave.po.pms.PmsColumnNature;
 import com.liyuan.wavecommon.vo.response.PageInfo;
 
@@ -16,17 +16,17 @@ import com.liyuan.wavecommon.vo.response.PageInfo;
 public interface PmsColumnNatureService extends IService<PmsColumnNature> {
     /**
      * @description 新增通用分类属性
-     * @param pmsColumnNatureDto
+     * @param pmsColumnNatureSaveVo
      * @return
      */
-    void add(PmsColumnNatureDto pmsColumnNatureDto);
+    void add(PmsColumnNatureSaveVo pmsColumnNatureSaveVo);
 
     /**
      * @description 修改分类属性名称
-     * @param pmsColumnNature
+     * @param pmsColumnNatureSaveVo
      * @return
      */
-    void modify(PmsColumnNature pmsColumnNature);
+    void modify(PmsColumnNatureSaveVo pmsColumnNatureSaveVo);
 
     /**
      * @description 禁用通用分类
@@ -40,6 +40,6 @@ public interface PmsColumnNatureService extends IService<PmsColumnNature> {
      * @param id
      * @return
      */
-    PageInfo<PmsColumnNatureVo> queryByColumnId(String id);
+    PageInfo<PmsColumnNatureDto> queryByColumnId(Long id,Long pageNo,Long pageSize);
 }
 

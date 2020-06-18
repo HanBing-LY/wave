@@ -1,8 +1,7 @@
 package com.liyuan.wave.pms.controller;
 
-import com.liyuan.wave.pms.po.dto.PmsColumnNatureDto;
+import com.liyuan.wave.pms.po.vo.PmsColumnNatureSaveVo;
 import com.liyuan.wave.pms.service.PmsColumnNatureService;
-import com.liyuan.wave.po.pms.PmsColumnNature;
 import com.liyuan.wavecommon.vo.response.JsonResult;
 import com.liyuan.wavecommon.web.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,23 +26,23 @@ public class PmsColumnNatureController extends BaseController {
 
     /**
      * @description 新增通用分类属性
-     * @param pmsColumnNatureDto
+     * @param pmsColumnNatureSaveVo
      * @return
      */
     @PostMapping("/save")
-    public JsonResult add(@RequestBody @Valid PmsColumnNatureDto pmsColumnNatureDto){
-        pmsColumnNatureService.add(pmsColumnNatureDto);
+    public JsonResult add(@RequestBody @Valid PmsColumnNatureSaveVo pmsColumnNatureSaveVo){
+        pmsColumnNatureService.add(pmsColumnNatureSaveVo);
         return success();
     }
 
     /**
      * @description 修改分类属性名称
-     * @param pmsColumnNature
+     * @param pmsColumnNatureSaveVo
      * @return
      */
     @PutMapping("/update")
-    public JsonResult update(@RequestBody PmsColumnNature pmsColumnNature){
-        pmsColumnNatureService.modify(pmsColumnNature);
+    public JsonResult update(@RequestBody PmsColumnNatureSaveVo pmsColumnNatureSaveVo){
+        pmsColumnNatureService.modify(pmsColumnNatureSaveVo);
         return success();
     }
 
@@ -64,8 +63,8 @@ public class PmsColumnNatureController extends BaseController {
      * @return
      */
     @GetMapping("/column/current")
-    public JsonResult queryByColumnId(@RequestParam(name = "id") String id){
-        return success(pmsColumnNatureService.queryByColumnId(id));
+    public JsonResult queryByColumnId(@RequestParam(name = "id") Long id,@RequestParam(name = "pageNo") Long pageNo,@RequestParam(name = "pageSize") Long pageSize){
+        return success(pmsColumnNatureService.queryByColumnId(id,pageNo,pageSize));
     }
 
 }

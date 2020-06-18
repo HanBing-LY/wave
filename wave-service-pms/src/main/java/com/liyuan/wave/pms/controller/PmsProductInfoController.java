@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * @description pms_product_info
- *
  * @author liyuan
+ * @description pms_product_info
  * @email 724837404@qq.com
  * @date 2020-06-15 16:10:20
  */
@@ -25,20 +24,20 @@ public class PmsProductInfoController extends BaseController {
     private PmsProductInfoService pmsProductInfoService;
 
     /**
-     * @description 查询所有的五级分类下的所有商品
      * @return
+     * @description 查询所有的五级分类下的所有商品
      */
     @GetMapping("/bycolumn")
-    public JsonResult listGetAllProductsByMinColumn(@RequestParam(name = "id") Long id){
+    public JsonResult listGetAllProductsByMinColumn(@RequestParam(name = "id") Long id) {
         return success(pmsProductInfoService.listGetAllProductsByMinColumn(id));
     }
 
 
     /**
-     * @description 1-0-0 商城首页热销商品
      * @param pageNum
      * @param pageSize
      * @return
+     * @description 热销商品
      */
     @GetMapping("/hotsalelist")
     public JsonResult listHotSaleList(@RequestParam(name = "page", required = false) Integer pageNum, @RequestParam(name = "size", required = false) Integer pageSize) {
@@ -46,14 +45,36 @@ public class PmsProductInfoController extends BaseController {
     }
 
     /**
-     * 1-0-0 商城首页最新上架商品
      * @param pageNum
      * @param pageSize
      * @return
+     * @description 热搜商品
+     */
+    @GetMapping("/hotsearchlist")
+    public JsonResult hotSearchList(@RequestParam(name = "page", required = false) Integer pageNum, @RequestParam(name = "size", required = false) Integer pageSize) {
+        return success(pmsProductInfoService.hotSearchList(pageNum, pageSize));
+    }
+
+    /**
+     * @param pageNum
+     * @param pageSize
+     * @return
+     * @description 最新上架商品
      */
     @GetMapping("/newpushlist")
     public JsonResult listNewPushList(@RequestParam(name = "page", required = false) Integer pageNum, @RequestParam(name = "size", required = false) Integer pageSize) {
         return success(pmsProductInfoService.listNewPushList(pageNum, pageSize));
+    }
+
+    /**
+     * @param pageNum
+     * @param pageSize
+     * @return
+     * @description 明星商品
+     */
+    @GetMapping("/star/list")
+    public JsonResult starList(@RequestParam(name = "page", required = false) Integer pageNum, @RequestParam(name = "size", required = false) Integer pageSize) {
+        return success(pmsProductInfoService.starList(pageNum, pageSize));
     }
 
 }

@@ -33,10 +33,4 @@ public class PmsNatureValue extends BasicPo implements Serializable {
 	 * 属性值
 	 */
 	private String valueDesc;
-	/**
-	 * 属性选择类型：0->单选；1->多选
-	 */
-	private Byte selectType;
-
-
 }

@@ -6,34 +6,49 @@ import com.liyuan.wave.po.pms.PmsProductInfo;
 import com.liyuan.wavecommon.vo.response.PageInfo;
 
 /**
- * @description pms_product_info
- *
  * @author liyuan
+ * @description pms_product_info
  * @email 724837404@qq.com
  * @date 2020-06-15 16:10:20
  */
 public interface PmsProductInfoService extends IService<PmsProductInfo> {
 
     /**
-     * @description 查询所有的五级分类下的所有商品
      * @return
+     * @description 查询所有的五级分类下的所有商品
      */
     PageInfo<PmsProductInfoVo> listGetAllProductsByMinColumn(Long id);
 
     /**
-     * @description 1-0-0 商城首页热销商品
      * @param pageNum
      * @param pageSize
      * @return
+     * @description 1-0-0 商城首页热销商品
      */
     PageInfo<PmsProductInfoVo> listHotSaleList(Integer pageNum, Integer pageSize);
 
     /**
-     * @description 1-0-0 商城首页最新上架商品
      * @param pageNum
      * @param pageSize
      * @return
+     * @description 热搜商品
+     */
+    PageInfo<PmsProductInfoVo> hotSearchList(Integer pageNum, Integer pageSize);
+
+    /**
+     * @param pageNum
+     * @param pageSize
+     * @return
+     * @description 1-0-0 商城首页最新上架商品
      */
     PageInfo<PmsProductInfoVo> listNewPushList(Integer pageNum, Integer pageSize);
+
+    /**
+     * @param pageNum
+     * @param pageSize
+     * @return
+     * @description 明星商品
+     */
+    PageInfo<PmsProductInfoVo> starList(Integer pageNum, Integer pageSize);
 }
 
