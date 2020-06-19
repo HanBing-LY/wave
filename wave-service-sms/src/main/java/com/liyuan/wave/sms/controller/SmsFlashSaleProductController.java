@@ -1,6 +1,6 @@
 package com.liyuan.wave.sms.controller;
 
-import com.liyuan.wave.sms.po.vo.FlashSaleProductVo;
+import com.liyuan.wave.sms.po.vo.SmsFlashSaleProductSaveVo;
 import com.liyuan.wave.sms.service.SmsFlashSaleProductService;
 import com.liyuan.wave.common.vo.response.JsonResult;
 import com.liyuan.wave.common.web.BaseController;
@@ -40,8 +40,8 @@ public class SmsFlashSaleProductController extends BaseController {
      * @return
      */
     @PostMapping
-    public JsonResult chooseProduct(@RequestBody FlashSaleProductVo flashSaleProductVo){
-        smsFlashSaleProductService.chooseProduct(flashSaleProductVo);
+    public JsonResult chooseProduct(@RequestBody SmsFlashSaleProductSaveVo smsFlashSaleProductSaveVo){
+        smsFlashSaleProductService.chooseProduct(smsFlashSaleProductSaveVo);
         return success();
     }
 
@@ -49,9 +49,9 @@ public class SmsFlashSaleProductController extends BaseController {
      * @author liyuan
      * @description 停止商品秒杀
      */
-    @GetMapping("/delpl")
-    public JsonResult delpl(@RequestParam(name = "ids",required = true) String ids){
-        smsFlashSaleProductService.delpl(ids);
+    @GetMapping("/stop")
+    public JsonResult stop(@RequestParam(name = "ids",required = true) String ids){
+        smsFlashSaleProductService.disable(ids);
         return success();
     }
 

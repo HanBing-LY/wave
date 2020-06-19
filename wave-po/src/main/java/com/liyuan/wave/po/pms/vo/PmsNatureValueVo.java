@@ -1,4 +1,4 @@
-package com.liyuan.wave.pms.po.vo;
+package com.liyuan.wave.po.pms.vo;
 
 import lombok.Data;
 
@@ -11,13 +11,9 @@ import java.util.List;
  * @date 2020-06-17-22:26
  */
 @Data
-public class PmsNatureValueSaveVo {
-
-    private Long id;
-
-    private String name;
+public class PmsNatureValueVo {
 
     private Long columnNatureId;
 
-    private List<String> names;
+    private List<Long> natureValueIds;
 }

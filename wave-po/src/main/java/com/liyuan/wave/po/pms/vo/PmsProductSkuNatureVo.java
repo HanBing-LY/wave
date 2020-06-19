@@ -1,4 +1,4 @@
-package com.liyuan.wave.pms.po.vo;
+package com.liyuan.wave.po.pms.vo;
 
 import lombok.Data;
 

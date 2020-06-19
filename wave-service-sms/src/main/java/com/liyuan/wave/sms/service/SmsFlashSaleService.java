@@ -1,11 +1,10 @@
 package com.liyuan.wave.sms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.liyuan.wave.po.sms.SmsFlashSale;
-import com.liyuan.wave.sms.po.vo.SmsFlashSaleVo;
 import com.liyuan.wave.common.vo.response.PageInfo;
-
-import java.util.Date;
+import com.liyuan.wave.po.sms.SmsFlashSale;
+import com.liyuan.wave.sms.po.vo.SmsFlashSaleSaveVo;
+import com.liyuan.wave.sms.po.vo.SmsFlashSaleVo;
 
 /**
  * @author liyuan
@@ -16,24 +15,24 @@ import java.util.Date;
 public interface SmsFlashSaleService extends IService<SmsFlashSale> {
 
     /**
-     * @param smsFlashSale
+     * @param smsFlashSaleSaveVo
      * @author liyuan
      * @description 添加秒杀控制
      */
-    void addFlashSale(SmsFlashSale smsFlashSale);
+    void addFlashSale(SmsFlashSaleSaveVo smsFlashSaleSaveVo);
 
     /**
-     * @param smsFlashSale
+     * @param smsFlashSaleSaveVo
      * @author liyuan
      * @description 修改秒杀控制
      */
-    void updateFlashSale(SmsFlashSale smsFlashSale);
+    void updateFlashSale(SmsFlashSaleSaveVo smsFlashSaleSaveVo);
 
     /**
      * @author liyuan
      * @description 分页查询秒杀控制
      */
-    PageInfo<SmsFlashSaleVo> queryPage(Integer flag, Date startTime, Date endTime, Integer page, Integer size);
+    PageInfo<SmsFlashSaleVo> queryPage(Byte status, Long page, Long size);
 
     /**
      * @param ids
@@ -41,6 +40,6 @@ public interface SmsFlashSaleService extends IService<SmsFlashSale> {
      * @author liyuan
      * @description 删除秒杀
      */
-    void delpl(String ids);
+    void disable(String ids);
 }
 

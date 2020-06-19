@@ -9,7 +9,7 @@ import com.liyuan.wave.common.cache.constant.ProductColumnCache;
 import com.liyuan.wave.common.util.StringUtils;
 import com.liyuan.wave.common.vo.response.PageInfo;
 import com.liyuan.wave.pms.mapper.PmsProductInfoMapper;
-import com.liyuan.wave.pms.po.vo.PmsProductInfoVo;
+import com.liyuan.wave.po.pms.vo.PmsProductInfoVo;
 import com.liyuan.wave.pms.service.PmsProductInfoService;
 import com.liyuan.wave.pms.po.dto.PmsProductInfoDto;
 import com.liyuan.wave.pms.task.ThreadPoolTask;

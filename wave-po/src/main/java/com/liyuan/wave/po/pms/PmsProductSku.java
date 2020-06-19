@@ -39,9 +39,7 @@ public class PmsProductSku extends BasicPo implements Serializable {
 	 */
 	private BigDecimal productPrice;
 	/**
-	 * 库存
+	 * 销量
 	 */
-	private Long stock;
-
-
+	private Long saleNum;
 }

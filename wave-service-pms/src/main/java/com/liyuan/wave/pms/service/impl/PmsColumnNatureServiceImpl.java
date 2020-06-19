@@ -1,9 +1,9 @@
 package com.liyuan.wave.pms.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.liyuan.wave.pms.common.PmsProductColumnCode;
+import com.liyuan.wave.pms.common.PmsExceptionCode;
 import com.liyuan.wave.pms.po.dto.PmsColumnNatureDto;
-import com.liyuan.wave.pms.po.vo.PmsColumnNatureSaveVo;
+import com.liyuan.wave.po.pms.vo.PmsColumnNatureSaveVo;
 import com.liyuan.wave.common.constant.CommonParam;
 import com.liyuan.wave.common.exception.ExceptionCast;
 import com.liyuan.wave.common.util.StringUtils;
@@ -58,7 +58,7 @@ public class PmsColumnNatureServiceImpl extends ServiceImpl<PmsColumnNatureMappe
     public void disable(String ids) {
         List<Long> idList = StringUtils.stringToLongList(ids);
         if(idList.size() == 0){
-            ExceptionCast.cast(PmsProductColumnCode.PLEASE_CHO0SE_TO_DELETE);
+            ExceptionCast.cast(PmsExceptionCode.PLEASE_CHO0SE_TO_DELETE);
         }
         PmsColumnNature pmsColumnNature = new PmsColumnNature();
         pmsColumnNature.setDel(CommonParam.IS_DELETED);

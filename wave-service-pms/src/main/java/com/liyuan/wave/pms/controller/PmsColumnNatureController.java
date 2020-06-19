@@ -1,6 +1,6 @@
 package com.liyuan.wave.pms.controller;
 
-import com.liyuan.wave.pms.po.vo.PmsColumnNatureSaveVo;
+import com.liyuan.wave.po.pms.vo.PmsColumnNatureSaveVo;
 import com.liyuan.wave.pms.service.PmsColumnNatureService;
 import com.liyuan.wave.common.vo.response.JsonResult;
 import com.liyuan.wave.common.web.BaseController;

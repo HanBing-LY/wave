@@ -309,4 +309,9 @@ public class StringUtils {
     public static boolean invalid(Long text) {
         return !effective(text);
     }
+
+
+
+
+//    List<UserAddress> userAddressList = new Gson().fromJson(new Gson().toJson(result.getData()), new TypeToken<List<UserAddress>>(){}.getType());
 }

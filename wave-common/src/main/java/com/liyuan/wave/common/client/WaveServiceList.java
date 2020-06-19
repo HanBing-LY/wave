@@ -10,5 +10,6 @@ public class WaveServiceList {
 	public static final String WAVE_SERVICE_MQ = "wave-service-mq";
 	public static final String WAVE_SERVICE_AUTH = "wave-service-auth";
 	public static final String WAVE_SERVICE_USER_CENTER = "wave-service-usercenter";
+	public static final String WAVE_SERVICE_PMS = "wave-service-pms";
 
 }

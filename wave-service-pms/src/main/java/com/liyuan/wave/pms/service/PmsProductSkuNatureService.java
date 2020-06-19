@@ -1,7 +1,7 @@
 package com.liyuan.wave.pms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.liyuan.wave.pms.po.vo.PmsProductSkuNatureVo;
+import com.liyuan.wave.po.pms.vo.PmsProductSkuNatureVo;
 import com.liyuan.wave.po.pms.PmsProductSkuNature;
 
 /**

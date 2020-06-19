@@ -8,6 +8,16 @@ package com.liyuan.wave.common.constant;
  */
 public interface CommonParam {
 
+    /**
+     * 删除
+     */
     static final Byte IS_DELETED = 1;
+
+
+
+
+
+
+
 
 }

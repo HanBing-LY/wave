@@ -9,13 +9,25 @@
         <result property="productId" column="product_id"/>
         <result property="articleNumber" column="article_number"/>
         <result property="productPrice" column="product_price"/>
-        <result property="stock" column="stock"/>
+        <result property="saleNum" column="sale_num"/>
         <result property="del" column="del"/>
         <result property="createName" column="create_name"/>
         <result property="modifyName" column="modify_name"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
+
+    <resultMap type="com.liyuan.wave.pms.po.dto.PmsProductSkuDto" id="commonResult">
+        <result property="id" column="id"/>
+        <result property="productId" column="product_id"/>
+        <result property="articleNumber" column="article_number"/>
+        <result property="productPrice" column="product_price"/>
+        <result property="saleNum" column="sale_num"/>
+    </resultMap>
+
+    <select id="selectByArticleNumber" resultMap="commonResult">
+
+    </select>
 
 
 </mapper>

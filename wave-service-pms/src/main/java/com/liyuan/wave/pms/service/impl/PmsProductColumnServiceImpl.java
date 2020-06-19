@@ -2,11 +2,11 @@ package com.liyuan.wave.pms.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.liyuan.wave.pms.common.PmsProductColumnCode;
+import com.liyuan.wave.pms.common.PmsExceptionCode;
 import com.liyuan.wave.pms.mapper.PmsProductColumnMapper;
 import com.liyuan.wave.pms.po.dto.PmsProductColumnDto;
-import com.liyuan.wave.pms.po.vo.PmsProductColumnSaveVo;
-import com.liyuan.wave.pms.po.vo.PmsProductColumnVo;
+import com.liyuan.wave.po.pms.vo.PmsProductColumnSaveVo;
+import com.liyuan.wave.po.pms.vo.PmsProductColumnVo;
 import com.liyuan.wave.pms.service.PmsProductColumnService;
 import com.liyuan.wave.po.pms.PmsProductColumn;
 import com.liyuan.wave.common.constant.CommonParam;
@@ -48,7 +48,7 @@ public class PmsProductColumnServiceImpl extends ServiceImpl<PmsProductColumnMap
             // 选择了父节点
             List<PmsProductColumnDto> pmsProductColumnDtos = pmsProductColumnMapper.getCommonDetailById(parentId);
             if (pmsProductColumnDtos.size() == 0) {
-                ExceptionCast.cast(PmsProductColumnCode.PARENT_NOT_EXIST);
+                ExceptionCast.cast(PmsExceptionCode.PARENT_NOT_EXIST);
             }
             PmsProductColumnDto parent = pmsProductColumnDtos.get(0);
             String parentIds = parent.getParentIds();
@@ -94,7 +94,7 @@ public class PmsProductColumnServiceImpl extends ServiceImpl<PmsProductColumnMap
     public void disabled(String ids) {
         List<Long> idList = StringUtils.stringToLongList(ids);
         if(idList.size() == 0){
-            ExceptionCast.cast(PmsProductColumnCode.PLEASE_CHO0SE_TO_DELETE);
+            ExceptionCast.cast(PmsExceptionCode.PLEASE_CHO0SE_TO_DELETE);
         }
         PmsProductColumn pmsProductColumn = new PmsProductColumn();
         pmsProductColumn.setDel(CommonParam.IS_DELETED);

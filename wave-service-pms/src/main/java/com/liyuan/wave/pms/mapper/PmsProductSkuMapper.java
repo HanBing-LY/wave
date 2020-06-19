@@ -1,8 +1,10 @@
 package com.liyuan.wave.pms.mapper;
 
-import com.liyuan.wave.po.pms.PmsProductSku;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.liyuan.wave.pms.po.dto.PmsProductSkuDto;
+import com.liyuan.wave.po.pms.PmsProductSku;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @description pms_product_sku
@@ -13,5 +15,11 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface PmsProductSkuMapper extends BaseMapper<PmsProductSku> {
-	
+
+    /**
+     * @description 根据货号查商品
+     * @param articleNumber 货号
+     * @return
+     */
+    PmsProductSkuDto selectByArticleNumber(@Param("articleNumber") String articleNumber);
 }

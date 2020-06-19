@@ -26,26 +26,27 @@ public class SmsFlashSaleProduct extends BasicPo implements Serializable {
 	 */
 	@TableId(type = IdType.AUTO)
     private Long id;
-	/**
-	 * 产品表id
-	 */
-	private Long productId;
+
 	/**
 	 * 秒杀活动表
 	 */
 	private Long flashSaleId;
+
 	/**
 	 * 秒杀展示价格
 	 */
 	private BigDecimal price;
+
 	/**
 	 * 秒杀总量
 	 */
 	private Long productCount;
+
 	/**
 	 * 限购数量:0 默认不限购
 	 */
 	private Long purchaseNumber;
+
 	/**
 	 * 产品sku id
 	 */

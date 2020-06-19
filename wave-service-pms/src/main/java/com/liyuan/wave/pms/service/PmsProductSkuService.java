@@ -2,6 +2,7 @@ package com.liyuan.wave.pms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.po.pms.PmsProductSku;
+import com.liyuan.wave.po.pms.vo.PmsProductSkuVo;
 
 /**
  * @description pms_product_sku
@@ -12,5 +13,11 @@ import com.liyuan.wave.po.pms.PmsProductSku;
  */
 public interface PmsProductSkuService extends IService<PmsProductSku> {
 
+    /**
+     * @description 商品sku对应商品的信息
+     * @param articleNumber
+     * @return
+     */
+    PmsProductSkuVo getDetailByArticleNumber(String articleNumber);
 }
 

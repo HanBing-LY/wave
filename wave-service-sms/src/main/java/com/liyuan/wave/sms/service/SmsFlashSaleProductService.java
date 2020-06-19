@@ -2,7 +2,7 @@ package com.liyuan.wave.sms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.po.sms.SmsFlashSaleProduct;
-import com.liyuan.wave.sms.po.vo.FlashSaleProductVo;
+import com.liyuan.wave.sms.po.vo.SmsFlashSaleProductSaveVo;
 import com.liyuan.wave.sms.po.vo.SmsFlashSaleProductVo;
 import com.liyuan.wave.common.vo.response.PageInfo;
 
@@ -28,13 +28,13 @@ public interface SmsFlashSaleProductService extends IService<SmsFlashSaleProduct
      * @description 选择秒杀商品
      * @return
      */
-    void chooseProduct(FlashSaleProductVo flashSaleProductVo);
+    void chooseProduct(SmsFlashSaleProductSaveVo smsFlashSaleProductSaveVo);
 
     /**
      * @author liyuan
      * @description 停止商品秒杀
      */
-    void delpl(String ids);
+    void disable(String ids);
 
     /**
      * @author liyuan

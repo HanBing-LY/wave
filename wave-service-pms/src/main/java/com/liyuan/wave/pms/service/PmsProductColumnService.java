@@ -1,8 +1,8 @@
 package com.liyuan.wave.pms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.liyuan.wave.pms.po.vo.PmsProductColumnSaveVo;
-import com.liyuan.wave.pms.po.vo.PmsProductColumnVo;
+import com.liyuan.wave.po.pms.vo.PmsProductColumnSaveVo;
+import com.liyuan.wave.po.pms.vo.PmsProductColumnVo;
 import com.liyuan.wave.po.pms.PmsProductColumn;
 
 import java.util.List;

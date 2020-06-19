@@ -1,4 +1,4 @@
-package com.liyuan.wave.pms.common;
+package com.liyuan.wave.sms.common;
 
 import com.liyuan.wave.common.exception.ExceptionResult;
 import lombok.ToString;
@@ -10,10 +10,11 @@ import lombok.ToString;
  * @date 2020-06-18-0:15
  */
 @ToString
-public enum PmsProductColumnCode implements ExceptionResult {
+public enum SmsExceptionCode implements ExceptionResult {
 
-    PARENT_NOT_EXIST(false,90001,"该父节点不存在,请重选！"),
-    PLEASE_CHO0SE_TO_DELETE(false,90002,"请选择需要删除的分类！")
+    TIME_NOT_TRUE(false,90101,"请输入正确的活动时间！"),
+    PLEASE_CHO0SE_TO_DELETE(false,90102,"请选择需要停止的秒杀时间段！"),
+    FLASH_SALE_PRICE_ERROR(false,90103,"秒杀价必须低于售价！")
 
 
     ;
@@ -26,7 +27,7 @@ public enum PmsProductColumnCode implements ExceptionResult {
     //提示信息
     String message;
 
-    PmsProductColumnCode(boolean success, int code, String message){
+    SmsExceptionCode(boolean success, int code, String message){
         this.success = success;
         this.code = code;
         this.message = message;
