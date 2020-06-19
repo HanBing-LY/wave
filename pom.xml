@@ -39,6 +39,7 @@
         <module>wave-service-pms</module>
         <module>wave-service-search</module>
         <module>wave-service-sms</module>
+        <module>wave-service-task</module>
         <module>wave-service-ums</module>
         <module>wave-service-usercenter</module>
         <module>wave-service-webpage</module>
