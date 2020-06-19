@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 /**
@@ -99,13 +100,32 @@ public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper,
             return new PageInfo<>();
         }
         Long size = stringRedisTemplate.opsForZSet().size(ProductCache.HOT_SALE_NEAR_SEVEN_DAYS);
-        List<PmsProductInfoVo> pmsProductInfoVos = rangeWithScores.stream().map(i -> {
-            PmsProductInfoVo pmsProductInfoVo = JSONObject.parseObject(i.getValue(), PmsProductInfoVo.class);
-            pmsProductInfoVo.setSaleNumber(Long.valueOf(Optional.ofNullable(i.getScore()).orElse(0.0).toString()));
+
+        List<Long> indexList = new ArrayList<>();
+        RedisCallback<Object> redisCallback = connection -> {
+            StringRedisConnection stringRedisConn = (StringRedisConnection) connection;
+            rangeWithScores.forEach(i -> {
+                stringRedisConn.get(ProductCache.INFO_DETAIL + i.getValue());
+                indexList.add(i.getScore().longValue());
+            });
+            return null;
+        };
+
+        List<Object> objects = stringRedisTemplate.executePipelined(redisCallback);
+        if (StringUtils.isEmpty(objects)) {
+            return new PageInfo<>();
+        }
+
+        AtomicInteger index = new AtomicInteger();
+        List<PmsProductInfoVo> collect = objects.stream().map(i -> {
+            index.getAndIncrement();
+            PmsProductInfoVo pmsProductInfoVo = JSONObject.parseObject(i.toString(), PmsProductInfoVo.class);
+            pmsProductInfoVo.setSaleNumber(indexList.get(index.get()));
             return pmsProductInfoVo;
         }).collect(Collectors.toList());
+
         PageInfo<PmsProductInfoVo> pageInfo = new PageInfo<>();
-        pageInfo.setList(pmsProductInfoVos);
+        pageInfo.setList(collect);
         pageInfo.setTotal(Optional.ofNullable(size).orElse(0L));
         return pageInfo;
     }
@@ -114,7 +134,7 @@ public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper,
      * @param pageNum
      * @param pageSize
      * @return
-     * @description 1-0-0 商城首页最新上架商品
+     * @description 最新上架商品
      */
     @Override
     public PageInfo<PmsProductInfoVo> listNewPushList(Integer pageNum, Integer pageSize) {
@@ -125,12 +145,12 @@ public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper,
             return new PageInfo<>();
         }
         Long size = stringRedisTemplate.opsForZSet().size(ProductCache.PUSH_TO_SALE);
-        List<Integer> indexList = new ArrayList<>();
+        List<Long> indexList = new ArrayList<>();
         RedisCallback<Object> redisCallback = connection -> {
             StringRedisConnection stringRedisConn = (StringRedisConnection) connection;
             rangeWithScores.forEach(i -> {
                 stringRedisConn.get(ProductCache.INFO_DETAIL + i.getValue());
-                indexList.add(i.getScore().intValue());
+                indexList.add(i.getScore().longValue());
             });
             return null;
         };
@@ -138,10 +158,12 @@ public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper,
         if (StringUtils.isEmpty(objects)) {
             return new PageInfo<>();
         }
-        int index = 0;
+
+        AtomicInteger index = new AtomicInteger();
         List<PmsProductInfoVo> collect = objects.stream().map(i -> {
+            index.getAndIncrement();
             PmsProductInfoVo pmsProductInfoVo = JSONObject.parseObject(i.toString(), PmsProductInfoVo.class);
-            pmsProductInfoVo.setPushTime(DateUtil.yearAndQuarter(new Date(indexList.get(index))));
+            pmsProductInfoVo.setPushTime(DateUtil.yearAndQuarter(new Date(indexList.get(index.get()))));
             return pmsProductInfoVo;
         }).collect(Collectors.toList());
 
@@ -159,6 +181,37 @@ public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper,
      */
     @Override
     public PageInfo<PmsProductInfoVo> starList(Integer pageNum, Integer pageSize) {
-        return null;
+        long start = (pageNum - 1) * pageSize;
+        long end = pageNum * pageSize;
+        Set<ZSetOperations.TypedTuple<String>> rangeWithScores = stringRedisTemplate.opsForZSet().rangeWithScores(ProductCache.CLICK, start, end);
+        if (rangeWithScores == null || rangeWithScores.size() == 0) {
+            return new PageInfo<>();
+        }
+        Long size = stringRedisTemplate.opsForZSet().size(ProductCache.PUSH_TO_SALE);
+        List<Long> indexList = new ArrayList<>();
+        RedisCallback<Object> redisCallback = connection -> {
+            StringRedisConnection stringRedisConn = (StringRedisConnection) connection;
+            rangeWithScores.forEach(i -> {
+                stringRedisConn.get(ProductCache.INFO_DETAIL + i.getValue());
+                indexList.add(i.getScore().longValue());
+            });
+            return null;
+        };
+        List<Object> objects = stringRedisTemplate.executePipelined(redisCallback);
+        if (StringUtils.isEmpty(objects)) {
+            return new PageInfo<>();
+        }
+        AtomicInteger index = new AtomicInteger();
+        List<PmsProductInfoVo> collect = objects.stream().map(i -> {
+            index.getAndIncrement();
+            PmsProductInfoVo pmsProductInfoVo = JSONObject.parseObject(i.toString(), PmsProductInfoVo.class);
+            pmsProductInfoVo.setPushTime(DateUtil.yearAndQuarter(new Date(indexList.get(index.get()))));
+            return pmsProductInfoVo;
+        }).collect(Collectors.toList());
+
+        PageInfo<PmsProductInfoVo> pageInfo = new PageInfo<>();
+        pageInfo.setList(collect);
+        pageInfo.setTotal(Optional.ofNullable(size).orElse(0L));
+        return pageInfo;
     }
 }

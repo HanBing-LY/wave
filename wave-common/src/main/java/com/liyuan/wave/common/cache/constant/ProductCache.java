@@ -8,6 +8,11 @@ package com.liyuan.wave.common.cache.constant;
 public interface ProductCache {
 
     /**
+     * 浏览量
+     */
+    static final String CLICK = "che_constant_click";
+
+    /**
      * 当天的热卖
      */
     static final String HOT_SALE_TODAY = "che_hot_sale_product_current_";
