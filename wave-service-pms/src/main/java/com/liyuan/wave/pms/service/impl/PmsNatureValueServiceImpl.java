@@ -68,8 +68,10 @@ public class PmsNatureValueServiceImpl extends ServiceImpl<PmsNatureValueMapper,
     }
 
     @Override
-    public PageInfo<PmsNatureValueDto> queryByColumnNatureId(Long id, Long pageNo, Long pageSize) {
-        List<PmsNatureValueDto> pmsNatureValueDtoList = pmsNatureValueMapper.queryByColumnNatureId(id,pageNo,pageSize);
+    public PageInfo<PmsNatureValueDto> queryByColumnNatureId(Long id, Long pageNum, Long pageSize) {
+        long start = (pageNum - 1) * pageSize;
+        long end = pageNum * pageSize;
+        List<PmsNatureValueDto> pmsNatureValueDtoList = pmsNatureValueMapper.queryByColumnNatureId(id,start,end);
         PageInfo<PmsNatureValueDto> pageInfo = new PageInfo<>();
         pageInfo.setList(pmsNatureValueDtoList);
         return pageInfo;

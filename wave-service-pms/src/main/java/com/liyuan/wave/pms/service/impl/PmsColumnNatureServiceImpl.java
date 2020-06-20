@@ -20,9 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description pms_column_nature
- *
  * @author liyuan
+ * @description pms_column_nature
  * @email 724837404@qq.com
  * @date 2020-06-15 16:10:20
  */
@@ -30,14 +29,14 @@ import java.util.List;
 public class PmsColumnNatureServiceImpl extends ServiceImpl<PmsColumnNatureMapper, PmsColumnNature> implements PmsColumnNatureService {
 
     @Autowired
-    PmsColumnNatureMapper pmsColumnNatureMapper;
+    private PmsColumnNatureMapper pmsColumnNatureMapper;
 
     @Override
     public void add(PmsColumnNatureSaveVo pmsColumnNatureSaveVo) {
         Long productColumnId = pmsColumnNatureSaveVo.getProductColumnId();
         List<String> columnNatureNames = pmsColumnNatureSaveVo.getColumnNatureNames();
         List<PmsColumnNature> pmsColumnNatures = new ArrayList<>();
-        columnNatureNames.forEach(i ->{
+        columnNatureNames.forEach(i -> {
             PmsColumnNature pmsColumnNature = new PmsColumnNature();
             pmsColumnNature.setNatureName(i);
             pmsColumnNature.setProductColumnId(productColumnId);
@@ -57,19 +56,21 @@ public class PmsColumnNatureServiceImpl extends ServiceImpl<PmsColumnNatureMappe
     @Override
     public void disable(String ids) {
         List<Long> idList = StringUtils.stringToLongList(ids);
-        if(idList.size() == 0){
+        if (idList.size() == 0) {
             ExceptionCast.cast(PmsExceptionCode.PLEASE_CHO0SE_TO_DELETE);
         }
         PmsColumnNature pmsColumnNature = new PmsColumnNature();
         pmsColumnNature.setDel(CommonParam.IS_DELETED);
         QueryWrapper<PmsColumnNature> pmsColumnNatureQueryWrapper = new QueryWrapper<>();
-        pmsColumnNatureQueryWrapper.in("id",idList);
-        pmsColumnNatureMapper.update(pmsColumnNature,pmsColumnNatureQueryWrapper);
+        pmsColumnNatureQueryWrapper.in("id", idList);
+        pmsColumnNatureMapper.update(pmsColumnNature, pmsColumnNatureQueryWrapper);
     }
 
     @Override
-    public PageInfo<PmsColumnNatureDto> queryByColumnId(Long id, Long pageNo, Long pageSize) {
-        List<PmsColumnNatureDto> pmsColumnNatureDtos = pmsColumnNatureMapper.queryByColumnId(id,pageNo,pageSize);
+    public PageInfo<PmsColumnNatureDto> queryByColumnId(Long id, Long pageNum, Long pageSize) {
+        long start = (pageNum - 1) * pageSize;
+        long end = pageNum * pageSize;
+        List<PmsColumnNatureDto> pmsColumnNatureDtos = pmsColumnNatureMapper.queryByColumnId(id, start, end);
         PageInfo<PmsColumnNatureDto> pageInfo = new PageInfo<>();
         pageInfo.setList(pmsColumnNatureDtos);
         return pageInfo;

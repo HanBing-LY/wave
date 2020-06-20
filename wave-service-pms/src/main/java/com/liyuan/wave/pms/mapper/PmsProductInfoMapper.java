@@ -4,6 +4,7 @@ import com.liyuan.wave.pms.po.dto.PmsProductInfoDto;
 import com.liyuan.wave.po.pms.PmsProductInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,9 +21,7 @@ public interface PmsProductInfoMapper extends BaseMapper<PmsProductInfo> {
     /**
      * @description 查询五级分类下的所有商品
      * @param id
-     * @param pageNum
-     * @param pageSize
      * @return
      */
-    List<PmsProductInfoDto> listGetAllProductsByMinColumn(Long id,Integer pageNum, Integer pageSize);
+    List<PmsProductInfoDto> listGetAllProductsByMinColumn(@Param("id") Long id);
 }

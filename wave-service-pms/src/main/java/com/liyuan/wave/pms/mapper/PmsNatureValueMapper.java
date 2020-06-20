@@ -4,6 +4,7 @@ import com.liyuan.wave.pms.po.dto.PmsNatureValueDto;
 import com.liyuan.wave.po.pms.PmsNatureValue;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,6 +18,13 @@ import java.util.List;
 @Mapper
 public interface PmsNatureValueMapper extends BaseMapper<PmsNatureValue> {
 
-    List<PmsNatureValueDto> queryByColumnNatureId(Long id, Long pageNo, Long pageSize);
+    /**
+     * @description  查询属性通用值
+     * @param id
+     * @param start
+     * @param end
+     * @return
+     */
+    List<PmsNatureValueDto> queryByColumnNatureId(@Param("id") Long id, @Param("start") long start, @Param("end") long end);
 
 }

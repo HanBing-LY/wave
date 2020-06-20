@@ -18,7 +18,6 @@ public class PmsProductSkuDto {
     /**
      * id
      */
-    @TableId(type = IdType.AUTO)
     private Long id;
     /**
      * 产品id

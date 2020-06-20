@@ -30,7 +30,19 @@
     </resultMap>
 
     <select id="listGetAllProductsByMinColumn" resultType="com.liyuan.wave.pms.po.dto.PmsProductInfoDto">
-
+        SELECT
+        id,
+        product_name,
+        product_icon,
+        product_old_price,
+        product_sale_price,
+        product_desc,
+        sale_num,
+        order_val
+        FROM
+        pms_product_info
+        WHERE
+        product_column_id = #{id}
     </select>
 
 

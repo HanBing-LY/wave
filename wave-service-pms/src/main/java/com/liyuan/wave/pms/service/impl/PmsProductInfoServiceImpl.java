@@ -51,7 +51,7 @@ public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper,
         if (StringUtils.isNotEmpty(s)) {
             return JSONArray.parseArray(s, PmsProductInfoVo.class);
         }
-        List<PmsProductInfoDto> pmsProductInfoDtos = pmsProductInfoMapper.listGetAllProductsByMinColumn(id, pageNum, pageSize);
+        List<PmsProductInfoDto> pmsProductInfoDtos = pmsProductInfoMapper.listGetAllProductsByMinColumn(id);
         ThreadPoolTask.threadPoolExecutor.submit(()->{
             stringRedisTemplate.opsForValue().set(ProductColumnCache.PRODUCT_PREVIEW_SHOW + id, JSONArray.toJSONString(pmsProductInfoDtos), 30, TimeUnit.DAYS);
         });

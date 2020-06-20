@@ -16,7 +16,13 @@
     </resultMap>
 
     <select id="queryByColumnNatureId" resultType="com.liyuan.wave.pms.po.dto.PmsNatureValueDto">
-
+        SELECT
+        id,column_nature_id,value_desc
+        FROM
+        pms_nature_value
+        WHERE
+        id > ( SELECT id  FROM pms_nature_value  WHERE column_nature_id = #{id} LIMIT #{start} ,1)
+        LIMIT #{end}
     </select>
 
 

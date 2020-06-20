@@ -26,7 +26,16 @@
     </resultMap>
 
     <select id="selectByArticleNumber" resultMap="commonResult">
-
+        SELECT
+        id,
+        product_id,
+        article_number,
+        product_price,
+        sale_num
+        FROM
+        pms_product_sku
+        WHERE
+        article_number = #{articleNumber}
     </select>
 
 
