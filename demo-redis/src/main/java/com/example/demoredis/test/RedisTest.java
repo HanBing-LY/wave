@@ -209,9 +209,9 @@ public class RedisTest {
         // 使用 RedisCallback 把命令放在 pipeline 中
         RedisCallback<Object> redisCallback = connection -> {
 
-            StringRedisConnection stringRedisConn = (StringRedisConnection) connection;
+            StringRedisConnection stringRedisConnection = (StringRedisConnection) connection;
             for (int i = 0; i != 10; ++i) {
-                stringRedisConn.set(String.valueOf(i), String.valueOf(i));
+                stringRedisConnection.set(String.valueOf(i), String.valueOf(i));
             }
 
             return null;    // 这里必须要返回 null

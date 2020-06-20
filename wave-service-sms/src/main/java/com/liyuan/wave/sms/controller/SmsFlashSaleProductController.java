@@ -1,13 +1,11 @@
 package com.liyuan.wave.sms.controller;
 
-import com.liyuan.wave.sms.po.vo.SmsFlashSaleProductSaveVo;
-import com.liyuan.wave.sms.service.SmsFlashSaleProductService;
 import com.liyuan.wave.common.vo.response.JsonResult;
 import com.liyuan.wave.common.web.BaseController;
+import com.liyuan.wave.sms.po.vo.SmsFlashSaleProductSaveVo;
+import com.liyuan.wave.sms.service.SmsFlashSaleProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
 
 
 /**
@@ -29,8 +27,8 @@ public class SmsFlashSaleProductController extends BaseController {
      * @description 分页查询秒杀控制
      */
     @GetMapping("/list")
-    public JsonResult list(@RequestParam(name = "flashSaleProductId",required = false) Integer flashSaleProductId, @RequestParam(name = "page",required = false) Integer page, @RequestParam(name = "size",required = false) Integer size){
-        return success(smsFlashSaleProductService.queryByPage(flashSaleProductId,page,size));
+    public JsonResult list(@RequestParam(name = "flashSaleId",required = false) Long flashSaleId, @RequestParam(name = "page",required = false) Long page, @RequestParam(name = "size",required = false) Long size){
+        return success(smsFlashSaleProductService.queryByPage(flashSaleId,page,size));
     }
 
 
@@ -60,9 +58,9 @@ public class SmsFlashSaleProductController extends BaseController {
      * @description 修改秒杀价
      * @return
      */
-    @PutMapping("/updatePrice")
-    public JsonResult updatePrice(@RequestParam(name = "flashSaleProductSkuId",required = true) Integer flashSaleProductSkuId,@RequestParam(name = "price",required = true) BigDecimal price){
-        smsFlashSaleProductService.updatePrice(flashSaleProductSkuId,price);
+    @PutMapping("/update")
+    public JsonResult updatePrice(@RequestBody SmsFlashSaleProductSaveVo smsFlashSaleProductSaveVo){
+        smsFlashSaleProductService.updatePrice(smsFlashSaleProductSaveVo);
         return success();
     }
 

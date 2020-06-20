@@ -32,6 +32,16 @@ public class SmsGroupSale extends BasicPo implements Serializable {
 	 * 控制开关 1:开启 0:关闭
 	 */
 	private Byte flag;
+
+	/**
+	 * 主题
+	 */
+	private String note;
+	/**
+	 * 描述
+	 */
+	private String message;
+
 	/**
 	 * 开始时间
 	 */

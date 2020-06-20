@@ -103,9 +103,9 @@ public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper,
 
         List<Long> indexList = new ArrayList<>();
         RedisCallback<Object> redisCallback = connection -> {
-            StringRedisConnection stringRedisConn = (StringRedisConnection) connection;
+            StringRedisConnection stringRedisConnection = (StringRedisConnection) connection;
             rangeWithScores.forEach(i -> {
-                stringRedisConn.get(ProductCache.INFO_DETAIL + i.getValue());
+                stringRedisConnection.get(ProductCache.INFO_DETAIL + i.getValue());
                 indexList.add(i.getScore().longValue());
             });
             return null;
@@ -147,9 +147,9 @@ public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper,
         Long size = stringRedisTemplate.opsForZSet().size(ProductCache.PUSH_TO_SALE);
         List<Long> indexList = new ArrayList<>();
         RedisCallback<Object> redisCallback = connection -> {
-            StringRedisConnection stringRedisConn = (StringRedisConnection) connection;
+            StringRedisConnection stringRedisConnection = (StringRedisConnection) connection;
             rangeWithScores.forEach(i -> {
-                stringRedisConn.get(ProductCache.INFO_DETAIL + i.getValue());
+                stringRedisConnection.get(ProductCache.INFO_DETAIL + i.getValue());
                 indexList.add(i.getScore().longValue());
             });
             return null;
@@ -190,9 +190,9 @@ public class PmsProductInfoServiceImpl extends ServiceImpl<PmsProductInfoMapper,
         Long size = stringRedisTemplate.opsForZSet().size(ProductCache.PUSH_TO_SALE);
         List<Long> indexList = new ArrayList<>();
         RedisCallback<Object> redisCallback = connection -> {
-            StringRedisConnection stringRedisConn = (StringRedisConnection) connection;
+            StringRedisConnection stringRedisConnection = (StringRedisConnection) connection;
             rangeWithScores.forEach(i -> {
-                stringRedisConn.get(ProductCache.INFO_DETAIL + i.getValue());
+                stringRedisConnection.get(ProductCache.INFO_DETAIL + i.getValue());
                 indexList.add(i.getScore().longValue());
             });
             return null;

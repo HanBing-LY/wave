@@ -11,6 +11,5 @@ import com.liyuan.wave.po.sms.SmsGroupInfoDetail;
  * @date 2020-06-15 16:09:35
  */
 public interface SmsGroupInfoDetailService extends IService<SmsGroupInfoDetail> {
-
 }
 

@@ -1,12 +1,10 @@
 package com.liyuan.wave.sms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.liyuan.wave.common.vo.response.PageInfo;
 import com.liyuan.wave.po.sms.SmsFlashSaleProduct;
 import com.liyuan.wave.sms.po.vo.SmsFlashSaleProductSaveVo;
 import com.liyuan.wave.sms.po.vo.SmsFlashSaleProductVo;
-import com.liyuan.wave.common.vo.response.PageInfo;
-
-import java.math.BigDecimal;
 
 /**
  * @description sms_flash_sale_product
@@ -21,7 +19,7 @@ public interface SmsFlashSaleProductService extends IService<SmsFlashSaleProduct
      * @author liyuan
      * @description 分页查询秒杀控制
      */
-    PageInfo<SmsFlashSaleProductVo> queryByPage(Integer flashSaleProductId, Integer page, Integer size);
+    PageInfo<SmsFlashSaleProductVo> queryByPage(Long flashSaleProductId, Long page, Long size);
 
     /**
      * @author liyuan
@@ -41,6 +39,6 @@ public interface SmsFlashSaleProductService extends IService<SmsFlashSaleProduct
      * @description 修改秒杀价
      * @return
      */
-    void updatePrice(Integer flashSaleProductSkuId, BigDecimal price);
+    void updatePrice(SmsFlashSaleProductSaveVo smsFlashSaleProductSaveVo);
 }
 

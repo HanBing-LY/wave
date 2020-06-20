@@ -1,11 +1,10 @@
 package com.liyuan.wave.sms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.liyuan.wave.po.sms.SmsGroupSale;
-import com.liyuan.wave.sms.po.vo.SmsGroupSaleVo;
 import com.liyuan.wave.common.vo.response.PageInfo;
-
-import java.util.Date;
+import com.liyuan.wave.po.sms.SmsGroupSale;
+import com.liyuan.wave.sms.po.vo.SmsGroupSaleSaveVo;
+import com.liyuan.wave.sms.po.vo.SmsGroupSaleVo;
 
 /**
  * @description sms_group_sale
@@ -19,22 +18,22 @@ public interface SmsGroupSaleService extends IService<SmsGroupSale> {
     /**
      * @author liyuan
      * @description 添加拼团控制
-     * @param smsGroupSale
+     * @param smsGroupSaleSaveVo
      */
-    void add(SmsGroupSale smsGroupSale);
+    void add(SmsGroupSaleSaveVo smsGroupSaleSaveVo);
 
     /**
      * @author liyuan
      * @description 修改拼团控制
-     * @param smsGroupSale
+     * @param smsGroupSaleSaveVo
      */
-    void modify(SmsGroupSale smsGroupSale);
+    void modify(SmsGroupSaleSaveVo smsGroupSaleSaveVo);
 
     /**
      * @author liyuan
-     * @description 分页查询秒杀控制
+     * @description 分页查询拼团控制
      */
-    PageInfo<SmsGroupSaleVo> queryPage(Integer flag, Date startTime, Date endTime, Integer page, Integer size);
+    PageInfo<SmsGroupSaleVo> queryPage(Byte status, Long pageNum, Long pageSize);
 
     /**
      * @author liyuan
@@ -42,6 +41,6 @@ public interface SmsGroupSaleService extends IService<SmsGroupSale> {
      * @param ids
      * @return
      */
-    void delpl(String ids);
+    void disable(String ids);
 }
 

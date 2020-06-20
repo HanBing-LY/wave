@@ -27,10 +27,6 @@ public class SmsGroupSaleProduct extends BasicPo implements Serializable {
 	@TableId(type = IdType.AUTO)
     private Long id;
 	/**
-	 * 产品表id
-	 */
-	private Long productId;
-	/**
 	 * 拼团活动表
 	 */
 	private Long groupSaleId;

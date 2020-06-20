@@ -16,5 +16,15 @@ public interface FlashSaleCache {
     /**
      * 秒杀时间段缓存
      */
+    static final String SELF_TIME = "che_flash_sale_time_";
+
+    /**
+     * 秒杀时间段缓存
+     */
     static final String INFO = "che_flash_sale_info_";
+
+    /**
+     * 秒杀时间段下的往商品
+     */
+    static final String INFO_PRODUCT = "che_flash_sale_info_product_";
 }

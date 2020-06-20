@@ -8,31 +8,30 @@ import java.math.BigDecimal;
  * @author liyuan
  * @description
  * @email 724837404@qq.com
- * @date 2020-06-17-23:24
+ * @date 2020-06-17-23:33
  */
 @Data
-public class SmsFlashSaleProductSaveVo {
+public class SmsGroupSaleProductSaveVo {
 
     /**
      * id
      */
     private Long id;
 
-
     /**
-     * 秒杀活动表
+     * 拼团活动表
      */
-    private Long flashSaleId;
+    private Long groupSaleId;
 
     /**
-     * 秒杀展示价格
+     * 拼团展示价格
      */
     private BigDecimal price;
 
     /**
-     * 秒杀总量
+     * 拼团人数
      */
-    private Long productCount;
+    private Long groupPeople;
 
     /**
      * 限购数量:0 默认不限购
@@ -43,5 +42,4 @@ public class SmsFlashSaleProductSaveVo {
      * 商品货号
      */
     private String articleNumber;
-
 }

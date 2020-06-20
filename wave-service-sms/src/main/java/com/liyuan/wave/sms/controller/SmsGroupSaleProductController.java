@@ -1,9 +1,9 @@
 package com.liyuan.wave.sms.controller;
 
-import com.liyuan.wave.sms.po.vo.GroupSaleProductVo;
-import com.liyuan.wave.sms.service.SmsGroupSaleProductService;
 import com.liyuan.wave.common.vo.response.JsonResult;
 import com.liyuan.wave.common.web.BaseController;
+import com.liyuan.wave.sms.po.vo.SmsGroupSaleProductSaveVo;
+import com.liyuan.wave.sms.service.SmsGroupSaleProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,12 +25,12 @@ public class SmsGroupSaleProductController extends BaseController {
     /**
      * @author liyuan
      * @description 选择拼团商品
-     * @param groupSaleProductVo
+     * @param smsGroupSaleProductSaveVo
      * @return
      */
     @PostMapping
-    public JsonResult chooseProduct(@RequestBody GroupSaleProductVo groupSaleProductVo){
-        smsGroupSaleProductService.chooseProduct(groupSaleProductVo);
+    public JsonResult chooseProduct(@RequestBody SmsGroupSaleProductSaveVo smsGroupSaleProductSaveVo){
+        smsGroupSaleProductService.chooseProduct(smsGroupSaleProductSaveVo);
         return success();
     }
 
@@ -40,7 +40,29 @@ public class SmsGroupSaleProductController extends BaseController {
      * @description 分页查询控制
      */
     @GetMapping("/list")
-    public JsonResult list(@RequestParam(name = "groupSaleId",required = true) Integer groupSaleId){
-        return success(smsGroupSaleProductService.listGetByGroupSaleId(groupSaleId));
+    public JsonResult list(@RequestParam(name = "groupSaleId",required = true) Long groupSaleId, @RequestParam(name = "page",required = false) Long page, @RequestParam(name = "size",required = false) Long size){
+        return success(smsGroupSaleProductService.listGetByGroupSaleId(groupSaleId,page,size));
+    }
+
+
+    /**
+     * @author liyuan
+     * @description 停止商品
+     */
+    @GetMapping("/stop")
+    public JsonResult stop(@RequestParam(name = "ids",required = true) String ids){
+        smsGroupSaleProductService.disable(ids);
+        return success();
+    }
+
+    /**
+     * @author liyuan
+     * @description 修改
+     * @return
+     */
+    @PutMapping("/update")
+    public JsonResult updatePrice(@RequestBody SmsGroupSaleProductSaveVo smsGroupSaleProductSaveVo){
+        smsGroupSaleProductService.updatePrice(smsGroupSaleProductSaveVo);
+        return success();
     }
 }
