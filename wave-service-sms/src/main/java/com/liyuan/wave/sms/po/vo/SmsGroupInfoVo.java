@@ -9,4 +9,25 @@ import lombok.Data;
  */
 @Data
 public class SmsGroupInfoVo {
+
+
+    /**
+     * 团编码，唯一标识
+     */
+    private String groupNumber;
+
+    /**
+     * 当前人数
+     */
+    private Long people;
+
+    /**
+     * 发起人
+     */
+    private Long userName;
+
+    /**
+     * 头像
+     */
+    private Long userIcon;
 }

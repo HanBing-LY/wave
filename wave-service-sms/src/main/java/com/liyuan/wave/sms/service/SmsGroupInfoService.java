@@ -2,6 +2,7 @@ package com.liyuan.wave.sms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.po.sms.SmsGroupInfo;
+import com.liyuan.wave.sms.po.vo.SmsGroupInfoDetailVo;
 import com.liyuan.wave.sms.po.vo.SmsGroupInfoVo;
 
 import java.util.List;
@@ -16,18 +17,30 @@ import java.util.List;
 public interface SmsGroupInfoService extends IService<SmsGroupInfo> {
     /**
      * @description  根据拼团商品查所有拼团
-     * @param productSkuId
-     * @param pageNum
-     * @param pageSize
+     * @param articleNumber
      * @return
      */
-    List<SmsGroupInfoVo> listGroupClubByPage(Long productSkuId, Integer pageNum, Integer pageSize);
+    List<SmsGroupInfoVo> listGroupClubByPage(String articleNumber,boolean flag);
 
     /**
      * @description   根据groupNumber拼团编码查询拼购信息
      * @param groupNumber
      * @return
      */
-    SmsGroupInfoVo groupClubByGroupNumber(Integer groupNumber);
+    SmsGroupInfoDetailVo groupClubByGroupNumber(String groupNumber);
+
+    /**
+     * @description  拼团加入,生成订单
+     * @param groupNumber
+     * @return
+     */
+    void joinGroup(String groupNumber);
+
+    /**
+     * @description  建团
+     * @param articleNumber
+     * @return
+     */
+    void createGroup(String articleNumber,Long groupSaleProductId);
 }
 

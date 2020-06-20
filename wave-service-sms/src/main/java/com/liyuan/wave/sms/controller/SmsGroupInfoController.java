@@ -21,22 +21,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class SmsGroupInfoController extends BaseController {
 
-    /**
-     * 组件注入
-     */
     @Autowired
     private SmsGroupInfoService smsGroupInfoService;
 
     /**
      * @description  根据拼团商品查所有拼团
-     * @param productSkuId
-     * @param pageNum
-     * @param pageSize
+     * @param articleNumber
      * @return
      */
     @GetMapping("/listGroupClubByPage")
-    public JsonResult listGroupClubByPage(@RequestParam(name = "productSkuId",required = true) Long productSkuId, @RequestParam(name = "page",required = false) Integer pageNum, @RequestParam(name = "size",required = false) Integer pageSize){
-        return success(smsGroupInfoService.listGroupClubByPage(productSkuId,pageNum,pageSize));
+    public JsonResult listGroupClubByPage(@RequestParam(name = "articleNumber",required = true) String articleNumber){
+        return success(smsGroupInfoService.listGroupClubByPage(articleNumber,false));
     }
 
     /**
@@ -45,8 +40,29 @@ public class SmsGroupInfoController extends BaseController {
      * @return
      */
     @GetMapping("/groupClubByGroupNumber")
-    public JsonResult groupClubByGroupNumber(@RequestParam(name = "groupNumber",required = true) Integer groupNumber){
+    public JsonResult groupClubByGroupNumber(@RequestParam(name = "groupNumber",required = true) String groupNumber){
         return success(smsGroupInfoService.groupClubByGroupNumber(groupNumber));
     }
 
+    /**
+     * @description  拼团加入,生成订单
+     * @param groupNumber
+     * @return
+     */
+    @GetMapping("/group/go")
+    public JsonResult joinGroup(@RequestParam(name = "groupNumber",required = true) String groupNumber){
+        smsGroupInfoService.joinGroup(groupNumber);
+        return success();
+    }
+
+    /**
+     * @description  建团,生成订单
+     * @param articleNumber
+     * @return
+     */
+    @GetMapping("/group/create")
+    public JsonResult createGroup(@RequestParam(name = "articleNumber",required = true) String articleNumber,@RequestParam(name = "groupSaleProductId",required = true) Long groupSaleProductId){
+        smsGroupInfoService.createGroup(articleNumber,groupSaleProductId);
+        return success();
+    }
 }

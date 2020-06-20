@@ -38,10 +38,6 @@ public class SmsGroupInfo extends BasicPo implements Serializable {
 	 */
 	private Long groupPeople;
 	/**
-	 * 当前人数
-	 */
-	private Long people;
-	/**
 	 * 发起人
 	 */
 	private Long userId;

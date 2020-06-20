@@ -1,4 +1,4 @@
-package com.liyuan.wave.sms.po.vo;
+package com.liyuan.wave.sms.po.dto;
 
 import lombok.Data;
 
@@ -7,11 +7,15 @@ import java.math.BigDecimal;
 /**
  * @author liyuan
  * @description
- * @email 724837404@qq.com
- * @date 2020-06-17-23:33
+ * @date 2020-06-20 15:17
  */
 @Data
-public class SmsGroupSaleProductVo {
+public class SmsGroupSaleProductDto {
+
+    /**
+     * id
+     */
+    private Long id;
 
     /**
      * 拼团价格

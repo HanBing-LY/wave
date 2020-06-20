@@ -241,11 +241,25 @@ public class RedisTest {
      * 布隆过滤器
      */
     public RBloomFilter<Object> bloomFilter(String s) {
-        return redissonClient.getBloomFilter(s);
+        RBloomFilter<Object> bloomFilter = redissonClient.getBloomFilter(s);
+        bloomFilter.tryInit(1000, 0.03);
+
+        for (int i = 0; i < 1000; i++) {
+            bloomFilter.add("瓜田李下 " + i);
+        }
+
+        System.out.println("'瓜田李下 1'是否存在：" + bloomFilter.contains("瓜田李下 " + 1));
+        System.out.println("'海贼王'是否存在：" + bloomFilter.contains("海贼王"));
+        System.out.println("预计插入数量：" + bloomFilter.getExpectedInsertions());
+        System.out.println("容错率：" + bloomFilter.getFalseProbability());
+        System.out.println("hash函数的个数：" + bloomFilter.getHashIterations());
+        System.out.println("插入对象的个数：" + bloomFilter.count());
+        return bloomFilter;
     }
 
     /**
      * redis限流
+     *
      * @return
      */
     public String traffic() {
@@ -261,9 +275,10 @@ public class RedisTest {
 
     /**
      * 流量释放
+     *
      * @return
      */
-    public String release(){
+    public String release() {
         RSemaphore traffic = redissonClient.getSemaphore("traffic");
         traffic.release();
         return "end";
