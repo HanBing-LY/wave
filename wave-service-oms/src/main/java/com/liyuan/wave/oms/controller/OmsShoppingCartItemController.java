@@ -1,8 +1,12 @@
 package com.liyuan.wave.oms.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
+import com.liyuan.wave.common.vo.response.JsonResult;
+import com.liyuan.wave.common.web.BaseController;
+import com.liyuan.wave.oms.service.OmsShoppingCartItemService;
+import com.liyuan.wave.po.oms.vo.OmsShoppingCartItemSaveVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("oms/omsshoppingcartitem")
-public class OmsShoppingCartItemController {
+public class OmsShoppingCartItemController extends BaseController {
+
+    @Autowired
+    private OmsShoppingCartItemService omsShoppingCartItemService;
+
+    /**
+     * @description 修改购物车中某个商品
+     * @param omsShoppingCartItemSaveVo
+     * @return
+     */
+    @PutMapping
+    public JsonResult modifyCount(@RequestBody OmsShoppingCartItemSaveVo omsShoppingCartItemSaveVo){
+        return success(omsShoppingCartItemService.modifyCount(omsShoppingCartItemSaveVo));
+    }
 
 }

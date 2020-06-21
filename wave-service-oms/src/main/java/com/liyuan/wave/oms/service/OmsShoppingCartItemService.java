@@ -2,6 +2,8 @@ package com.liyuan.wave.oms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.po.oms.OmsShoppingCartItem;
+import com.liyuan.wave.po.oms.vo.OmsShoppingCartInfoVo;
+import com.liyuan.wave.po.oms.vo.OmsShoppingCartItemSaveVo;
 
 /**
  * @description oms_shopping_cart_item
@@ -12,5 +14,11 @@ import com.liyuan.wave.po.oms.OmsShoppingCartItem;
  */
 public interface OmsShoppingCartItemService extends IService<OmsShoppingCartItem> {
 
+    /**
+     * @description 修改购物车中某个商品
+     * @param omsShoppingCartItemSaveVo
+     * @return
+     */
+    OmsShoppingCartInfoVo modifyCount(OmsShoppingCartItemSaveVo omsShoppingCartItemSaveVo);
 }
 

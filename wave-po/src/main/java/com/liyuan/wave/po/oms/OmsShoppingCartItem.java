@@ -31,9 +31,9 @@ public class OmsShoppingCartItem extends BasicPo implements Serializable {
 	 */
 	private String shoppingCartNumber;
 	/**
-	 * 商品sku
+	 * 商品编码
 	 */
-	private Long productSkuId;
+	private String articleNumber;
 	/**
 	 * 购买数量
 	 */

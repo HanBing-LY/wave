@@ -7,7 +7,7 @@
     <resultMap type="com.liyuan.wave.po.oms.OmsShoppingCartItem" id="omsShoppingCartItemMap">
         <result property="id" column="id"/>
         <result property="shoppingCartNumber" column="shopping_cart_number"/>
-        <result property="productSkuId" column="product_sku_id"/>
+        <result property="articleNumber" column="article_number"/>
         <result property="quantity" column="quantity"/>
         <result property="productPrice" column="product_price"/>
         <result property="totalPrice" column="total_price"/>
@@ -19,6 +19,36 @@
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
+
+    <resultMap type="com.liyuan.wave.oms.po.dto.OmsShoppingCartItemDto" id="baseResultMap">
+        <result property="id" column="id"/>
+        <result property="articleNumber" column="article_number"/>
+        <result property="quantity" column="quantity"/>
+        <result property="productPrice" column="product_price"/>
+        <result property="totalPrice" column="total_price"/>
+        <result property="note" column="note"/>
+        <result property="message" column="message"/>
+    </resultMap>
+
+    <update id="clearShoppingCarItem">
+        update oms_shopping_cart_item set del = 1 where shopping_cart_number = #{shoppingCartNumber} and del = 0
+    </update>
+
+    <select id="selectByShoppingCartNumber" resultMap="baseResultMap">
+        select id,article_number,quantity,product_price,total_price,note,message from oms_shopping_cart_item where shopping_cart_number = #{shoppingCartNumber} and del = 0
+    </select>
+
+    <update id="updateByArticleNumber">
+        update oms_shopping_cart_item set quantity = quantity + 1 ,total_price = total_price + product_price  where shopping_cart_number = #{shoppingCartNumber} and article_number = #{articleNumber} and del = 0
+    </update>
+
+    <update id="disableByArticleNumber">
+        update oms_shopping_cart_item set del = 1 where shopping_cart_number = #{shoppingCartNumber} and article_number = #{articleNumber} and del = 0
+    </update>
+
+    <select id="selectByShoppingCartNumberAndArticleNumber" resultMap="baseResultMap">
+        select id,article_number,quantity,product_price,total_price,note,message from oms_shopping_cart_item where shopping_cart_number = #{shoppingCartNumber} and article_number = #{articleNumber} and del = 0
+    </select>
 
 
 </mapper>

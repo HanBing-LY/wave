@@ -1,8 +1,11 @@
 package com.liyuan.wave.ums.controller;
 
+import com.liyuan.wave.common.vo.response.JsonResult;
 import com.liyuan.wave.common.web.BaseController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.liyuan.wave.po.ums.vo.UmsUserInfoScoreVo;
+import com.liyuan.wave.ums.service.UmsUserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author liyuan
@@ -10,6 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020-06-15 15:47
  */
 @RestController
-@RequestMapping
+@RequestMapping("/ums/user")
 public class UmsUserInfoController extends BaseController {
+
+    @Autowired
+    private UmsUserInfoService umsUserInfoService;
+
+    /**
+     * @description 添加用户积分
+     * @param umsUserInfoScoreVo
+     * @return
+     */
+    @PutMapping("/score")
+    public JsonResult incrementScore(@RequestBody UmsUserInfoScoreVo umsUserInfoScoreVo){
+        umsUserInfoService.incrementScore(umsUserInfoScoreVo);
+        return success();
+    }
 }

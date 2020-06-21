@@ -17,5 +17,26 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
+    <resultMap type="com.liyuan.wave.oms.po.dto.OmsShoppingCartInfoDto" id="BaseMap">
+        <result property="id" column="id"/>
+        <result property="shoppingCartNumber" column="shopping_cart_number"/>
+        <result property="userId" column="user_id"/>
+        <result property="totalCount" column="total_count"/>
+        <result property="totalPrice" column="total_price"/>
+    </resultMap>
+
+
+    <update id="clearShoppingCar">
+        update oms_shopping_cart_info set total_count = 0 ,total_price = 0 where shopping_cart_number = #{shoppingCartNumber} and del = 0
+    </update>
+
+    <select id="selectByShoppingCartNumber" resultType="com.liyuan.wave.oms.po.dto.OmsShoppingCartInfoDto">
+        select id,shopping_cart_number,user_id,total_count,total_price from oms_shopping_cart_info where shopping_cart_number = #{shoppingCartNumber} and del = 0
+    </select>
+
+    <update id="modify">
+        update oms_shopping_cart_info set total_count = total_count + #{count} ,total_price = total_price + #{productPrice} where shopping_cart_number = #{shoppingCartNumber} and del = 0
+    </update>
+
 
 </mapper>
