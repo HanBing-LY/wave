@@ -43,6 +43,12 @@ public class SmsGroupInfoServiceImpl extends ServiceImpl<SmsGroupInfoMapper, Sms
     @Autowired
     private RedissonClient redissonClient;
 
+    /**
+     * @param articleNumber
+     * @param flag          是否加载所有
+     * @return
+     * @description 根据拼团商品查所有拼团
+     */
     @Override
     public List<SmsGroupInfoVo> listGroupClubByPage(String articleNumber, boolean flag) {
         // 加载商品下的所有团
@@ -86,6 +92,11 @@ public class SmsGroupInfoServiceImpl extends ServiceImpl<SmsGroupInfoMapper, Sms
         return collect;
     }
 
+    /**
+     * @param groupNumber 团唯一标识
+     * @return
+     * @description 根据groupNumber拼团编码查询拼购信息
+     */
     @Override
     public SmsGroupInfoDetailVo groupClubByGroupNumber(String groupNumber) {
         // 团所有的成员
@@ -93,6 +104,10 @@ public class SmsGroupInfoServiceImpl extends ServiceImpl<SmsGroupInfoMapper, Sms
         return null;
     }
 
+    /**
+     * @param groupNumber
+     * @description 拼团加入, 生成订单
+     */
     @Override
     public void joinGroup(String groupNumber) {
         String self = GroupSaleCache.GROUP_MEMBERS_OF_TEAM + groupNumber;
@@ -118,6 +133,10 @@ public class SmsGroupInfoServiceImpl extends ServiceImpl<SmsGroupInfoMapper, Sms
         }
     }
 
+    /**
+     * @param articleNumber 商品编码
+     * @description 建团
+     */
     @Override
     public void createGroup(String articleNumber, Long groupSaleProductId) {
         String s = stringRedisTemplate.opsForValue().get(GroupSaleCache.INFO_PRODUCT + articleNumber);

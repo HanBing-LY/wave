@@ -43,7 +43,6 @@ public class SmsFlashSaleServiceImpl extends ServiceImpl<SmsFlashSaleMapper, Sms
 
     /**
      * @param smsFlashSaleSaveVo
-     * @author liyuan
      * @description 添加秒杀控制
      */
     @Override
@@ -64,7 +63,6 @@ public class SmsFlashSaleServiceImpl extends ServiceImpl<SmsFlashSaleMapper, Sms
 
     /**
      * @param smsFlashSaleSaveVo
-     * @author liyuan
      * @description 修改秒杀控制  只能改主题和描述,时间禁止调整
      */
     @Override
@@ -79,6 +77,13 @@ public class SmsFlashSaleServiceImpl extends ServiceImpl<SmsFlashSaleMapper, Sms
 
     }
 
+    /**
+     * @description 分页查询秒杀时间段
+     * @param status 秒杀状态
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @Override
     public PageInfo<SmsFlashSaleVo> queryPage(Byte status, Long pageNum, Long pageSize) {
         long start = (pageNum - 1) * pageSize;
@@ -107,6 +112,10 @@ public class SmsFlashSaleServiceImpl extends ServiceImpl<SmsFlashSaleMapper, Sms
         return pageInfo;
     }
 
+    /**
+     * @param ids
+     * @description 删除秒杀
+     */
     @Override
     public void disable(String ids) {
 

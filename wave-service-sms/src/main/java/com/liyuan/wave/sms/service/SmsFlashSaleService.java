@@ -16,28 +16,27 @@ public interface SmsFlashSaleService extends IService<SmsFlashSale> {
 
     /**
      * @param smsFlashSaleSaveVo
-     * @author liyuan
      * @description 添加秒杀控制
      */
     void addFlashSale(SmsFlashSaleSaveVo smsFlashSaleSaveVo);
 
     /**
      * @param smsFlashSaleSaveVo
-     * @author liyuan
      * @description 修改秒杀控制
      */
     void updateFlashSale(SmsFlashSaleSaveVo smsFlashSaleSaveVo);
 
     /**
-     * @author liyuan
-     * @description 分页查询秒杀控制
+     * @param status   秒杀状态
+     * @param pageNum
+     * @param pageSize
+     * @return
+     * @description 分页查询秒杀时间段
      */
-    PageInfo<SmsFlashSaleVo> queryPage(Byte status, Long page, Long size);
+    PageInfo<SmsFlashSaleVo> queryPage(Byte status, Long pageNum, Long pageSize);
 
     /**
      * @param ids
-     * @return
-     * @author liyuan
      * @description 删除秒杀
      */
     void disable(String ids);

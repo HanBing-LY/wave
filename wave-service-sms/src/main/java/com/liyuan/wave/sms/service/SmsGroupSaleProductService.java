@@ -17,14 +17,15 @@ public interface SmsGroupSaleProductService extends IService<SmsGroupSaleProduct
 
     /**
      * @param groupSaleId
-     * @description 分页查询控制
+     * @param pageNum
+     * @param pageSize
+     * @description 分页查询拼团段秒杀商品
      */
     PageInfo<SmsGroupSaleProductVo> listGetByGroupSaleId(Long groupSaleId, Long pageNum, Long pageSize);
 
     /**
      * @description 选择拼团商品
      * @param smsGroupSaleProductSaveVo
-     * @return
      */
     void chooseProduct(SmsGroupSaleProductSaveVo smsGroupSaleProductSaveVo);
 

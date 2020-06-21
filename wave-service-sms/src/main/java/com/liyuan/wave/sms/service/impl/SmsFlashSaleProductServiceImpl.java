@@ -47,6 +47,12 @@ public class SmsFlashSaleProductServiceImpl extends ServiceImpl<SmsFlashSaleProd
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * @param pageNum
+     * @param pageSize
+     * @author liyuan
+     * @description 分页查询秒杀时间段对应下的秒杀商品
+     */
     @Override
     public PageInfo<SmsFlashSaleProductVo> queryByPage(Long flashSaleId, Long pageNum, Long pageSize) {
         long start = (pageNum - 1) * pageSize;
@@ -75,6 +81,11 @@ public class SmsFlashSaleProductServiceImpl extends ServiceImpl<SmsFlashSaleProd
         return pageInfo;
     }
 
+    /**
+     * @param smsFlashSaleProductSaveVo
+     * @author liyuan
+     * @description 选择秒杀商品
+     */
     @Override
     public void chooseProduct(SmsFlashSaleProductSaveVo smsFlashSaleProductSaveVo) {
         String articleNumber = smsFlashSaleProductSaveVo.getArticleNumber();
@@ -93,6 +104,11 @@ public class SmsFlashSaleProductServiceImpl extends ServiceImpl<SmsFlashSaleProd
         smsFlashSaleProductMapper.insert(smsFlashSaleProduct);
     }
 
+    /**
+     * @param ids 删除的商品对象id
+     * @author liyuan
+     * @description 停止商品秒杀
+     */
     @Override
     public void disable(String ids) {
 
@@ -108,6 +124,11 @@ public class SmsFlashSaleProductServiceImpl extends ServiceImpl<SmsFlashSaleProd
 
     }
 
+    /**
+     * @param smsFlashSaleProductSaveVo
+     * @author liyuan
+     * @description 修改秒杀商品信息
+     */
     @Override
     public void updatePrice(SmsFlashSaleProductSaveVo smsFlashSaleProductSaveVo) {
         String articleNumber = smsFlashSaleProductSaveVo.getArticleNumber();

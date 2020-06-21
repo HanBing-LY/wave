@@ -28,9 +28,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * @description sms_group_sale
- *
  * @author liyuan
+ * @description sms_group_sale
  * @email 724837404@qq.com
  * @date 2020-06-15 16:09:35
  */
@@ -58,6 +57,10 @@ public class SmsGroupSaleServiceImpl extends ServiceImpl<SmsGroupSaleMapper, Sms
         smsGroupSaleMapper.insert(smsGroupSale);
     }
 
+    /**
+     * @param smsGroupSaleSaveVo
+     * @description 修改拼团控制
+     */
     @Override
     public void modify(SmsGroupSaleSaveVo smsGroupSaleSaveVo) {
         SmsGroupSale smsGroupSale = new SmsGroupSale();
@@ -68,6 +71,12 @@ public class SmsGroupSaleServiceImpl extends ServiceImpl<SmsGroupSaleMapper, Sms
         smsGroupSaleMapper.updateById(smsGroupSale);
     }
 
+    /**
+     * @param status
+     * @param pageNum
+     * @param pageSize
+     * @description 分页查询拼团控制
+     */
     @Override
     public PageInfo<SmsGroupSaleVo> queryPage(Byte status, Long pageNum, Long pageSize) {
         long start = (pageNum - 1) * pageSize;
@@ -96,6 +105,10 @@ public class SmsGroupSaleServiceImpl extends ServiceImpl<SmsGroupSaleMapper, Sms
         return pageInfo;
     }
 
+    /**
+     * @param ids
+     * @description 删除拼团
+     */
     @Override
     public void disable(String ids) {
 

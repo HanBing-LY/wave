@@ -48,6 +48,12 @@ public class SmsGroupSaleProductServiceImpl extends ServiceImpl<SmsGroupSaleProd
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * @param groupSaleId
+     * @param pageNum
+     * @param pageSize
+     * @description 分页查询拼团段秒杀商品
+     */
     @Override
     public PageInfo<SmsGroupSaleProductVo> listGetByGroupSaleId(Long groupSaleId, Long pageNum, Long pageSize) {
         long start = (pageNum - 1) * pageSize;
@@ -76,6 +82,10 @@ public class SmsGroupSaleProductServiceImpl extends ServiceImpl<SmsGroupSaleProd
         return pageInfo;
     }
 
+    /**
+     * @description 选择拼团商品
+     * @param smsGroupSaleProductSaveVo
+     */
     @Override
     public void chooseProduct(SmsGroupSaleProductSaveVo smsGroupSaleProductSaveVo) {
         String articleNumber = smsGroupSaleProductSaveVo.getArticleNumber();
@@ -94,6 +104,10 @@ public class SmsGroupSaleProductServiceImpl extends ServiceImpl<SmsGroupSaleProd
         smsGroupSaleProductMapper.insert(smsGroupSaleProduct);
     }
 
+    /**
+     * @description 停止
+     * @param ids
+     */
     @Override
     public void disable(String ids) {
         List<Long> idList = StringUtils.stringToLongList(ids);
@@ -107,6 +121,10 @@ public class SmsGroupSaleProductServiceImpl extends ServiceImpl<SmsGroupSaleProd
         smsGroupSaleProductMapper.update(smsGroupSaleProduct, queryWrapper);
     }
 
+    /**
+     * @description 修改
+     * @param smsGroupSaleProductSaveVo
+     */
     @Override
     public void updatePrice(SmsGroupSaleProductSaveVo smsGroupSaleProductSaveVo) {
         String articleNumber = smsGroupSaleProductSaveVo.getArticleNumber();

@@ -24,7 +24,7 @@ public class SmsFlashSaleProductController extends BaseController {
 
     /**
      * @author liyuan
-     * @description 分页查询秒杀控制
+     * @description 分页查询秒杀时间段对应下的秒杀商品
      */
     @GetMapping("/list")
     public JsonResult list(@RequestParam(name = "flashSaleId",required = false) Long flashSaleId, @RequestParam(name = "page",required = false) Long page, @RequestParam(name = "size",required = false) Long size){
@@ -34,7 +34,7 @@ public class SmsFlashSaleProductController extends BaseController {
 
     /**
      * @author liyuan
-     * @description 选择秒杀商品
+     * @description 选择秒杀时间段下商品
      * @return
      */
     @PostMapping
@@ -64,4 +64,14 @@ public class SmsFlashSaleProductController extends BaseController {
         return success();
     }
 
+
+    /**
+     * @author liyuan
+     * @description 秒杀生成定订单
+     * @return
+     */
+    @PostMapping("/consume")
+    public JsonResult consume(){
+        return success();
+    }
 }
