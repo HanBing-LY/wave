@@ -26,10 +26,11 @@ public class WmsWareSku extends BasicPo implements Serializable {
 	 */
 	@TableId(type = IdType.AUTO)
     private Long id;
+
 	/**
-	 * sku_id
+	 * 商品货号
 	 */
-	private Long skuId;
+	private String articleNumber;
 
 	/**
 	 * 库存数
