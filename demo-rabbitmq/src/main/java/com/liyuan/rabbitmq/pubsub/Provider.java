@@ -5,9 +5,7 @@ import com.liyuan.rabbitmq.util.RabbitMqConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
-public class Send {
-
-    private final static String EXCHANGE_NAME = "test_exchange_fanout";
+public class Provider {
 
     /**
      * 消息发送到没有队列绑定的交换机时，消息将丢失，因为，交换机没有存储消息的能力，消息只能存在在队列中。
@@ -20,11 +18,11 @@ public class Send {
         Channel channel = connection.createChannel();
 
         // 声明exchange
-        channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
+        channel.exchangeDeclare(ParamConstant.EXCHANGE_NAME, "fanout");
 
         // 消息内容
         String message = "Hello World!";
-        channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes());
+        channel.basicPublish(ParamConstant.EXCHANGE_NAME, "pubsub", null, message.getBytes());
         System.out.println(" [x] Sent '" + message + "'");
 
         channel.close();

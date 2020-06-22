@@ -1,4 +1,4 @@
-package com.liyuan.rabbitmq.work;
+package com.liyuan.rabbitmq.topic;
 
 
 import com.liyuan.rabbitmq.util.RabbitMqConnectionUtil;
@@ -6,9 +6,16 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.DeliverCallback;
 
-public class Recv {
+/**
+ * @author liyuan
+ * @description 主题模式
+ * # :匹配多个单词
+ * * :匹配一个单词
+ * 满足条件就会接受消息,不满足都不会接受,消息丢失,消息会消费多次
+ */
+public class Consumer2 {
 
-    private final static String QUEUE_NAME = "test_queue_work";
+    private final static String QUEUE_NAME = "test_queue_topic_work_2";
 
     public static void main(String[] argv) throws Exception {
 
@@ -17,12 +24,13 @@ public class Recv {
         Channel channel = connection.createChannel();
 
         // 声明队列
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        channel.queueDeclare(ParamConstant.QUEUE_NAME_TWO, false, false, false, null);
+
+        // 绑定队列到交换机
+        channel.queueBind(ParamConstant.QUEUE_NAME_TWO, ParamConstant.EXCHANGE_NAME, "#.1");
 
         // 同一时刻服务器只会发一条消息给消费者
         channel.basicQos(1);
-
-        // 定义队列的消费者
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             //开启这行 表示使用手动确认模式
@@ -30,7 +38,8 @@ public class Recv {
             String message = new String(delivery.getBody(), "UTF-8");
             System.out.println(" [x] Received '" + message + "'");
         };
-        channel.basicConsume(QUEUE_NAME, false, deliverCallback, consumerTag -> { });
+        channel.basicConsume(ParamConstant.QUEUE_NAME_TWO, false, deliverCallback, consumerTag -> {
+        });
 
     }
 }

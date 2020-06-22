@@ -6,11 +6,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.DeliverCallback;
 
-public class Recv2 {
-
-    private final static String QUEUE_NAME = "test_queue_work2";
-
-    private final static String EXCHANGE_NAME = "test_exchange_fanout";
+public class Consumer2 {
 
     public static void main(String[] argv) throws Exception {
 
@@ -19,10 +15,10 @@ public class Recv2 {
         Channel channel = connection.createChannel();
 
         // 声明队列
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        channel.queueDeclare(ParamConstant.QUEUE_NAME_TWO, false, false, false, null);
 
         // 绑定队列到交换机
-        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "");
+        channel.queueBind(ParamConstant.QUEUE_NAME_TWO, ParamConstant.EXCHANGE_NAME, "pubsub");
 
         // 同一时刻服务器只会发一条消息给消费者
         channel.basicQos(1);
@@ -33,7 +29,7 @@ public class Recv2 {
             String message = new String(delivery.getBody(), "UTF-8");
             System.out.println(" [x] Received '" + message + "'");
         };
-        channel.basicConsume(QUEUE_NAME, false, deliverCallback, consumerTag -> { });
+        channel.basicConsume(ParamConstant.QUEUE_NAME_TWO, false, deliverCallback, consumerTag -> { });
 
     }
 }

@@ -1,4 +1,4 @@
-package com.liyuan.rabbitmq.topic;
+package com.liyuan.rabbitmq.work;
 
 
 import com.liyuan.rabbitmq.util.RabbitMqConnectionUtil;
@@ -6,11 +6,16 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.DeliverCallback;
 
-public class Recv2 {
-
-    private final static String QUEUE_NAME = "test_queue_topic_work_2";
-
-    private final static String EXCHANGE_NAME = "test_exchange_topic";
+/**
+ * @author liyuan
+ * @description work工作队列
+ * 一:轮询分发
+ * 1、消费者1和消费者2获取到的消息内容是不同的，同一个消息只能被一个消费者获取。
+ * 2、消费者1和消费者2获取到的消息的数量是相同的，一个是消费奇数号消息，一个是偶数。
+ * 二:公平分发(能者多劳模式)
+ * 1、根据消费的时间去分发,谁消费结束直接再次发送给他
+ */
+public class Consumer2 {
 
     public static void main(String[] argv) throws Exception {
 
@@ -19,21 +24,20 @@ public class Recv2 {
         Channel channel = connection.createChannel();
 
         // 声明队列
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-
-        // 绑定队列到交换机
-        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "*.1");
+        channel.queueDeclare(ParamConstant.QUEUE_NAME, false, false, false, null);
 
         // 同一时刻服务器只会发一条消息给消费者
         channel.basicQos(1);
 
+        // 定义队列的消费者
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             //开启这行 表示使用手动确认模式
             channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
             String message = new String(delivery.getBody(), "UTF-8");
-            System.out.println(" [x] Received '" + message + "'");
+            System.out.println(" [x] Received2 '" + message + "'");
         };
-        channel.basicConsume(QUEUE_NAME, false, deliverCallback, consumerTag -> { });
+        channel.basicConsume(ParamConstant.QUEUE_NAME, false, deliverCallback, consumerTag -> {
+        });
 
     }
 }
