@@ -1,4 +1,4 @@
-package com.example.demoredis.test;
+package com.example.demoredis.util;
 
 import org.redisson.Redisson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.Set;
  * @author liyuan
  * @create 2019-12-30-10:46
  */
-public class SetTest {
+public class SetUtil {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 

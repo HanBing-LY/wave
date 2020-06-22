@@ -1,4 +1,4 @@
-package com.example.demoredis.test;
+package com.example.demoredis.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.Cursor;
@@ -14,7 +14,7 @@ import java.util.Set;
  * @author liyuan
  * @create 2019-12-30-10:17
  */
-public class HashTest {
+public class HashUtil {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

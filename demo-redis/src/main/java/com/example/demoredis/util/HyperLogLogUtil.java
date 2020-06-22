@@ -1,4 +1,4 @@
-package com.example.demoredis.test;
+package com.example.demoredis.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HyperLogLogOperations;
@@ -8,7 +8,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
  * @author liyuan
  * @create 2020-06-02-0:26
  */
-public class HyperLogLogTest {
+public class HyperLogLogUtil {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

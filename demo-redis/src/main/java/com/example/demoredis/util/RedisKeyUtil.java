@@ -14,10 +14,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author liyuan
  * @description
- * @date 2020-06-20 17:08
+ * @date 2020-01-20 17:08
  */
 @Component
-public class RedisUtil {
+public class RedisKeyUtil {
     @Autowired
     private static StringRedisTemplate stringRedisTemplate;
 
@@ -34,7 +34,7 @@ public class RedisUtil {
     /**
      * @param key
      * @return 是否删除成功
-     * @description 删除key
+     * @description 删除key 不存在则也返回false
      */
     public static Boolean delete(String key) {
         return stringRedisTemplate.delete(key);
@@ -43,7 +43,7 @@ public class RedisUtil {
     /**
      * @param keys key集合
      * @return 被删除的个数
-     * @description 批量删除key
+     * @description 批量删除key 不存在将被跳过,只返回被删除的key总数,如果都没有则返回0
      */
     public static Long delete(Collection<String> keys) {
         return stringRedisTemplate.delete(keys);
@@ -52,7 +52,7 @@ public class RedisUtil {
     /**
      * @param key
      * @return
-     * @description 序列化key
+     * @description 序列化key 不存在和返回null
      */
     public static byte[] dump(String key) {
         return stringRedisTemplate.dump(key);
@@ -61,7 +61,7 @@ public class RedisUtil {
     /**
      * @param key
      * @return
-     * @description 是否存在key
+     * @description 是否存在key ,存在返回true,不存在返回false
      */
     public static Boolean hasKey(String key) {
         return stringRedisTemplate.hasKey(key);
@@ -71,7 +71,7 @@ public class RedisUtil {
      * @param key     需要设置过期时间的键
      * @param timeout 距离多久过期
      * @param unit    时间单位
-     * @return 是否设置成功
+     * @return 是否设置成功, 不存在返回false
      * @description 设置过期时间
      */
     public static Boolean expire(String key, long timeout, TimeUnit unit) {
@@ -79,93 +79,93 @@ public class RedisUtil {
     }
 
     /**
-     * @description 设置过期时间,指定过期时间
-     * @param key 需要设置过期时间的键
+     * @param key  需要设置过期时间的键
      * @param date 过期的时间
      * @return 是否设置成功
+     * @description 设置过期时间, 指定过期时间
      */
     public static Boolean expireAt(String key, Date date) {
         return stringRedisTemplate.expireAt(key, date);
     }
 
     /**
-     * @description 查找匹配的key
      * @param pattern
      * @return
+     * @description 查找匹配的key
      */
     public static Set<String> keys(String pattern) {
         return stringRedisTemplate.keys(pattern);
     }
 
     /**
-     * @description 将当前数据库的 key 移动到给定的数据库 db 当中
      * @param key
      * @param dbIndex 目标数据库
      * @return
+     * @description 将当前数据库的 key 移动到给定的数据库 db 当中
      */
     public static Boolean move(String key, int dbIndex) {
         return stringRedisTemplate.move(key, dbIndex);
     }
 
     /**
-     * @description 移除 key 的过期时间，key 将持久保持
      * @param key
-     * @return
+     * @return 不存在则返回false
+     * @description 移除 key 的过期时间，key 将持久保持
      */
     public static Boolean persist(String key) {
         return stringRedisTemplate.persist(key);
     }
 
     /**
-     * @description 返回 key 的剩余的过期时间
      * @param key
      * @param unit 时间单位
      * @return
+     * @description 返回 key 的剩余的过期时间
      */
     public static Long getExpire(String key, TimeUnit unit) {
         return stringRedisTemplate.getExpire(key, unit);
     }
 
     /**
-     * @description 返回 key 的剩余的过期时间
      * @param key
      * @return
+     * @description 返回 key 的剩余的过期时间
      */
     public static Long getExpire(String key) {
         return stringRedisTemplate.getExpire(key);
     }
 
     /**
-     * @description 从当前数据库中随机返回一个 key
      * @return
+     * @description 从当前数据库中随机返回一个 key
      */
     public static String randomKey() {
         return stringRedisTemplate.randomKey();
     }
 
     /**
-     * @description 修改 key 的名称
      * @param oldKey 旧名字
      * @param newKey 新名字
+     * @description 修改 key 的名称 ,如果newKey已存在则会被覆盖,值也会变成oldKey的值 ,如果oldkey不存在则会报错 ;io.lettuce.core.RedisCommandExecutionException: ERR no such key
      */
     public static void rename(String oldKey, String newKey) {
         stringRedisTemplate.rename(oldKey, newKey);
     }
 
     /**
-     * @description 仅当 newkey 不存在时，将 oldKey 改名为 newkey
      * @param oldKey
      * @param newKey
      * @return
+     * @description 仅当 newkey 不存在时，将 oldKey 改名为 newkey,如果oldkey不存在则会报错;io.lettuce.core.RedisCommandExecutionException: ERR no such key
      */
     public static Boolean renameIfAbsent(String oldKey, String newKey) {
         return stringRedisTemplate.renameIfAbsent(oldKey, newKey);
     }
 
     /**
-     * @description 返回 key 所储存的值的类型
      * @param key
      * @return
+     * @description 返回 key 所储存的值的类型,普通的key不属于string类型,是none类型
      */
     public static DataType type(String key) {
         return stringRedisTemplate.type(key);

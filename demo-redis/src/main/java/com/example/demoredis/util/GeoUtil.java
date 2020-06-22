@@ -1,4 +1,4 @@
-package com.example.demoredis.test;
+package com.example.demoredis.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Circle;
@@ -15,7 +15,7 @@ import java.util.List;
  * @author liyuan
  * @create 2020-06-02-0:10
  */
-public class GeoTest {
+public class GeoUtil {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

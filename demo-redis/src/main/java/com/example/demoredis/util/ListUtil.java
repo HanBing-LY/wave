@@ -1,4 +1,4 @@
-package com.example.demoredis.test;
+package com.example.demoredis.util;
 
 import org.redisson.Redisson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @author liyuan
  * @create 2019-12-30-0:16
  */
-public class ListTest {
+public class ListUtil {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
