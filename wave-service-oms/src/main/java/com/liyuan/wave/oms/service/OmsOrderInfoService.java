@@ -33,7 +33,7 @@ public interface OmsOrderInfoService extends IService<OmsOrderInfo> {
      * @return
      * @description 确认商品订单
      */
-    Object create(OmsOrderInfoSaveVo omsOrderInfoSaveVo);
+    String create(OmsOrderInfoSaveVo omsOrderInfoSaveVo);
 
     /**
      * @param orderNumber
