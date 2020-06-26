@@ -6,7 +6,8 @@ import com.liyuan.wave.common.exception.ExceptionResult;
 public enum CommonCode  implements ExceptionResult {
 
     SUCCESS(true,200,"操作成功！"),
-    FAIL(false,000,"操作失败！");
+    FAIL(false,000,"操作失败！"),
+    BUSYING(false,100,"服务正忙,请稍候再试！");
 
     boolean success;
 
@@ -14,7 +15,7 @@ public enum CommonCode  implements ExceptionResult {
 
     String message;
 
-    private CommonCode(boolean success, int code, String message){
+    CommonCode(boolean success, int code, String message){
         this.success = success;
         this.code = code;
         this.message = message;

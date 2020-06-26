@@ -18,7 +18,7 @@ public class ExceptionCatch {
     public JsonResult exception(CommonException commonException){
         ExceptionResult result= commonException.getExceptionResult();
         log.error("exception:", commonException.getMessage());
-        return new JsonResult(result.success(), result.code(),result.message());
+        return new JsonResult(result);
     }
 
     @ExceptionHandler(Exception.class)
