@@ -30,7 +30,7 @@ public class OmsOrderInfoServiceImpl extends ServiceImpl<OmsOrderInfoMapper, Oms
     }
 
     @Override
-    public Object create(OmsOrderInfoSaveVo omsOrderInfoSaveVo) {
+    public String create(OmsOrderInfoSaveVo omsOrderInfoSaveVo) {
         return null;
     }
 
