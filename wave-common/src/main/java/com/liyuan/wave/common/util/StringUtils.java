@@ -27,6 +27,11 @@ public class StringUtils {
     public static final String COMMA_STR = ",";
 
     /**
+     * null
+     */
+    public static final String NULL = "null";
+
+    /**
      * @param value        要判断的value
      * @param defaultValue 默认值
      * @return T 返回值
@@ -79,7 +84,7 @@ public class StringUtils {
      * @description 判断一个字符串是否为空串(方法内部前后尾去空)
      */
     public static boolean isEmpty(String str) {
-        return isNull(str) || EMPTY_STR.equals(str.trim());
+        return isNull(str) || EMPTY_STR.equals(str.trim()) || NULL.equals(str.trim());
     }
 
 
@@ -255,9 +260,24 @@ public class StringUtils {
             return EMPTY_STR;
         }
         String regEx = "[\n`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。， 、？]";
-        Pattern p = Pattern.compile(regEx);
-        Matcher m = p.matcher(string);
-        return m.replaceAll(EMPTY_STR).trim();
+        Pattern pattern = Pattern.compile(regEx);
+        Matcher matcher = pattern.matcher(string);
+        return matcher.replaceAll(EMPTY_STR).trim();
+    }
+
+    /**
+     * @param string
+     * @return
+     * @description 字符串正则清空中文
+     */
+    public static String clearChineseCharacters(String string) {
+        if (isEmpty(string)) {
+            return EMPTY_STR;
+        }
+        String regex = "[\u4e00-\u9fa5]";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(string);
+        return matcher.replaceAll(EMPTY_STR).trim();
     }
 
     /**
@@ -310,8 +330,4 @@ public class StringUtils {
         return !effective(text);
     }
 
-
-
-
-//    List<UserAddress> userAddressList = new Gson().fromJson(new Gson().toJson(result.getData()), new TypeToken<List<UserAddress>>(){}.getType());
 }
