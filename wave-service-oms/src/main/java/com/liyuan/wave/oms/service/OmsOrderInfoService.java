@@ -2,8 +2,8 @@ package com.liyuan.wave.oms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.liyuan.wave.po.oms.OmsOrderInfo;
-import com.liyuan.wave.po.oms.vo.OmsOrderInfoDetailVo;
 import com.liyuan.wave.po.oms.vo.OmsOrderInfoSaveVo;
+import com.liyuan.wave.po.oms.vo.relation.OmsOrderInfoRelation;
 
 /**
  * @author liyuan
@@ -18,7 +18,7 @@ public interface OmsOrderInfoService extends IService<OmsOrderInfo> {
      * @return
      * @description 根据订单编号加载订单详情
      */
-    OmsOrderInfoDetailVo getOrderDetailByOrderNumber(String orderNumber);
+    OmsOrderInfoRelation getOrderDetailByOrderNumber(String orderNumber);
 
     /**
      * @param userAddressId
@@ -26,7 +26,7 @@ public interface OmsOrderInfoService extends IService<OmsOrderInfo> {
      * @return
      * @description 选择收货地址
      */
-    void chooseReceiveAddress(String orderNumber, Integer userAddressId);
+    void chooseReceiveAddress(String orderNumber, Long userAddressId);
 
     /**
      * @param omsOrderInfoSaveVo

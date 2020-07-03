@@ -1,18 +1,20 @@
-package com.liyuan.wave.po.oms.vo;
+package com.liyuan.wave.oms.po.dto;
 
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 /**
- * @author liyuan
- * @description
- * @email 724837404@qq.com
- * @date 2020-06-21-22:27
+ * @author : liyuan  
+ * @description :
+ * @date : 2020-07-03 16:42  
  */
 @Data
-public class OmsOrderInfoDetailVo {
-
+public class OmsOrderInfoDto {
+    /**
+     * id
+     */
+    private Long id;
     /**
      * 订单流水号
      */
@@ -73,5 +75,6 @@ public class OmsOrderInfoDetailVo {
      * 物流单号
      */
     private String logisticsNumber;
+
 
 }

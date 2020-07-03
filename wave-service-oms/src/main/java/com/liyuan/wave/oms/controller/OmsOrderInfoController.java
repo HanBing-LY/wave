@@ -38,7 +38,7 @@ public class OmsOrderInfoController extends BaseController {
      * @description 选择收货地址
      */
     @PutMapping("/chooseReceiveAddress")
-    public JsonResult chooseReceiveAddress(@RequestParam(name = "orderNumber") String orderNumber, @RequestParam(name = "userAddressId") Integer userAddressId) {
+    public JsonResult chooseReceiveAddress(@RequestParam(name = "orderNumber") String orderNumber, @RequestParam(name = "userAddressId") Long userAddressId) {
         omsOrderInfoService.chooseReceiveAddress(orderNumber, userAddressId);
         return success();
     }

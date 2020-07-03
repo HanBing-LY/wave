@@ -18,5 +18,20 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
+    <sql id="baseSql">id,order_number,product_sku_id,product_num,product_price,total_price</sql>
+
+    <resultMap type="com.liyuan.wave.oms.po.dto.OmsOrderProductDto" id="baseMap">
+        <result property="id" column="id"/>
+        <result property="orderNumber" column="order_number"/>
+        <result property="productSkuId" column="product_sku_id"/>
+        <result property="productNum" column="product_num"/>
+        <result property="productPrice" column="product_price"/>
+        <result property="totalPrice" column="total_price"/>
+    </resultMap>
+
+    <select id="selectByOrderNumber" resultMap="baseMap">
+        select <include refid="baseSql"></include> from oms_order_product where order_number = #{orderNumber} and del = 0
+    </select>
+
 
 </mapper>

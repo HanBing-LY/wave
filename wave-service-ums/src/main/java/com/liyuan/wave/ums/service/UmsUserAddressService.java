@@ -23,6 +23,13 @@ public interface UmsUserAddressService extends IService<UmsUserAddress> {
     List<UmsUserAddressVo> queryByUserId(Long userId);
 
     /**
+     * @description 查询地址
+     * @param id
+     * @return
+     */
+    UmsUserAddressVo selectById(Long id);
+
+    /**
      * @description 新添地址
      * @param umsUserAddressSaveVo
      * @return
@@ -42,4 +49,5 @@ public interface UmsUserAddressService extends IService<UmsUserAddress> {
      * @return
      */
     void disable(String ids);
+
 }

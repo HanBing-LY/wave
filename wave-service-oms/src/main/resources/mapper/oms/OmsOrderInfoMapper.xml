@@ -28,5 +28,30 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
+    <sql id="baseSql">id,order_number,order_money,fare_money,pay_money,note,user_id,receive_name,receive_phone,province,district,area,address,order_type,pay_method,logistics_number</sql>
+
+    <resultMap type="com.liyuan.wave.oms.po.dto.OmsOrderInfoDto" id="baseMap">
+        <result property="id" column="id"/>
+        <result property="orderNumber" column="order_number"/>
+        <result property="orderMoney" column="order_money"/>
+        <result property="fareMoney" column="fare_money"/>
+        <result property="payMoney" column="pay_money"/>
+        <result property="note" column="note"/>
+        <result property="userId" column="user_id"/>
+        <result property="receiveName" column="receive_name"/>
+        <result property="receivePhone" column="receive_phone"/>
+        <result property="province" column="province"/>
+        <result property="district" column="district"/>
+        <result property="area" column="area"/>
+        <result property="address" column="address"/>
+        <result property="orderType" column="order_type"/>
+        <result property="payMethod" column="pay_method"/>
+        <result property="logisticsNumber" column="logistics_number"/>
+    </resultMap>
+
+    <select id="selectByOrderNumber" resultType="com.liyuan.wave.oms.po.dto.OmsOrderInfoDto">
+        select <include refid="baseSql"></include> from oms_order_info where order_number = #{orderNumber} and del = 0 limit 1
+    </select>
+
 
 </mapper>

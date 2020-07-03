@@ -48,6 +48,17 @@ public class UmsUserAddressServiceImpl extends ServiceImpl<UmsUserAddressMapper,
         }).collect(Collectors.toList());
     }
 
+    @Override
+    public UmsUserAddressVo selectById(Long id) {
+        UmsUserAddress umsUserAddress = umsUserAddressMapper.selectById(id);
+        if(CommonParam.IS_DELETED.equals(umsUserAddress.getDel())){
+            ExceptionCast.cast(UmsExceptionCode.ADDRESS_IS_NOT_EXIST);
+        }
+        UmsUserAddressVo umsUserAddressVo = new UmsUserAddressVo();
+        BeanUtils.copyProperties(umsUserAddress,umsUserAddressVo);
+        return umsUserAddressVo;
+    }
+
     /**
      * @param umsUserAddressSaveVo
      * @return

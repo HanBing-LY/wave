@@ -16,6 +16,7 @@ public enum UmsExceptionCode implements ExceptionResult {
     PLEASE_CHO0SE_TO_DELETE(false,90302,"请选择需要删除的地址！"),
     COMMON_ADDRESS_NOT_TO_DELETE(false,90303,"请选择需要删除的地址！"),
     SCORE_INCREMENT_FAIL(false,90304,"积分添加失败！"),
+    ADDRESS_IS_NOT_EXIST(false,90305,"地址不存在！"),
 
     ;
 

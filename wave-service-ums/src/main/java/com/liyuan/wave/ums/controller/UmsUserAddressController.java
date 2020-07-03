@@ -30,6 +30,16 @@ public class UmsUserAddressController extends BaseController {
     }
 
     /**
+     * @description 查询用户的地址
+     * @param id
+     * @return
+     */
+    @GetMapping
+    public JsonResult selectById(@RequestParam Long id){
+        return success(umsUserAddressService.selectById(id));
+    }
+
+    /**
      * @description 新添地址
      * @param umsUserAddressSaveVo
      * @return
