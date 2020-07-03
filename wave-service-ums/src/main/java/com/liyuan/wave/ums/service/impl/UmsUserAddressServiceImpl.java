@@ -11,6 +11,7 @@ import com.liyuan.wave.po.ums.vo.UmsUserAddressVo;
 import com.liyuan.wave.ums.common.UmsExceptionCode;
 import com.liyuan.wave.ums.constant.SelfCommonParam;
 import com.liyuan.wave.ums.mapper.UmsUserAddressMapper;
+import com.liyuan.wave.ums.po.dto.UmsUserAddressDto;
 import com.liyuan.wave.ums.po.dto.UmsUserAddressSaveVo;
 import com.liyuan.wave.ums.service.UmsUserAddressService;
 import org.springframework.beans.BeanUtils;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author liyuan
@@ -38,9 +40,12 @@ public class UmsUserAddressServiceImpl extends ServiceImpl<UmsUserAddressMapper,
      */
     @Override
     public List<UmsUserAddressVo> queryByUserId(Long userId) {
-
-
-        return null;
+        List<UmsUserAddressDto> umsUserAddressDtos = umsUserAddressMapper.selectByUserId(userId);
+        return umsUserAddressDtos.stream().map(i -> {
+            UmsUserAddressVo umsUserAddressVo = new UmsUserAddressVo();
+            BeanUtils.copyProperties(i, umsUserAddressVo);
+            return umsUserAddressVo;
+        }).collect(Collectors.toList());
     }
 
     /**

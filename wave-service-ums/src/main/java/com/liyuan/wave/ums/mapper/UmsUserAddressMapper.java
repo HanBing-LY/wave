@@ -3,6 +3,7 @@ package com.liyuan.wave.ums.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.liyuan.wave.po.ums.UmsUserAddress;
+import com.liyuan.wave.ums.po.dto.UmsUserAddressDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -35,5 +36,12 @@ public interface UmsUserAddressMapper extends BaseMapper<UmsUserAddress> {
      * @param userId
      * @return
      */
-    Integer clearCommonAddressByUserId(Long userId);
+    Integer clearCommonAddressByUserId(@Param("userId") Long userId);
+
+    /**
+     * @description 查询用户的收货地址
+     * @param userId
+     * @return
+     */
+    List<UmsUserAddressDto> selectByUserId(@Param("userId") Long userId);
 }

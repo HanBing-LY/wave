@@ -21,6 +21,22 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
+    <sql id="baseSql">id,user_id,user_name,user_phone,province,district,area,address,flag</sql>
+
+    <resultMap type="com.liyuan.wave.ums.po.dto.UmsUserAddressDto" id="baseMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="province" column="province"/>
+        <result property="district" column="district"/>
+        <result property="area" column="area"/>
+        <result property="address" column="address"/>
+        <result property="flag" column="flag"/>
+    </resultMap>
+
+
+
     <select id="checkUserHasAddress" resultType="java.lang.Long">
         select count(1) from ums_user_address where user_id = #{userId} and del = 0
     </select>
@@ -35,6 +51,10 @@
     <update id="clearCommonAddressByUserId">
         update ums_user_address set flag = 0 where user_id = #{userId} and flag = 1
     </update>
+
+    <select id="selectByUserId" resultType="com.liyuan.wave.ums.po.dto.UmsUserAddressDto">
+        select <include refid="baseSql"></include> from ums_user_address where user_id = #{userId} and del = 0 order by flag desc
+    </select>
 
 
 </mapper>
