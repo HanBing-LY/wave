@@ -44,7 +44,7 @@ public class OmsShoppingCartInfoServiceImpl extends ServiceImpl<OmsShoppingCartI
     @Override
     public OmsShoppingCartInfoVo showShoppingCar(String shoppingCartNumber) {
         OmsShoppingCartInfoVo omsShoppingCartInfoVo = new OmsShoppingCartInfoVo();
-        OmsShoppingCartInfoDto omsShoppingCartInfoDto  = omsShoppingCartInfoMapper.selectByShoppingCartNumber(shoppingCartNumber);
+        OmsShoppingCartInfoDto omsShoppingCartInfoDto = omsShoppingCartInfoMapper.selectByShoppingCartNumber(shoppingCartNumber);
         List<OmsShoppingCartItemDto> omsShoppingCartItemDtoList = omsShoppingCartItemMapper.selectByShoppingCartNumber(shoppingCartNumber);
         omsShoppingCartInfoVo.setTotalCount(omsShoppingCartInfoDto.getTotalCount());
         omsShoppingCartInfoVo.setTotalPrice(omsShoppingCartInfoDto.getTotalPrice());
@@ -64,6 +64,13 @@ public class OmsShoppingCartInfoServiceImpl extends ServiceImpl<OmsShoppingCartI
         }).collect(Collectors.toList());
         omsShoppingCartInfoVo.setOmsShoppingCartItemVoList(collect);
         return omsShoppingCartInfoVo;
+    }
+
+    @Override
+    public void manageShoppingCar(Long userId, String articleNumbers) {
+        String shoppingCartNumber = "";
+        String[] articleNumberArrays = articleNumbers.trim().split(",");
+        stringRedisTemplate.opsForHash().delete(ShoppingCartCache.INFO + shoppingCartNumber, articleNumberArrays);
     }
 
     @Override

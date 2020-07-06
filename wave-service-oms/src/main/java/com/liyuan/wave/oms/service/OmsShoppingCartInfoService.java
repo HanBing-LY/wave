@@ -21,6 +21,14 @@ public interface OmsShoppingCartInfoService extends IService<OmsShoppingCartInfo
     OmsShoppingCartInfoVo showShoppingCar(String shoppingCartNumber);
 
     /**
+     * @description 移除某个购物车商品
+     * @param userId
+     * @param articleNumbers
+     * @return
+     */
+    void manageShoppingCar(Long userId,String articleNumbers);
+
+    /**
      * @description 清空购物车
      * @param userId
      * @return

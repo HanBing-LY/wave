@@ -31,6 +31,17 @@ public class OmsShoppingCartInfoController extends BaseController {
     }
 
     /**
+     * @description 移除某个购物车商品
+     * @param articleNumbers
+     * @return
+     */
+    @PutMapping
+    public JsonResult manageShoppingCar(@RequestParam Long userId,@RequestParam String articleNumbers) {
+        omsShoppingCartInfoService.manageShoppingCar(userId,articleNumbers);
+        return success();
+    }
+
+    /**
      * @description 清空购物车
      * @param userId
      * @return
